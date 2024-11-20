@@ -3,10 +3,10 @@ using UnityEngine;
 public class ButtonController : MonoBehaviour
 {
 
-     [SerializeField] private CardController cardController;
+    [SerializeField] private CardController cardController;
 
     private void OnMouseDown() {
-        cardController.AñadirCartaTimeline();
+        cardController.MoverCartaTimeline();
         Debug.Log("Adios");
     }
 }
