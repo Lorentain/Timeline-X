@@ -14,7 +14,7 @@ public class ButtonHorizontalController : MonoBehaviour
         }
 
         if(movementDirection == "left") {
-
+            timelineController.MoverIzquierdaCartaTimeline(transform.parent.gameObject);
         }
     }
 }

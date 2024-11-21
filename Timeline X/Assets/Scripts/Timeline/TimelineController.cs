@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Numerics;
 using DG.Tweening;
@@ -26,7 +27,7 @@ public class TimelineController : MonoBehaviour
             {
                 cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 1, movementTime).SetEase(movementEase);
             }
-            cardsTimeline.Insert(0,gameObject);
+            cardsTimeline.Insert(0, gameObject);
             aux = true;
         }
         else
@@ -41,7 +42,7 @@ public class TimelineController : MonoBehaviour
     public void EliminarCartaTimeline(GameObject gameObject)
     {
         cardsTimeline.Remove(gameObject);
-    } 
+    }
 
     public void MoverDerechaCartaTimeline(GameObject gameObject)
     {
@@ -53,13 +54,44 @@ public class TimelineController : MonoBehaviour
                 Debug.Log("Entra");
                 for (int i = 0; i < cardsTimeline.Count; i++)
                 {
-                    if (cardsTimeline[i].transform.position.x == (cardsTimeline.IndexOf(gameObject) + 1))
+                    if (i == (cardsTimeline.IndexOf(gameObject) + 1))
                     {
-                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x - 2,movementTime).SetEase(movementEase);
-                    }else if(cardsTimeline[i] != gameObject) {
-                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x - 1,movementTime).SetEase(movementEase);
+                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x - 2, movementTime).SetEase(movementEase);
+                    }
+                    else if (cardsTimeline[i] != gameObject)
+                    {
+                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x - 1, movementTime).SetEase(movementEase);
                     }
                 }
+                int index = cardsTimeline.IndexOf(gameObject);
+                cardsTimeline.Insert(index + 2, gameObject);
+                cardsTimeline.RemoveAt(index);
+            }
+        }
+    }
+
+    public void MoverIzquierdaCartaTimeline(GameObject cardGameObject)
+    {
+        if (cardsTimeline.Count != 0)
+        {
+            Debug.Log("Aquiii");
+            if (cardsTimeline.IndexOf(cardGameObject) != 0)
+            {
+                Debug.Log("Entra");
+                for (int i = 0; i < cardsTimeline.Count; i++)
+                {
+                    if (i == (cardsTimeline.IndexOf(cardGameObject) - 1))
+                    {
+                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 2, movementTime).SetEase(movementEase);
+                    }
+                    else if (cardsTimeline[i] != cardGameObject)
+                    {
+                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 1, movementTime).SetEase(movementEase);
+                    }
+                }
+                int index = cardsTimeline.IndexOf(cardGameObject);
+                cardsTimeline.Insert(index - 1, cardGameObject);
+                cardsTimeline.RemoveAt(index + 1);
             }
         }
     }

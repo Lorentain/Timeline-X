@@ -26,4 +26,13 @@ public class CardController : MonoBehaviour
     {
         gameObject.transform.DOMoveY(handPlayer.position.y,movementTime).SetEase(movementEase);
     }
+
+    public void ConfirmarCartaTimeline() {
+
+        int cantidadHijos = gameObject.transform.childCount;
+
+        for(int i = 0; i < cantidadHijos; i++) {
+            Destroy(gameObject.transform.GetChild(i).gameObject);
+        }
+    }
 }
