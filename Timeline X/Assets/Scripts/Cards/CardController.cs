@@ -25,6 +25,7 @@ public class CardController : MonoBehaviour
     public void DevolverCartaAMano()
     {
         gameObject.transform.DOMoveY(handPlayer.position.y,movementTime).SetEase(movementEase);
+        timelineController.EliminarCartaTimeline(gameObject);
     }
 
     public void ConfirmarCartaTimeline() {

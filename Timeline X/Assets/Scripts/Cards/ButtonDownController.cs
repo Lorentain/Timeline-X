@@ -9,7 +9,6 @@ public class ButtonDownController : MonoBehaviour
 
     private void OnMouseDown() {
         cardController.DevolverCartaAMano();
-        timelineController.EliminarCartaTimeline(transform.parent.gameObject);
         Debug.Log("Hola");
     }
 

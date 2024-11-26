@@ -20,14 +20,20 @@ public class TimelineController : MonoBehaviour
     public bool AñadirCartaTimeline(GameObject gameObject)
     {
         bool aux = false;
+        int positionLastCard = 0;
 
         if (cardsTimeline.Count != 0)
         {
             for (int i = 0; i < cardsTimeline.Count; i++)
             {
-                cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 1, movementTime).SetEase(movementEase);
+                if(cardsTimeline[i].transform.position.x >= 0) {
+                    cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 1, movementTime).SetEase(movementEase);
+                }
+                if(cardsTimeline[i].transform.position.x == 0) {
+                    positionLastCard = i;
+                }
             }
-            cardsTimeline.Insert(0, gameObject);
+            cardsTimeline.Insert(positionLastCard, gameObject);
             aux = true;
         }
         else
@@ -41,7 +47,16 @@ public class TimelineController : MonoBehaviour
 
     public void EliminarCartaTimeline(GameObject gameObject)
     {
+        int index = cardsTimeline.IndexOf(gameObject);
         cardsTimeline.Remove(gameObject);
+        Debug.Log(index);
+        for (int i = 0; i < cardsTimeline.Count; i++) {
+            if(i >= index) {
+                cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x -1, movementTime).SetEase(movementEase);
+            }else if(index == cardsTimeline.Count) {
+                cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x +1, movementTime).SetEase(movementEase);
+            }
+        }
     }
 
     public void MoverDerechaCartaTimeline(GameObject gameObject)
