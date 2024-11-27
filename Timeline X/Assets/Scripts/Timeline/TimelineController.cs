@@ -6,55 +6,61 @@ using UnityEngine;
 
 public class TimelineController : MonoBehaviour
 {
+    private static TimelineController instance;
+
     [SerializeField] private List<GameObject> cardsTimeline;
 
     [SerializeField] private float movementTime;
 
     [SerializeField] private Ease movementEase;
 
+    private void Awake() {
+        instance = this;
+    }
+
     private void Start()
     {
         cardsTimeline = new List<GameObject>();
     }
 
-    public bool AñadirCartaTimeline(GameObject gameObject)
+    public static bool AñadirCartaTimeline(GameObject gameObject)
     {
         bool aux = false;
         int positionLastCard = 0;
 
-        if (cardsTimeline.Count != 0)
+        if (instance.cardsTimeline.Count != 0)
         {
-            for (int i = 0; i < cardsTimeline.Count; i++)
+            for (int i = 0; i < instance.cardsTimeline.Count; i++)
             {
-                if(cardsTimeline[i].transform.position.x >= 0) {
-                    cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 1, movementTime).SetEase(movementEase);
+                if(instance.cardsTimeline[i].transform.position.x >= 0) {
+                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
                 }
-                if(cardsTimeline[i].transform.position.x == 0) {
+                if(instance.cardsTimeline[i].transform.position.x == 0) {
                     positionLastCard = i;
                 }
             }
-            cardsTimeline.Insert(positionLastCard, gameObject);
+            instance.cardsTimeline.Insert(positionLastCard, gameObject);
             aux = true;
         }
         else
         {
-            cardsTimeline.Add(gameObject);
+            instance.cardsTimeline.Add(gameObject);
             aux = true;
         }
 
         return aux;
     }
 
-    public void EliminarCartaTimeline(GameObject gameObject)
+    public static void EliminarCartaTimeline(GameObject gameObject)
     {
-        int index = cardsTimeline.IndexOf(gameObject);
-        cardsTimeline.Remove(gameObject);
+        int index = instance.cardsTimeline.IndexOf(gameObject);
+        instance.cardsTimeline.Remove(gameObject);
         Debug.Log(index);
-        for (int i = 0; i < cardsTimeline.Count; i++) {
+        for (int i = 0; i < instance.cardsTimeline.Count; i++) {
             if(i >= index) {
-                cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x -1, movementTime).SetEase(movementEase);
-            }else if(index == cardsTimeline.Count) {
-                cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x +1, movementTime).SetEase(movementEase);
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x -1, instance.movementTime).SetEase(instance.movementEase);
+            }else if(index == instance.cardsTimeline.Count) {
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x +1, instance.movementTime).SetEase(instance.movementEase);
             }
         }
     }
@@ -109,5 +115,9 @@ public class TimelineController : MonoBehaviour
                 cardsTimeline.RemoveAt(index + 1);
             }
         }
+    }
+
+    public static float TimelinePosicionY() {
+        return instance.transform.position.y;
     }
 }
