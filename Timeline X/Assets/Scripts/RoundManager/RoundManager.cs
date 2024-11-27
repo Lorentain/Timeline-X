@@ -33,7 +33,7 @@ public class RoundManager : MonoBehaviour
 
     private void NotifyTurnChange()
     {
-        Debug.Log($"Jugador {currentPlayer + 1}. Ronda {currentRound}");
+        Debug.Log($" {currentPlayer + 1}. Round {currentRound}");
         OnTurnChanged?.Invoke(currentPlayer, currentRound);
     }
 }
