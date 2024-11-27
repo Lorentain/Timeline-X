@@ -4,7 +4,10 @@ using UnityEngine.UIElements;
 
 public class CardController : MonoBehaviour
 {
-    [SerializeField] private CardInfo cardInfo;
+
+    [SerializeField] private TimelineController timelineController;
+
+    [SerializeField] private Transform timeline;
 
     [SerializeField] private Transform handPlayer;
 
@@ -14,15 +17,15 @@ public class CardController : MonoBehaviour
 
     public void MoverCartaTimeline()
     {
-        if(TimelineController.AñadirCartaTimeline(gameObject)) {
-            gameObject.transform.DOMoveY(TimelineController.TimelinePosicionY(),movementTime).SetEase(movementEase);   
+        if(timelineController.AñadirCartaTimeline(gameObject)) {
+            gameObject.transform.DOMoveY(timeline.position.y,movementTime).SetEase(movementEase);   
         }
     }
 
     public void DevolverCartaAMano()
     {
         gameObject.transform.DOMoveY(handPlayer.position.y,movementTime).SetEase(movementEase);
-        TimelineController.EliminarCartaTimeline(gameObject);
+        timelineController.EliminarCartaTimeline(gameObject);
     }
 
     public void ConfirmarCartaTimeline() {
