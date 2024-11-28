@@ -15,7 +15,7 @@ public class CardController : MonoBehaviour
     public void MoverCartaTimeline()
     {
         if(TimelineController.AñadirCartaTimeline(gameObject)) {
-            gameObject.transform.DOMoveY(TimelineController.TimelinePosicionY(),movementTime).SetEase(movementEase);   
+            gameObject.transform.DOMove(TimelineController.TimelinePosicion(),movementTime).SetEase(movementEase);   
         }
     }
 
@@ -32,5 +32,13 @@ public class CardController : MonoBehaviour
         for(int i = 0; i < cantidadHijos; i++) {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
+    }
+
+    public void AgregarHandPlayer(Transform gameObject) {
+        handPlayer = gameObject;
+    }
+
+    public void AgregarCardInfo(CardInfo aux) {
+        cardInfo = aux;
     }
 }

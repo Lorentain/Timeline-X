@@ -151,6 +151,10 @@ MonoBehaviour:
   listCards:
   - {fileID: 11400000, guid: 36ffd636ea15ded4697717c915c09b74, type: 2}
   - {fileID: 11400000, guid: 5cf295cc76add904c83671fbb88fc0c4, type: 2}
+  - {fileID: 11400000, guid: e0f5ca28221cf8a4caff29d20decb29b, type: 2}
+  - {fileID: 11400000, guid: d01108638e1d1cd4b82dbdec84004fb1, type: 2}
+  - {fileID: 11400000, guid: 82ac5beeedd6f4d4f80a3c7c5ed20e8b, type: 2}
+  - {fileID: 11400000, guid: 0dec396c3da2b4c449c38b45fbbf37fb, type: 2}
 --- !u!4 &112352808
 Transform:
   m_ObjectHideFlags: 0
@@ -380,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deckController: {fileID: 112352807}
+  handPlayer: {fileID: 188271293}
   inventoryCard: []
   prefabCard: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
 --- !u!4 &514572711
@@ -391,7 +396,7 @@ Transform:
   m_GameObject: {fileID: 514572709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.035291843, y: -2.576753, z: -0.518646}
+  m_LocalPosition: {x: 0, y: -3.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1297,6 +1302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deckController: {fileID: 112352807}
+  handPlayer: {fileID: 188271293}
   inventoryCard: []
   prefabCard: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
 --- !u!4 &1722127153
@@ -1308,7 +1314,7 @@ Transform:
   m_GameObject: {fileID: 1722127151}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.035291843, y: -2.576753, z: -0.518646}
+  m_LocalPosition: {x: 0, y: -3.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

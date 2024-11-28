@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Numerics;
 using DG.Tweening;
 using UnityEngine;
 
@@ -117,7 +116,7 @@ public class TimelineController : MonoBehaviour
         }
     }
 
-    public static float TimelinePosicionY() {
-        return instance.transform.position.y;
+    public static Vector3 TimelinePosicion() {
+        return instance.transform.position;
     }
 }

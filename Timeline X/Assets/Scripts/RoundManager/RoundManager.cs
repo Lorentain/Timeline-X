@@ -16,7 +16,7 @@ public class RoundManager : MonoBehaviour
 
     public void ConfirmPlay()
     {
-        Debug.Log($"Jugador {currentPlayer + 1} confirmó su jugada en la ronda {currentRound}");
+        Debug.Log($"Jugador {currentPlayer + 1} confirmï¿½ su jugada en la ronda {currentRound}");
 
         // Cambiar al siguiente jugador
         currentPlayer++;
@@ -26,7 +26,6 @@ public class RoundManager : MonoBehaviour
             currentRound++;
             Debug.Log($"Comienza la ronda {currentRound}");
         }
-
         
         NotifyTurnChange();
     }
