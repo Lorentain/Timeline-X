@@ -32,6 +32,8 @@ public class CardController : MonoBehaviour
         for(int i = 0; i < cantidadHijos; i++) {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
+        gameObject.transform.parent = TimelineController.TimelineTransform();
+        RoundManager.ConfirmPlay();
     }
 
     public void AgregarHandPlayer(Transform gameObject) {

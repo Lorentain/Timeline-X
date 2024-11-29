@@ -19,14 +19,11 @@ public class ButtonConfirmController : MonoBehaviour
     {
         Debug.Log("Carta confirmada");
         cardController.ConfirmarCartaTimeline();
-
-        
-        roundManager.ConfirmPlay();
     }
 
     private void UpdateButtonState(int currentPlayer, int currentRound)
     {
         
-        Debug.Log($"Botón actualizado para el jugador {currentPlayer + 1} en la ronda {currentRound}");
+        Debug.Log($"Botï¿½n actualizado para el jugador {currentPlayer + 1} en la ronda {currentRound}");
     }
 }

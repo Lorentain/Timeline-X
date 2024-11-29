@@ -13,7 +13,8 @@ public class TimelineController : MonoBehaviour
 
     [SerializeField] private Ease movementEase;
 
-    private void Awake() {
+    private void Awake()
+    {
         instance = this;
     }
 
@@ -31,10 +32,12 @@ public class TimelineController : MonoBehaviour
         {
             for (int i = 0; i < instance.cardsTimeline.Count; i++)
             {
-                if(instance.cardsTimeline[i].transform.position.x >= 0) {
+                if (instance.cardsTimeline[i].transform.position.x >= 0)
+                {
                     instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
                 }
-                if(instance.cardsTimeline[i].transform.position.x == 0) {
+                if (instance.cardsTimeline[i].transform.position.x == 0)
+                {
                     positionLastCard = i;
                 }
             }
@@ -55,68 +58,78 @@ public class TimelineController : MonoBehaviour
         int index = instance.cardsTimeline.IndexOf(gameObject);
         instance.cardsTimeline.Remove(gameObject);
         Debug.Log(index);
-        for (int i = 0; i < instance.cardsTimeline.Count; i++) {
-            if(i >= index) {
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x -1, instance.movementTime).SetEase(instance.movementEase);
-            }else if(index == instance.cardsTimeline.Count) {
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x +1, instance.movementTime).SetEase(instance.movementEase);
+        for (int i = 0; i < instance.cardsTimeline.Count; i++)
+        {
+            if (i >= index)
+            {
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase);
+            }
+            else if (index == instance.cardsTimeline.Count)
+            {
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
             }
         }
     }
 
-    public void MoverDerechaCartaTimeline(GameObject gameObject)
+    public static void MoverDerechaCartaTimeline(GameObject gameObject)
     {
-        if (cardsTimeline.Count != 0)
+        if (instance.cardsTimeline.Count != 0)
         {
             Debug.Log("Aquiii");
-            if (cardsTimeline.IndexOf(gameObject) != (cardsTimeline.Count - 1))
+            if (instance.cardsTimeline.IndexOf(gameObject) != (instance.cardsTimeline.Count - 1))
             {
                 Debug.Log("Entra");
-                for (int i = 0; i < cardsTimeline.Count; i++)
+                for (int i = 0; i < instance.cardsTimeline.Count; i++)
                 {
-                    if (i == (cardsTimeline.IndexOf(gameObject) + 1))
+                    if (i == (instance.cardsTimeline.IndexOf(gameObject) + 1))
                     {
-                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x - 2, movementTime).SetEase(movementEase);
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 2, instance.movementTime).SetEase(instance.movementEase);
                     }
-                    else if (cardsTimeline[i] != gameObject)
+                    else if (instance.cardsTimeline[i] != gameObject)
                     {
-                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x - 1, movementTime).SetEase(movementEase);
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase);
                     }
                 }
-                int index = cardsTimeline.IndexOf(gameObject);
-                cardsTimeline.Insert(index + 2, gameObject);
-                cardsTimeline.RemoveAt(index);
+                int index = instance.cardsTimeline.IndexOf(gameObject);
+                instance.cardsTimeline.Insert(index + 2, gameObject);
+                instance.cardsTimeline.RemoveAt(index);
             }
         }
     }
 
-    public void MoverIzquierdaCartaTimeline(GameObject cardGameObject)
+    public static void MoverIzquierdaCartaTimeline(GameObject cardGameObject)
     {
-        if (cardsTimeline.Count != 0)
+        if (instance.cardsTimeline.Count != 0)
         {
             Debug.Log("Aquiii");
-            if (cardsTimeline.IndexOf(cardGameObject) != 0)
+            if (instance.cardsTimeline.IndexOf(cardGameObject) != 0)
             {
                 Debug.Log("Entra");
-                for (int i = 0; i < cardsTimeline.Count; i++)
+                for (int i = 0; i < instance.cardsTimeline.Count; i++)
                 {
-                    if (i == (cardsTimeline.IndexOf(cardGameObject) - 1))
+                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) - 1))
                     {
-                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 2, movementTime).SetEase(movementEase);
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 2, instance.movementTime).SetEase(instance.movementEase);
                     }
-                    else if (cardsTimeline[i] != cardGameObject)
+                    else if (instance.cardsTimeline[i] != cardGameObject)
                     {
-                        cardsTimeline[i].transform.DOMoveX(cardsTimeline[i].transform.position.x + 1, movementTime).SetEase(movementEase);
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
                     }
                 }
-                int index = cardsTimeline.IndexOf(cardGameObject);
-                cardsTimeline.Insert(index - 1, cardGameObject);
-                cardsTimeline.RemoveAt(index + 1);
+                int index = instance.cardsTimeline.IndexOf(cardGameObject);
+                instance.cardsTimeline.Insert(index - 1, cardGameObject);
+                instance.cardsTimeline.RemoveAt(index + 1);
             }
         }
     }
 
-    public static Vector3 TimelinePosicion() {
+    public static Vector3 TimelinePosicion()
+    {
         return instance.transform.position;
+    }
+
+    public static Transform TimelineTransform()
+    {
+        return instance.transform;
     }
 }

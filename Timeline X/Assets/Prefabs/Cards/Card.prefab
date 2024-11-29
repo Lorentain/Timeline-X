@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04673cf73a03428488441252f64d315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineController: {fileID: 0}
   movementDirection: left
 --- !u!1 &1323920855263385966
 GameObject:
@@ -702,7 +701,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04673cf73a03428488441252f64d315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timelineController: {fileID: 0}
   movementDirection: right
 --- !u!1 &8608603610494516225
 GameObject:
