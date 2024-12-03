@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using DG.Tweening;
 using UnityEngine;
 
 public class CardInventory : MonoBehaviour
@@ -8,36 +7,20 @@ public class CardInventory : MonoBehaviour
 
     [SerializeField] private GameObject handPlayer;
 
-    [SerializeField] private List<GameObject> inventoryCard;
+    [SerializeField] private List<CardInfo> inventoryCard;
 
     [SerializeField] private GameObject prefabCard;
-
-    [SerializeField] private float movementTime;
-
-    [SerializeField] private Ease movementeEase;
 
     public void AñadirCartasComienzo()
     {
         for (int i = 0; i < 3; i++)
         {
-            CardInfo aux = deckController.RepartirCarta();
-            Debug.Log(aux);
-            CardController card = Instantiate(prefabCard, gameObject.transform).GetComponent<CardController>();
-            card.AgregarCardInvetory(this);
+            inventoryCard.Add(deckController.RepartirCarta());
+            Debug.Log(inventoryCard[i]);
+            CardController card = Instantiate(prefabCard,gameObject.transform).GetComponent<CardController>();
             card.AgregarHandPlayer(handPlayer.transform);
-            card.AgregarCardInfo(aux);
-            inventoryCard.Add(card.gameObject);
-            prefabCard.transform.position = new Vector3(i - 1, 0, 0);
-        }
-    }
-
-    public void MoverCartasInventario(GameObject card)
-    {
-        for(int i = 0; i < inventoryCard.Count; i++) {
-            if(i == inventoryCard.IndexOf(card) + 1) {
-                Debug.Log("Las cartas del inventario se mueven");
-                inventoryCard[i].transform.DOMoveX(inventoryCard[i].transform.position.x - 1, movementTime).SetEase(movementeEase);
-            }
+            card.AgregarCardInfo(inventoryCard[i]);
+            prefabCard.transform.position = new Vector3(i-1, 0, 0);
         }
     }
 
