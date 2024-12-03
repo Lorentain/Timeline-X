@@ -6,6 +6,8 @@ public class CardController : MonoBehaviour
 {
     [SerializeField] private CardInfo cardInfo;
 
+    [SerializeField] private CardInventory player;
+
     [SerializeField] private Transform handPlayer;
 
     [SerializeField] private float movementTime;
@@ -16,6 +18,8 @@ public class CardController : MonoBehaviour
     {
         if(TimelineController.AñadirCartaTimeline(gameObject)) {
             gameObject.transform.DOMove(TimelineController.TimelinePosicion(),movementTime).SetEase(movementEase);   
+            player.MoverCartasInventario(transform.gameObject);
+            Debug.Log("Movimiento de carta al timeline");
         }
     }
 
@@ -42,5 +46,17 @@ public class CardController : MonoBehaviour
 
     public void AgregarCardInfo(CardInfo aux) {
         cardInfo = aux;
+    }
+
+    public void AgregarCardInvetory(CardInventory cardInventory) {
+        player = cardInventory;
+    }
+
+    public CardInfo ObtenerCardInfo() {
+        return cardInfo;
+    }
+
+    public Vector3 ObtenerPosicionCarta() {
+        return gameObject.transform.position;
     }
 }
