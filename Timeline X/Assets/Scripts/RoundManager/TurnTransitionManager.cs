@@ -1,27 +1,26 @@
 using UnityEngine;
-using TMPro; 
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using TMPro;
 using System.Collections;
 
 public class TurnTransitionManager : MonoBehaviour
 {
-    [SerializeField] private GameObject transitionPanel; 
+    [SerializeField] private GameObject transitionPanel;
     [SerializeField] private TMP_Text transitionText;
-    [SerializeField] private Button continueButton; 
-    [SerializeField] private RoundManager roundManager; 
-    [SerializeField] private float fadeDuration = 1f; 
-    private CanvasGroup canvasGroup; 
+    [SerializeField] private Button continueButton;
+    [SerializeField] private RoundManager roundManager;
+    [SerializeField] private ActionFeedManager actionFeedManager;  // Referencia al ActionFeedManager
+    [SerializeField] private float fadeDuration = 1f;
+    private CanvasGroup canvasGroup;
 
-    private bool hasFirstTurnCompleted = false; 
+    private bool hasFirstTurnCompleted = false;
 
     private void Awake()
     {
-        
         canvasGroup = transitionPanel.GetComponent<CanvasGroup>();
         if (canvasGroup == null)
         {
-            canvasGroup = transitionPanel.AddComponent<CanvasGroup>(); 
+            canvasGroup = transitionPanel.AddComponent<CanvasGroup>();
         }
     }
 
@@ -37,22 +36,21 @@ public class TurnTransitionManager : MonoBehaviour
 
     private void HandleTurnChanged(int currentPlayer, int currentRound)
     {
-        
         if (hasFirstTurnCompleted || currentPlayer > 0 || currentRound > 1)
         {
-           
+            // Registrar en el feed que el turno ha terminado y que el siguiente jugador va a jugar
+            actionFeedManager.LogAction($"Turno finalizado. Ahora es el turno del Jugador {currentPlayer + 1}.");
+
+            // Mostrar la transición en pantalla
             StartCoroutine(FadeInPanel());
 
-            
-            transitionText.text = $"Turn over! Now it's Player {currentPlayer + 1}'s turn";
+            transitionText.text = $"¡Turno terminado! Ahora le toca al Jugador {currentPlayer + 1}";
 
-            
             continueButton.interactable = false;
             Invoke(nameof(EnableContinueButton), 1f);
         }
         else
         {
-            
             return;
         }
     }
@@ -64,7 +62,10 @@ public class TurnTransitionManager : MonoBehaviour
 
     public void OnContinueButtonPressed()
     {
-        
+        // Registrar en el feed cuando el jugador presione el botón de continuar
+        actionFeedManager.LogAction("El jugador presionó 'Continuar', comenzando el siguiente turno.");
+
+        // Comenzar la transición para el siguiente turno
         StartCoroutine(FadeOutPanel());
         hasFirstTurnCompleted = true;
     }
@@ -72,9 +73,9 @@ public class TurnTransitionManager : MonoBehaviour
     private IEnumerator FadeInPanel()
     {
         float timeElapsed = 0f;
-        
+
         canvasGroup.alpha = 0f;
-        transitionPanel.SetActive(true); 
+        transitionPanel.SetActive(true);
 
         // Animar el fade in
         while (timeElapsed < fadeDuration)
@@ -84,7 +85,6 @@ public class TurnTransitionManager : MonoBehaviour
             yield return null;
         }
 
-        
         canvasGroup.alpha = 1f;
     }
 
@@ -92,7 +92,7 @@ public class TurnTransitionManager : MonoBehaviour
     {
         float timeElapsed = 0f;
 
-        
+        // Animar el fade out
         while (timeElapsed < fadeDuration)
         {
             timeElapsed += Time.deltaTime;

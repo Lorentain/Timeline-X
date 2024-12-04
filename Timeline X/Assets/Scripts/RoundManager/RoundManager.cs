@@ -10,6 +10,8 @@ public class RoundManager : MonoBehaviour
     [SerializeField] private CardInventory cardInventoryPlayer1;
     [SerializeField] private CardInventory cardInventoryPlayer2;
 
+    [SerializeField] private ActionFeedManager actionFeedManager;  // Referencia al ActionFeedManager
+
     public int totalPlayers = 2;
     public int currentPlayer = 0;
     public int currentRound = 1;
@@ -28,12 +30,16 @@ public class RoundManager : MonoBehaviour
         cardInventoryPlayer1.AñadirCartasComienzo();
         cardInventoryPlayer2.AñadirCartasComienzo();
 
+        // Notificar el cambio de turno inicial
         NotifyTurnChange();  // Comienza el turno después de repartir las cartas
     }
 
     public static void ConfirmPlay()
     {
         Debug.Log($"Jugador {instance.currentPlayer + 1} confirma su jugada en la ronda {instance.currentRound}");
+
+        // Registrar la acción en el feed y consola
+        instance.actionFeedManager.LogAction($"Jugador {instance.currentPlayer + 1} confirma su jugada en la ronda {instance.currentRound}");
 
         // Cambiar al siguiente jugador
         instance.currentPlayer++;
@@ -42,16 +48,25 @@ public class RoundManager : MonoBehaviour
             instance.currentPlayer = 0;
             instance.currentRound++;
             Debug.Log($"Comienza la ronda {instance.currentRound}");
+
+            // Registrar la acción en el feed y consola
+            instance.actionFeedManager.LogAction($"Comienza la ronda {instance.currentRound}");
         }
 
         // Comprobar si algún jugador se ha quedado sin cartas
         if (instance.cardInventoryPlayer1.ContarCartas() == 0) // Verifica si jugador 1 tiene 0 cartas
         {
             GameController.Instance.Ganador(1); // Jugador 1 ha ganado
+
+            // Registrar la acción en el feed y consola
+            instance.actionFeedManager.LogAction("Jugador 1 ha ganado la partida, se quedó sin cartas.");
         }
         else if (instance.cardInventoryPlayer2.ContarCartas() == 0) // Verifica si jugador 2 tiene 0 cartas
         {
             GameController.Instance.Ganador(2); // Jugador 2 ha ganado
+
+            // Registrar la acción en el feed y consola
+            instance.actionFeedManager.LogAction("Jugador 2 ha ganado la partida, se quedó sin cartas.");
         }
 
         instance.NotifyTurnChange();
@@ -60,6 +75,10 @@ public class RoundManager : MonoBehaviour
     private void NotifyTurnChange()
     {
         Debug.Log($" {currentPlayer + 1}. Round {currentRound}");
+
+        // Registrar el cambio de turno
+        actionFeedManager.LogAction($"Es el turno del Jugador {currentPlayer + 1} - Ronda {currentRound}");
+
         OnTurnChanged?.Invoke(currentPlayer, currentRound);
         switch (currentPlayer)
         {
