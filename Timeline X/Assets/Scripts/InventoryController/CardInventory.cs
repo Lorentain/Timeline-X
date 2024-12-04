@@ -16,8 +16,23 @@ public class CardInventory : MonoBehaviour
 
     [SerializeField] private Ease movementeEase;
 
+    // Método para contar el número de cartas
+    public int ContarCartas()
+    {
+        return inventoryCard.Count;
+    }
+
+    // Método que devuelve true si el inventario está vacío
+    public bool EstaVacío()
+    {
+        return inventoryCard.Count == 0;
+    }
+
+    // Añadir cartas al inventario al inicio del juego
     public void AñadirCartasComienzo()
     {
+        inventoryCard.Clear();  // Aseguramos que el inventario esté vacío al principio
+
         for (int i = 0; i < 3; i++)
         {
             CardInfo aux = deckController.RepartirCarta();
@@ -33,12 +48,13 @@ public class CardInventory : MonoBehaviour
 
     public void MoverCartasInventario(GameObject card)
     {
-        for(int i = 0; i < inventoryCard.Count; i++) {
-            if(i == inventoryCard.IndexOf(card) + 1) {
+        for (int i = 0; i < inventoryCard.Count; i++)
+        {
+            if (i == inventoryCard.IndexOf(card) + 1)
+            {
                 Debug.Log("Las cartas del inventario se mueven");
                 inventoryCard[i].transform.DOMoveX(inventoryCard[i].transform.position.x - 1, movementTime).SetEase(movementeEase);
             }
         }
     }
-
 }
