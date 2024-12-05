@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Ease movementEase;
 
+    [SerializeField] private bool animationDescriptionZoom = false;
+
     public TMP_Text playerTurnText;
     public TMP_Text roundText;
 
@@ -43,18 +45,31 @@ public class UIManager : MonoBehaviour
 
     public static void ShowDescription(Vector3 posicionCarta)
     {
-        instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
-        {
-            instance.canvasDescription.SetActive(true);
-        });
-        instance.camera.transform.DOMove(new Vector3(posicionCarta.x,posicionCarta.y,-10f),instance.movementTime).SetEase(instance.movementEase);
+        if(!instance.animationDescriptionZoom) {
+            instance.animationDescriptionZoom = true;
+            instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            {
+                instance.canvasDescription.SetActive(true);
+            });
+            instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -10f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            {
+                instance.animationDescriptionZoom = false;
+            });
+        }
     }
 
     public static void HideDescription()
     {
+        if (!instance.animationDescriptionZoom)
+        instance.animationDescriptionZoom = true;
         instance.canvasDescription.SetActive(false);
-        instance.camera.DOOrthoSize(4.5f, instance.movementTime).SetEase(instance.movementEase);
-        instance.camera.transform.DOMove(new Vector3(0f, 0, -10f), instance.movementTime).SetEase(instance.movementEase);
+        {
+            instance.camera.DOOrthoSize(4.5f, instance.movementTime).SetEase(instance.movementEase);
+            instance.camera.transform.DOMove(new Vector3(0f, 0, -10f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            {
+                instance.animationDescriptionZoom = false;
+            });
+        }
     }
 
     public static bool GetCanvasDescription()

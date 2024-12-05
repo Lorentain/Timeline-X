@@ -16,6 +16,8 @@ public class CardInventory : MonoBehaviour
 
     [SerializeField] private Ease movementeEase;
 
+    [SerializeField] private bool isCardMovement = false;
+
     public void AñadirCartasComienzo()
     {
         for (int i = 0; i < 4; i++)
@@ -28,28 +30,41 @@ public class CardInventory : MonoBehaviour
             card.AgregarCardInfo(aux);
             inventoryCard.Add(card.gameObject);
             card.transform.localPosition = new Vector3(i - 1, 0, 0);
-            ReordenarInvetario();
+            ReordenarInventario();
         }
     }
 
     public void MoverHaciaTimeline(GameObject card)
     {
-        inventoryCard.Remove(card);
-        card.transform.parent = TimelineController.TimelineTransform();
-        ReordenarInvetario();
-    }
-
-    public void MoverHaciaInventario(GameObject card) {
-        inventoryCard.Insert(inventoryCard.Count/2,card);
-        card.transform.parent = this.transform;
-        ReordenarInvetario();
-    }
-
-    public void ReordenarInvetario() { // Formula i - (n/2 - 0.5)
-        float formula = (inventoryCard.Count/2f) - 0.5f;
-        for(int i = 0; i < inventoryCard.Count; i++) {
-            inventoryCard[i].transform.DOLocalMoveX(i - formula,movementTime).SetEase(movementeEase);
+        if (!isCardMovement)
+        {
+            inventoryCard.Remove(card);
+            card.transform.parent = TimelineController.TimelineTransform();
+            ReordenarInventario();
+            isCardMovement = true;
         }
+    }
+
+    public void MoverHaciaInventario(GameObject card)
+    {
+        inventoryCard.Insert(inventoryCard.Count / 2, card);
+        card.transform.parent = this.transform;
+        ReordenarInventario();
+        isCardMovement = false;
+    }
+
+    public void ReordenarInventario() // Formula i - (n/2 - 0.5)
+    {
+        float formula = (inventoryCard.Count / 2f) - 0.5f;
+        for (int i = 0; i < inventoryCard.Count; i++)
+        {
+            inventoryCard[i].transform.DOLocalMoveX(i - formula, movementTime).SetEase(movementeEase);
+        }
+    }
+
+    public bool ObtenerIsCardMovement()
+    {
+        return isCardMovement;
     }
 
 }

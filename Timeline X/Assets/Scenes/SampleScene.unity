@@ -907,6 +907,23 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8067749109255276274, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
   m_PrefabInstance: {fileID: 8210713590464314160}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1164361355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 2720803818436822511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!210 &1164361359
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164361355}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_SortAtRoot: 0
 --- !u!1 &1196449386
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1027,7 @@ MonoBehaviour:
   cardsTimeline: []
   movementTime: 2
   movementEase: 1
+  animationPlay: 0
 --- !u!1 &1232317080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1203,14 @@ PrefabInstance:
       propertyPath: handPlayer
       value: 
       objectReference: {fileID: 188271293}
+    - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
+      propertyPath: movementTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
+      propertyPath: movementeEase
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: deckController
       value: 
@@ -1849,7 +1875,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1164361359}
   m_SourcePrefab: {fileID: 100100000, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
 --- !u!1001 &8210713590464314160
 PrefabInstance:
