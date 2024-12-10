@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class TimelineController : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class TimelineController : MonoBehaviour
     [SerializeField] private float movementTime;
 
     [SerializeField] private Ease movementEase;
+
+    [SerializeField] private bool animationPlay = false;
 
     private void Awake()
     {
@@ -28,13 +31,16 @@ public class TimelineController : MonoBehaviour
         bool aux = false;
         int positionLastCard = 0;
 
-        if (instance.cardsTimeline.Count != 0)
+        if (instance.cardsTimeline.Count != 0 && !instance.animationPlay)
         {
             for (int i = 0; i < instance.cardsTimeline.Count; i++)
             {
                 if (instance.cardsTimeline[i].transform.position.x >= 0)
                 {
-                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
+                    instance.animationPlay = true;
+                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                        instance.animationPlay = false;
+                    });
                 }
                 if (instance.cardsTimeline[i].transform.position.x == 0)
                 {
@@ -60,38 +66,53 @@ public class TimelineController : MonoBehaviour
         Debug.Log(index);
         for (int i = 0; i < instance.cardsTimeline.Count; i++)
         {
-            if (i >= index)
+            if (i >= index && !instance.animationPlay)
             {
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase);
+                instance.animationPlay = true;
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                    instance.animationPlay = false;
+                });
             }
-            else if (index == instance.cardsTimeline.Count)
+            else if (index == instance.cardsTimeline.Count && !instance.animationPlay)
             {
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
+                instance.animationPlay = true;
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                    instance.animationPlay = false;
+                });
             }
         }
     }
 
-    public static void MoverDerechaCartaTimeline(GameObject gameObject)
+    public static void MoverDerechaCartaTimeline(GameObject cardGameObject)
     {
         if (instance.cardsTimeline.Count != 0)
         {
             Debug.Log("Aquiii");
-            if (instance.cardsTimeline.IndexOf(gameObject) != (instance.cardsTimeline.Count - 1))
+            if (instance.cardsTimeline.IndexOf(cardGameObject) != (instance.cardsTimeline.Count - 1))
             {
+                cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
                 Debug.Log("Entra");
                 for (int i = 0; i < instance.cardsTimeline.Count; i++)
                 {
-                    if (i == (instance.cardsTimeline.IndexOf(gameObject) + 1))
+                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) + 1) && !instance.animationPlay)
                     {
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 2, instance.movementTime).SetEase(instance.movementEase);
+                        instance.animationPlay = true;
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                            instance.animationPlay = false;
+                            cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
+                        });
                     }
-                    else if (instance.cardsTimeline[i] != gameObject)
+                    else if (instance.cardsTimeline[i] != cardGameObject && !instance.animationPlay)
                     {
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase);
+                        instance.animationPlay = true;
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                            instance.animationPlay = false;
+                            cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
+                        });
                     }
                 }
-                int index = instance.cardsTimeline.IndexOf(gameObject);
-                instance.cardsTimeline.Insert(index + 2, gameObject);
+                int index = instance.cardsTimeline.IndexOf(cardGameObject);
+                instance.cardsTimeline.Insert(index + 2, cardGameObject);
                 instance.cardsTimeline.RemoveAt(index);
             }
         }
@@ -104,16 +125,24 @@ public class TimelineController : MonoBehaviour
             Debug.Log("Aquiii");
             if (instance.cardsTimeline.IndexOf(cardGameObject) != 0)
             {
+                cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
                 Debug.Log("Entra");
                 for (int i = 0; i < instance.cardsTimeline.Count; i++)
                 {
-                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) - 1))
+                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) - 1) && !instance.animationPlay)
                     {
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 2, instance.movementTime).SetEase(instance.movementEase);
+                        instance.animationPlay = true;
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                            instance.animationPlay = false;
+                            cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
+                        });
                     }
-                    else if (instance.cardsTimeline[i] != cardGameObject)
+                    else if (instance.cardsTimeline[i] != cardGameObject && !instance.animationPlay)
                     {
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase);
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                            instance.animationPlay = false;
+                            cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
+                        });
                     }
                 }
                 int index = instance.cardsTimeline.IndexOf(cardGameObject);

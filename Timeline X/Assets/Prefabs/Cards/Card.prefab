@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04673cf73a03428488441252f64d315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardController: {fileID: 5771985840333412502}
   movementDirection: left
 --- !u!1 &724916468820935500
 GameObject:
@@ -604,6 +605,7 @@ GameObject:
   - component: {fileID: 5752156913783925588}
   - component: {fileID: 9080026459694293173}
   - component: {fileID: 5771985840333412502}
+  - component: {fileID: 6687503862866005278}
   m_Layer: 0
   m_Name: Card
   m_TagString: Untagged
@@ -704,6 +706,20 @@ MonoBehaviour:
   handPlayer: {fileID: 0}
   movementTime: 1.5
   movementEase: 19
+  inTimeline: 0
+  animationPlay: 0
+--- !u!210 &6687503862866005278
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171098922327773328}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 2
+  m_SortAtRoot: 0
 --- !u!1 &8412374832534168170
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04673cf73a03428488441252f64d315d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardController: {fileID: 5771985840333412502}
   movementDirection: right
 --- !u!1 &8608603610494516225
 GameObject:

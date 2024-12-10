@@ -16,6 +16,8 @@ public class CardInventory : MonoBehaviour
 
     [SerializeField] private Ease movementeEase;
 
+    [SerializeField] private bool isCardMovement = false;
+
     // Método para contar el número de cartas
     public int ContarCartas()
     {
@@ -31,9 +33,7 @@ public class CardInventory : MonoBehaviour
     // Añadir cartas al inventario al inicio del juego
     public void AñadirCartasComienzo()
     {
-        inventoryCard.Clear();  // Aseguramos que el inventario esté vacío al principio
-
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             CardInfo aux = deckController.RepartirCarta();
             Debug.Log(aux);
@@ -42,19 +42,51 @@ public class CardInventory : MonoBehaviour
             card.AgregarHandPlayer(handPlayer.transform);
             card.AgregarCardInfo(aux);
             inventoryCard.Add(card.gameObject);
-            prefabCard.transform.position = new Vector3(i - 1, 0, 0);
+            card.transform.localPosition = new Vector3(i - 1, 0, 0);
+            ReordenarInventario();
         }
     }
 
-    public void MoverCartasInventario(GameObject card)
+    public void MoverHaciaTimeline(GameObject card)
     {
-        for (int i = 0; i < inventoryCard.Count; i++)
+        // for (int i = 0; i < inventoryCard.Count; i++)
+        // {
+        //     if (i == inventoryCard.IndexOf(card) + 1)
+        //     {
+        //         Debug.Log("Las cartas del inventario se mueven");
+        //         inventoryCard[i].transform.DOMoveX(inventoryCard[i].transform.position.x - 1, movementTime).SetEase(movementeEase);
+        //     }
+        // }
+
+        if (!isCardMovement)
         {
-            if (i == inventoryCard.IndexOf(card) + 1)
-            {
-                Debug.Log("Las cartas del inventario se mueven");
-                inventoryCard[i].transform.DOMoveX(inventoryCard[i].transform.position.x - 1, movementTime).SetEase(movementeEase);
-            }
+            inventoryCard.Remove(card);
+            card.transform.parent = TimelineController.TimelineTransform();
+            ReordenarInventario();
+            isCardMovement = true;
         }
     }
+
+    public void MoverHaciaInventario(GameObject card)
+    {
+        inventoryCard.Insert(inventoryCard.Count / 2, card);
+        card.transform.parent = this.transform;
+        ReordenarInventario();
+        isCardMovement = false;
+    }
+
+    public void ReordenarInventario() // Formula i - (n/2 - 0.5)
+    {
+        float formula = (inventoryCard.Count / 2f) - 0.5f;
+        for (int i = 0; i < inventoryCard.Count; i++)
+        {
+            inventoryCard[i].transform.DOLocalMoveX(i - formula, movementTime).SetEase(movementeEase);
+        }
+    }
+
+    public bool ObtenerIsCardMovement()
+    {
+        return isCardMovement;
+    }
+
 }

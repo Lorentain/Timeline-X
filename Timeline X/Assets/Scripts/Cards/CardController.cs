@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
 public class CardController : MonoBehaviour
@@ -14,49 +15,88 @@ public class CardController : MonoBehaviour
 
     [SerializeField] private Ease movementEase;
 
+    [SerializeField] private bool inTimeline = false;
+
+    [SerializeField] private bool animationPlay = false;
+
     public void MoverCartaTimeline()
     {
-        if(TimelineController.AñadirCartaTimeline(gameObject)) {
-            gameObject.transform.DOMove(TimelineController.TimelinePosicion(),movementTime).SetEase(movementEase);   
-            player.MoverCartasInventario(transform.gameObject);
-            Debug.Log("Movimiento de carta al timeline");
+        if (!inTimeline && !player.ObtenerIsCardMovement())
+        {
+            if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
+            {
+                GetComponent<SortingGroup>().sortingOrder += 1;
+                animationPlay = true;
+                gameObject.transform.DOMove(TimelineController.TimelinePosicion(), movementTime).SetEase(movementEase).OnComplete(() => {
+                    animationPlay = false;
+                    GetComponent<SortingGroup>().sortingOrder -= 1;
+                });
+                player.MoverHaciaTimeline(transform.gameObject);
+                inTimeline = true;
+                Debug.Log("Movimiento de carta al timeline");
+            }
         }
     }
 
     public void DevolverCartaAMano()
     {
-        gameObject.transform.DOMoveY(handPlayer.position.y,movementTime).SetEase(movementEase);
-        TimelineController.EliminarCartaTimeline(gameObject);
-    }
-
-    public void ConfirmarCartaTimeline() {
-
-        int cantidadHijos = gameObject.transform.childCount;
-
-        for(int i = 0; i < cantidadHijos; i++) {
-            Destroy(gameObject.transform.GetChild(i).gameObject);
+        Debug.Log(inTimeline +  " " + animationPlay);
+        if (inTimeline && !animationPlay)
+        {
+            GetComponent<SortingGroup>().sortingOrder += 1;
+            player.MoverHaciaInventario(transform.gameObject);
+            animationPlay = true;
+            gameObject.transform.DOLocalMoveY(0, movementTime).SetEase(movementEase).OnComplete(() => {
+                animationPlay = false;
+                GetComponent<SortingGroup>().sortingOrder -= 1;
+            });
+            TimelineController.EliminarCartaTimeline(gameObject);
+            inTimeline = false;
         }
-        gameObject.transform.parent = TimelineController.TimelineTransform();
-        RoundManager.ConfirmPlay();
     }
 
-    public void AgregarHandPlayer(Transform gameObject) {
+    public void ConfirmarCartaTimeline()
+    {
+        if (inTimeline)
+        {
+            int cantidadHijos = gameObject.transform.childCount;
+
+            for (int i = 0; i < cantidadHijos - 1; i++)
+            {
+                Destroy(gameObject.transform.GetChild(i).gameObject);
+            }
+            gameObject.transform.parent = TimelineController.TimelineTransform();
+            RoundManager.ConfirmPlay();
+        }
+    }
+
+    public void AgregarHandPlayer(Transform gameObject)
+    {
         handPlayer = gameObject;
     }
 
-    public void AgregarCardInfo(CardInfo aux) {
+    public void AgregarCardInfo(CardInfo aux)
+    {
         cardInfo = aux;
     }
 
-    public void AgregarCardInvetory(CardInventory cardInventory) {
+    public void AgregarCardInvetory(CardInventory cardInventory)
+    {
         player = cardInventory;
     }
 
-    public CardInfo ObtenerCardInfo() {
+    public CardInfo ObtenerCardInfo()
+    {
         return cardInfo;
     }
 
-    public Vector3 ObtenerPosicionCarta() {
+    public Vector3 ObtenerPosicionCarta()
+    {
         return gameObject.transform.position;
+    }
+
+    public bool IsTimeline()
+    {
+        return inTimeline;
     }
 }
