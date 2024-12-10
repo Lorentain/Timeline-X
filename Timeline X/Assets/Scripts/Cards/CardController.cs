@@ -67,6 +67,7 @@ public class CardController : MonoBehaviour
             }
             gameObject.transform.parent = TimelineController.TimelineTransform();
             RoundManager.ConfirmPlay();
+            player.ConfirmarCardMovement();
         }
     }
 

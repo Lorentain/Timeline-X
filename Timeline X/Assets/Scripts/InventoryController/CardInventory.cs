@@ -89,4 +89,8 @@ public class CardInventory : MonoBehaviour
         return isCardMovement;
     }
 
+    public void ConfirmarCardMovement() {
+        isCardMovement = false;
+    }
+
 }
