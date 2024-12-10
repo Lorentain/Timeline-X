@@ -14,6 +14,8 @@ public class CardInfo : ScriptableObject
 
     [SerializeField] private int cardDateYear;
 
+    [SerializeField] private Sprite cardImage;
+
     public string CardName
     {
         get

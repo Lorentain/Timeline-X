@@ -21,7 +21,7 @@ public class CardController : MonoBehaviour
 
     public void MoverCartaTimeline()
     {
-        if (!inTimeline && !player.ObtenerIsCardMovement())
+        if (!inTimeline && !player.ObtenerIsCardMovement() && UIManager.GetActionDescription())
         {
             if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
             {
@@ -41,7 +41,7 @@ public class CardController : MonoBehaviour
     public void DevolverCartaAMano()
     {
         Debug.Log(inTimeline +  " " + animationPlay);
-        if (inTimeline && !animationPlay)
+        if (inTimeline && !animationPlay && UIManager.GetActionDescription())
         {
             GetComponent<SortingGroup>().sortingOrder += 1;
             player.MoverHaciaInventario(transform.gameObject);
@@ -57,7 +57,7 @@ public class CardController : MonoBehaviour
 
     public void ConfirmarCartaTimeline()
     {
-        if (inTimeline)
+        if (inTimeline && UIManager.GetActionDescription())
         {
             int cantidadHijos = gameObject.transform.childCount;
 

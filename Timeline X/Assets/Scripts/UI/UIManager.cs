@@ -86,4 +86,16 @@ public class UIManager : MonoBehaviour
     {
         instance.textDescription.text = textDescription;
     }
+
+    public static bool GetAnimationDescriptionZoom() {
+        return instance.animationDescriptionZoom;
+    }
+
+    public static bool GetActionDescription() {
+        bool res = false;
+        if(!GetAnimationDescriptionZoom() && !GetCanvasDescription()) {
+            res = true;
+        }
+        return res;
+    }
 }

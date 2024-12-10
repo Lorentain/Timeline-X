@@ -17,3 +17,4 @@ MonoBehaviour:
   cardDateDay: 5
   cardDateMonth: 10
   cardDateYear: 1999
+  cardImage: {fileID: 284585969139516027, guid: 807dc9ff75da16045bd25ced02980454, type: 3}
