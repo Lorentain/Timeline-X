@@ -16,10 +16,16 @@ public class CardController : MonoBehaviour
 
     public void MoverCartaTimeline()
     {
-        if(TimelineController.AñadirCartaTimeline(gameObject)) {
-            gameObject.transform.DOMove(TimelineController.TimelinePosicion(),movementTime).SetEase(movementEase);   
+        if (TimelineController.AñadirCartaTimeline(gameObject))
+        {
+            gameObject.transform.DOMove(TimelineController.TimelinePosicion(), movementTime).SetEase(movementEase);
             player.MoverCartasInventario(transform.gameObject);
-            Debug.Log("Movimiento de carta al timeline");
+            Debug.Log("Carta correctamente colocada en el timeline");
+        }
+        else
+        {
+            Debug.Log("Carta colocada incorrectamente, regresa a la mano");
+            DevolverCartaAMano();
         }
     }
 

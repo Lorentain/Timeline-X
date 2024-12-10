@@ -62,8 +62,7 @@ public class TurnTransitionManager : MonoBehaviour
 
     public void OnContinueButtonPressed()
     {
-        // Registrar en el feed cuando el jugador presione el botón de continuar
-        actionFeedManager.LogAction("El jugador presionó 'Continuar', comenzando el siguiente turno.");
+        
 
         // Comenzar la transición para el siguiente turno
         StartCoroutine(FadeOutPanel());
