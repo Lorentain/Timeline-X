@@ -9,7 +9,11 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject canvasDescription;
 
+    [SerializeField] private TextMeshProUGUI textName;
+
     [SerializeField] private TextMeshProUGUI textDescription;
+
+    [SerializeField] private TextMeshProUGUI textYear;
 
     [SerializeField] private Camera camera;
 
@@ -82,9 +86,11 @@ public class UIManager : MonoBehaviour
         return res;
     }
 
-    public static void PutTextDescription(string textDescription)
+    public static void PutTextDescription(string textName,string textDescription, int textYear)
     {
+        instance.textName.text = textName;
         instance.textDescription.text = textDescription;
+        instance.textYear.text = textYear.ToString();
     }
 
     public static bool GetAnimationDescriptionZoom() {

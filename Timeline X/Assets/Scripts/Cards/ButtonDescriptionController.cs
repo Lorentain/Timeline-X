@@ -15,7 +15,7 @@ public class ButtonDescriptionController : MonoBehaviour
         }
         else
         {
-            UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardDescription);
+            UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName,cardController.ObtenerCardInfo().CardDescription,cardController.ObtenerCardInfo().CardDateYear);
             UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
         }
     }

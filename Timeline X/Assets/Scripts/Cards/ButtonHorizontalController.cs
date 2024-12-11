@@ -8,12 +8,12 @@ public class ButtonHorizontalController : MonoBehaviour
 
     private void OnMouseDown() {
         if(movementDirection == "right" && cardController.IsTimeline()) {
-            TimelineController.MoverDerechaCartaTimeline(transform.parent.gameObject);
+            TimelineController.MoverDerechaCartaTimeline(cardController.gameObject);
             Debug.Log("Derecha");
         }
 
         if(movementDirection == "left" && cardController.IsTimeline()) {
-            TimelineController.MoverIzquierdaCartaTimeline(transform.parent.gameObject);
+            TimelineController.MoverIzquierdaCartaTimeline(cardController.gameObject);
         }
     }
 }

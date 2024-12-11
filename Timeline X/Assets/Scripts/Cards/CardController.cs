@@ -63,13 +63,11 @@ public class CardController : MonoBehaviour
     {
         if (inTimeline && UIManager.GetActionDescription())
         {
-            int cantidadHijos = gameObject.transform.childCount;
-            
-            Destroy(buttonToDestroy);
-
             gameObject.transform.parent = TimelineController.TimelineTransform();
-            RoundManager.ConfirmPlay();
+            //RoundManager.ConfirmPlay();
             player.ConfirmarCardMovement();
+            TimelineController.ComprobarCarta(gameObject);
+            Destroy(buttonToDestroy);
         }
     }
 
@@ -102,5 +100,9 @@ public class CardController : MonoBehaviour
     public bool IsTimeline()
     {
         return inTimeline;
+    }
+
+    public int ObtenerAñoCarta() {
+        return cardInfo.CardDateYear;
     }
 }

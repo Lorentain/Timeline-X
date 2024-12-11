@@ -33,7 +33,7 @@ public class CardInventory : MonoBehaviour
     // Añadir cartas al inventario al inicio del juego
     public void AñadirCartasComienzo()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             CardInfo aux = deckController.RepartirCarta();
             Debug.Log(aux);

@@ -10,6 +10,10 @@ public class TimelineController : MonoBehaviour
 
     [SerializeField] private List<GameObject> cardsTimeline;
 
+    [SerializeField] private DeckController deckController;
+
+    [SerializeField] private GameObject prefabCard;
+
     [SerializeField] private float movementTime;
 
     [SerializeField] private Ease movementEase;
@@ -26,6 +30,15 @@ public class TimelineController : MonoBehaviour
         cardsTimeline = new List<GameObject>();
     }
 
+    public static void PonerCartaInicial() {
+        CardInfo aux = instance.deckController.RepartirCarta();
+        CardController card = Instantiate(instance.prefabCard, instance.gameObject.transform).GetComponent<CardController>();
+        card.AgregarCardInfo(aux);
+        card.transform.localPosition = new Vector3(0, 0, 0);
+        AñadirCartaTimeline(card.transform.gameObject);
+        Destroy(card.gameObject.transform.Find("Button Destroy").gameObject);
+    }
+
     public static bool AñadirCartaTimeline(GameObject gameObject)
     {
         bool aux = false;
@@ -38,7 +51,8 @@ public class TimelineController : MonoBehaviour
                 if (instance.cardsTimeline[i].transform.position.x >= 0)
                 {
                     instance.animationPlay = true;
-                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                    {
                         instance.animationPlay = false;
                     });
                 }
@@ -53,6 +67,7 @@ public class TimelineController : MonoBehaviour
         else
         {
             instance.cardsTimeline.Add(gameObject);
+            Debug.Log("EYYY");
             aux = true;
         }
 
@@ -69,14 +84,16 @@ public class TimelineController : MonoBehaviour
             if (i >= index && !instance.animationPlay)
             {
                 instance.animationPlay = true;
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                {
                     instance.animationPlay = false;
                 });
             }
             else if (index == instance.cardsTimeline.Count && !instance.animationPlay)
             {
                 instance.animationPlay = true;
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                {
                     instance.animationPlay = false;
                 });
             }
@@ -97,7 +114,8 @@ public class TimelineController : MonoBehaviour
                     if (i == (instance.cardsTimeline.IndexOf(cardGameObject) + 1) && !instance.animationPlay)
                     {
                         instance.animationPlay = true;
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                        {
                             instance.animationPlay = false;
                             cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
                         });
@@ -105,7 +123,8 @@ public class TimelineController : MonoBehaviour
                     else if (instance.cardsTimeline[i] != cardGameObject && !instance.animationPlay)
                     {
                         instance.animationPlay = true;
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                        {
                             instance.animationPlay = false;
                             cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
                         });
@@ -132,14 +151,16 @@ public class TimelineController : MonoBehaviour
                     if (i == (instance.cardsTimeline.IndexOf(cardGameObject) - 1) && !instance.animationPlay)
                     {
                         instance.animationPlay = true;
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                        {
                             instance.animationPlay = false;
                             cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
                         });
                     }
                     else if (instance.cardsTimeline[i] != cardGameObject && !instance.animationPlay)
                     {
-                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() => {
+                        instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                        {
                             instance.animationPlay = false;
                             cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
                         });
@@ -150,6 +171,35 @@ public class TimelineController : MonoBehaviour
                 instance.cardsTimeline.RemoveAt(index + 1);
             }
         }
+    }
+
+    public static bool ComprobarCarta(GameObject card)
+    {
+        bool res = false;
+
+        int index = instance.cardsTimeline.IndexOf(card);
+
+        // La carta de delante es menor
+        if (index != instance.cardsTimeline.Count-1 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() > instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
+        {
+            Debug.Log("MAL DERECHA");
+            Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+            Debug.Log("Derecha:" + instance.cardsTimeline[index+1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+        }
+        // La carta de detras es mayor
+        else if (index != 0 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() < instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
+        {
+            Debug.Log("MAL IZQUIERDA");
+            Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+            Debug.Log("Izquierda:" + instance.cardsTimeline[index-1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+        }
+        // La carta de delante es mayor y la de atrás es menor
+        else
+        {
+            Debug.Log("BIEN");
+        }
+
+        return res;
     }
 
     public static Vector3 TimelinePosicion()

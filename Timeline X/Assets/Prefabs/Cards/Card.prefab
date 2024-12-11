@@ -738,6 +738,7 @@ MonoBehaviour:
   player: {fileID: 0}
   handPlayer: {fileID: 0}
   spriteRendererImagen: {fileID: 2697846558672322603}
+  buttonToDestroy: {fileID: 2234615032125931718}
   movementTime: 1.5
   movementEase: 19
   inTimeline: 0
