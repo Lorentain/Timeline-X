@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 762d6a8c0c3bfb64eba29b22f05bbfc4
+guid: 7a4e7c9cfebda244e97862313c247612
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7804126658106156513
-    second: Sonic_0
+      213: -3405413449529231414
+    second: VR_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sonic_0
+      name: VR_0
       rect:
         serializedVersion: 2
         x: 0
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1e5e296f8d3dd4c60800000000000000
-      internalID: 7804126658106156513
+      spriteID: ac7f873a28a8db0d0800000000000000
+      internalID: -3405413449529231414
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sonic_0: 7804126658106156513
+      VR_0: -3405413449529231414
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

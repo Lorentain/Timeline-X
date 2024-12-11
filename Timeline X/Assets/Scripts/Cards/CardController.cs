@@ -11,6 +11,10 @@ public class CardController : MonoBehaviour
 
     [SerializeField] private Transform handPlayer;
 
+    [SerializeField] private SpriteRenderer spriteRendererImagen;
+
+    [SerializeField] private GameObject buttonToDestroy;
+
     [SerializeField] private float movementTime;
 
     [SerializeField] private Ease movementEase;
@@ -60,11 +64,9 @@ public class CardController : MonoBehaviour
         if (inTimeline && UIManager.GetActionDescription())
         {
             int cantidadHijos = gameObject.transform.childCount;
+            
+            Destroy(buttonToDestroy);
 
-            for (int i = 0; i < cantidadHijos - 1; i++)
-            {
-                Destroy(gameObject.transform.GetChild(i).gameObject);
-            }
             gameObject.transform.parent = TimelineController.TimelineTransform();
             RoundManager.ConfirmPlay();
             player.ConfirmarCardMovement();
@@ -79,6 +81,7 @@ public class CardController : MonoBehaviour
     public void AgregarCardInfo(CardInfo aux)
     {
         cardInfo = aux;
+        spriteRendererImagen.sprite = cardInfo.CardImage;
     }
 
     public void AgregarCardInvetory(CardInventory cardInventory)

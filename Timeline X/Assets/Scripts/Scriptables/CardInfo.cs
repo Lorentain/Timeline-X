@@ -55,4 +55,12 @@ public class CardInfo : ScriptableObject
             return cardDateYear;
         }
     }
+
+    public Sprite CardImage
+    {
+        get
+        {
+            return cardImage;
+        }
+    }
 }

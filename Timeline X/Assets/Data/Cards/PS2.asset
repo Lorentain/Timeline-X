@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d719aafb8c4d0e045b92f2b0b1390745, type: 3}
-  m_Name: PS3
+  m_Name: PS2
   m_EditorClassIdentifier: 
   cardName: Ps2
   cardDescription: La play estation do
   cardDateDay: 2
   cardDateMonth: 2
   cardDateYear: 2002
-  cardImage: {fileID: -4908336574042393075, guid: ae35762e8551c2043b02bb4b96056571, type: 3}
+  cardImage: {fileID: -4908336574042393075, guid: 27e6126c9b8a6c94fb05465e23c300b9, type: 3}
