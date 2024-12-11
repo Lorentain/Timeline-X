@@ -1,11 +1,6 @@
 using UnityEngine;
 using TMPro;  
 using System.Collections.Generic;
-
-using UnityEngine;
-using TMPro;
-using System.Collections.Generic;
-
 public class ActionFeedManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text feedText;  // El texto que muestra el feed

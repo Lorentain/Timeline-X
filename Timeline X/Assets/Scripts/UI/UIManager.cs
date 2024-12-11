@@ -6,11 +6,12 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-    [SerializeField] private GameObject canvasDescription; // El canvas que contiene la descripción
-    [SerializeField] private GameObject specificGroupToToggle; // El grupo específico que se activa/desactiva
-    [SerializeField] private Camera mainCamera; // Cámara principal
-    [SerializeField] private float movementTime = 0.5f; // Tiempo de animación de movimiento
-    [SerializeField] private Ease movementEase = Ease.OutExpo; // Tipo de animación
+    [SerializeField] private GameObject canvasDescription; 
+    [SerializeField] private GameObject specificGroupToToggle; 
+    [SerializeField] private GameObject feedGroupToToggle; 
+    [SerializeField] private Camera mainCamera; 
+    [SerializeField] private float movementTime = 0.5f; 
+    [SerializeField] private Ease movementEase = Ease.OutExpo; 
 
     public TMP_Text playerTurnText;
     public TMP_Text roundText;
@@ -48,6 +49,10 @@ public class UIManager : MonoBehaviour
             {
                 instance.specificGroupToToggle.SetActive(false); // Ocultar grupo específico
             }
+            if (instance.feedGroupToToggle != null)
+            {
+                instance.feedGroupToToggle.SetActive(false); // Ocultar grupo específico
+            }
         });
 
         instance.mainCamera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -10f), instance.movementTime).SetEase(instance.movementEase);
@@ -61,6 +66,10 @@ public class UIManager : MonoBehaviour
             if (instance.specificGroupToToggle != null)
             {
                 instance.specificGroupToToggle.SetActive(true); // Mostrar grupo específico
+            }
+            if (instance.feedGroupToToggle != null)
+            {
+                instance.feedGroupToToggle.SetActive(true); // Mostrar grupo específico
             }
         });
 
@@ -87,4 +96,14 @@ public class UIManager : MonoBehaviour
             instance.specificGroupToToggle.SetActive(false); // Ocultar el grupo específico
         }
     }
+
+    public static void HideFeedSpecificGroup()
+    {
+        if (instance.feedGroupToToggle != null)
+        {
+            instance.feedGroupToToggle.SetActive(false); // Ocultar el grupo Feed específico
+        }
+    }
+
+
 }
