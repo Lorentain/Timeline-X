@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class ButtonDescriptionController : MonoBehaviour
 {
-
     [SerializeField] private CardController cardController;
 
     private void OnMouseDown()
     {
-        Debug.Log("Estoi haciendo zoom");
+        Debug.Log("Estoy haciendo zoom");
+
+        // Si el canvas de descripción está activo, lo ocultamos
         if (UIManager.GetCanvasDescription())
         {
             UIManager.HideDescription();
@@ -17,6 +18,7 @@ public class ButtonDescriptionController : MonoBehaviour
         {
             UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardDescription);
             UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
+            UIManager.HideSpecificGroup(); // Llamamos a la función HideSpecificGroup
         }
     }
 }
