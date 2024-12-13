@@ -147,6 +147,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0631abebbd0023f4cb6484d668bc77b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jugador1: {fileID: 0}
+  jugador2: {fileID: 0}
+  cardInventoryPlayer1: {fileID: 0}
+  cardInventoryPlayer2: {fileID: 0}
+  actionFeedManager: {fileID: 0}
   totalPlayers: 2
   currentPlayer: 0
   currentRound: 1
@@ -217,8 +222,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continue
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9f89929e7369a3a4ba95ca262fde8bc9, type: 2}
-  m_sharedMaterial: {fileID: -4390793447440661909, guid: 9f89929e7369a3a4ba95ca262fde8bc9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -335,6 +340,7 @@ MonoBehaviour:
   transitionText: {fileID: 1055951928295361443}
   continueButton: {fileID: 3729948343307470347}
   roundManager: {fileID: 5651068607272836282}
+  actionFeedManager: {fileID: 0}
   fadeDuration: 1
 --- !u!1 &5903908136657706662
 GameObject:
@@ -574,14 +580,14 @@ RectTransform:
   m_GameObject: {fileID: 6133808318769649790}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.87625, y: 0.87625, z: 0.87625}
+  m_LocalScale: {x: 0.7639103, y: 0.7639103, z: 0.7639103}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5049662363839785205}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: -0.0000019073}
+  m_AnchoredPosition: {x: 9, y: 24}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5611454059126167633
@@ -614,8 +620,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: It's Player 1's turn. Let's begin!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9f89929e7369a3a4ba95ca262fde8bc9, type: 2}
-  m_sharedMaterial: {fileID: -4390793447440661909, guid: 9f89929e7369a3a4ba95ca262fde8bc9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a328672fdfab48a4aa66c983e50aa876, type: 2}
+  m_sharedMaterial: {fileID: 7883346106369682722, guid: a328672fdfab48a4aa66c983e50aa876, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -25,6 +25,7 @@ public class CardController : MonoBehaviour
 
     public void MoverCartaTimeline()
     {
+
         if (!inTimeline && !player.ObtenerIsCardMovement() && UIManager.GetActionDescription())
         {
             if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
@@ -39,6 +40,7 @@ public class CardController : MonoBehaviour
                 inTimeline = true;
                 Debug.Log("Movimiento de carta al timeline");
             }
+
         }
     }
 

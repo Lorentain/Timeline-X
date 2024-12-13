@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class ButtonDescriptionController : MonoBehaviour
 {
-
     [SerializeField] private CardController cardController;
 
     private void OnMouseDown()
     {
-        Debug.Log("Estoi haciendo zoom");
+        Debug.Log("Estoy haciendo zoom");
+
+        
         if (UIManager.GetCanvasDescription())
         {
             UIManager.HideDescription();
@@ -17,6 +18,8 @@ public class ButtonDescriptionController : MonoBehaviour
         {
             UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName,cardController.ObtenerCardInfo().CardDescription,cardController.ObtenerCardInfo().CardDateYear);
             UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
+            UIManager.HideSpecificGroup(); 
+            UIManager.HideFeedSpecificGroup();
         }
     }
 }
