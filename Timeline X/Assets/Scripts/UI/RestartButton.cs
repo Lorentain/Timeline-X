@@ -1,17 +1,17 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;  // Importa SceneManager
+using UnityEngine.SceneManagement;  
 
 public class RestartButton : MonoBehaviour
 {
     public void RestartGame()
     {
-        // Carga la escena activa para reiniciar el juego
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
     }
 
-    // Método para volver al menú principal
     public void BackToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");  // Reemplaza "MainMenuSceneName" con el nombre de tu escena del menú principal
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("MainMenu");
     }
 }
