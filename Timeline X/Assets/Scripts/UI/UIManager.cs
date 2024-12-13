@@ -21,12 +21,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Ease movementEase;
 
-    [SerializeField] private GameObject specificGroupToToggle; 
+    [SerializeField] private GameObject specificGroupToToggle;
 
-    [SerializeField] private GameObject feedGroupToToggle; 
-    
-    
-     
+    [SerializeField] private GameObject feedGroupToToggle;
+
+
+
 
 
     [SerializeField] private bool animationDescriptionZoom = false;
@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
     public TMP_Text playerTurnText;
     public TMP_Text roundText;
 
-    
+
 
     private void Awake()
     {
@@ -61,7 +61,8 @@ public class UIManager : MonoBehaviour
     public static void ShowDescription(Vector3 posicionCarta)
     {
 
-        if(!instance.animationDescriptionZoom) {
+        if (!instance.animationDescriptionZoom)
+        {
             instance.animationDescriptionZoom = true;
             instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
@@ -70,30 +71,22 @@ public class UIManager : MonoBehaviour
             instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -10f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
+                if (instance.specificGroupToToggle != null)
+                {
+                    instance.specificGroupToToggle.SetActive(false); // Ocultar grupo especï¿½fico
+                }
+                if (instance.feedGroupToToggle != null)
+                {
+                    instance.feedGroupToToggle.SetActive(false); // Ocultar grupo especï¿½fico
+                }
             });
         }
-
-        instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
-        {
-            instance.canvasDescription.SetActive(true);
-            if (instance.specificGroupToToggle != null)
-            {
-                instance.specificGroupToToggle.SetActive(false); // Ocultar grupo específico
-            }
-            if (instance.feedGroupToToggle != null)
-            {
-                instance.feedGroupToToggle.SetActive(false); // Ocultar grupo específico
-            }
-        });
-
-        instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -10f), instance.movementTime).SetEase(instance.movementEase);
- 
     }
 
     public static void HideDescription()
     {
         if (!instance.animationDescriptionZoom)
-        instance.animationDescriptionZoom = true;
+            instance.animationDescriptionZoom = true;
         instance.canvasDescription.SetActive(false);
 
         {
@@ -101,23 +94,16 @@ public class UIManager : MonoBehaviour
             instance.camera.transform.DOMove(new Vector3(0f, 0, -10f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
+                if (instance.specificGroupToToggle != null)
+                {
+                    instance.specificGroupToToggle.SetActive(true); // Mostrar grupo especï¿½fico
+                }
+                if (instance.feedGroupToToggle != null)
+                {
+                    instance.feedGroupToToggle.SetActive(true); // Mostrar grupo especï¿½fico
+                }
             });
         }
-
-        instance.camera.DOOrthoSize(4.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
-        {
-            if (instance.specificGroupToToggle != null)
-            {
-                instance.specificGroupToToggle.SetActive(true); // Mostrar grupo específico
-            }
-            if (instance.feedGroupToToggle != null)
-            {
-                instance.feedGroupToToggle.SetActive(true); // Mostrar grupo específico
-            }
-        });
-
-        instance.camera.transform.DOMove(new Vector3(0f, 0, -10f), instance.movementTime).SetEase(instance.movementEase);
-
     }
 
     public static bool GetCanvasDescription()
@@ -125,7 +111,7 @@ public class UIManager : MonoBehaviour
         return instance.canvasDescription.activeInHierarchy;
     }
 
-    public static void PutTextDescription(string textName,string textDescription, int textYear)
+    public static void PutTextDescription(string textName, string textDescription, int textYear)
     {
 
         instance.textName.text = textName;
@@ -133,13 +119,16 @@ public class UIManager : MonoBehaviour
         instance.textYear.text = textYear.ToString();
     }
 
-    public static bool GetAnimationDescriptionZoom() {
+    public static bool GetAnimationDescriptionZoom()
+    {
         return instance.animationDescriptionZoom;
     }
 
-    public static bool GetActionDescription() {
+    public static bool GetActiveDescription()
+    {
         bool res = false;
-        if(!GetAnimationDescriptionZoom() && !GetCanvasDescription()) {
+        if (GetAnimationDescriptionZoom() && GetCanvasDescription())
+        {
             res = true;
         }
         return res;
@@ -150,7 +139,7 @@ public class UIManager : MonoBehaviour
     {
         if (instance.specificGroupToToggle != null)
         {
-            instance.specificGroupToToggle.SetActive(false); // Ocultar el grupo específico
+            instance.specificGroupToToggle.SetActive(false); // Ocultar el grupo especï¿½fico
         }
     }
 
@@ -158,7 +147,7 @@ public class UIManager : MonoBehaviour
     {
         if (instance.feedGroupToToggle != null)
         {
-            instance.feedGroupToToggle.SetActive(false); // Ocultar el grupo Feed específico
+            instance.feedGroupToToggle.SetActive(false); // Ocultar el grupo Feed especï¿½fico
         }
     }
 

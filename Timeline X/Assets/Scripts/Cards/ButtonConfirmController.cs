@@ -3,7 +3,6 @@ using UnityEngine;
 public class ButtonConfirmController : MonoBehaviour
 {
     [SerializeField] private CardController cardController; 
-    [SerializeField] private RoundManager roundManager; 
 
     private void OnEnable()
     {

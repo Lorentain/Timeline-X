@@ -26,7 +26,7 @@ public class CardController : MonoBehaviour
     public void MoverCartaTimeline()
     {
 
-        if (!inTimeline && !player.ObtenerIsCardMovement() && UIManager.GetActionDescription())
+        if (!inTimeline && !player.ObtenerIsCardMovement() && !UIManager.GetActiveDescription())
         {
             if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
             {
@@ -47,7 +47,7 @@ public class CardController : MonoBehaviour
     public void DevolverCartaAMano()
     {
         Debug.Log(inTimeline +  " " + animationPlay);
-        if (inTimeline && !animationPlay && UIManager.GetActionDescription())
+        if (inTimeline && !animationPlay && !UIManager.GetActiveDescription())
         {
             GetComponent<SortingGroup>().sortingOrder += 1;
             player.MoverHaciaInventario(transform.gameObject);
@@ -63,7 +63,7 @@ public class CardController : MonoBehaviour
 
     public void ConfirmarCartaTimeline()
     {
-        if (inTimeline && UIManager.GetActionDescription())
+        if (inTimeline && !UIManager.GetActiveDescription())
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
             RoundManager.ConfirmPlay();
