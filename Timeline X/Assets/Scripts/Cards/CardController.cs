@@ -64,7 +64,7 @@ public class CardController : MonoBehaviour
         if (inTimeline && UIManager.GetActionDescription())
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
-            //RoundManager.ConfirmPlay();
+            RoundManager.ConfirmPlay();
             player.ConfirmarCardMovement();
             TimelineController.ComprobarCarta(gameObject);
             Destroy(buttonToDestroy);

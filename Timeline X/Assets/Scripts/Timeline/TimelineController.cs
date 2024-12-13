@@ -102,27 +102,26 @@ public class TimelineController : MonoBehaviour
 
     public static void MoverDerechaCartaTimeline(GameObject cardGameObject)
     {
-        if (instance.cardsTimeline.Count != 0)
+        if (instance.cardsTimeline.Count != 0 && !instance.animationPlay)
         {
             Debug.Log("Aquiii");
             if (instance.cardsTimeline.IndexOf(cardGameObject) != (instance.cardsTimeline.Count - 1))
             {
-                cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
-                Debug.Log("Entra");
+                instance.animationPlay = true;
                 for (int i = 0; i < instance.cardsTimeline.Count; i++)
                 {
-                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) + 1) && !instance.animationPlay)
+                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) + 1))
                     {
-                        instance.animationPlay = true;
+                        cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
                         instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
                         {
                             instance.animationPlay = false;
                             cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
                         });
                     }
-                    else if (instance.cardsTimeline[i] != cardGameObject && !instance.animationPlay)
+                    else if (instance.cardsTimeline[i] != cardGameObject)
                     {
-                        instance.animationPlay = true;
+                        cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
                         instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
                         {
                             instance.animationPlay = false;
@@ -139,26 +138,26 @@ public class TimelineController : MonoBehaviour
 
     public static void MoverIzquierdaCartaTimeline(GameObject cardGameObject)
     {
-        if (instance.cardsTimeline.Count != 0)
+        if (instance.cardsTimeline.Count != 0 && !instance.animationPlay)
         {
             Debug.Log("Aquiii");
             if (instance.cardsTimeline.IndexOf(cardGameObject) != 0)
             {
-                cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
-                Debug.Log("Entra");
+                instance.animationPlay = true;
                 for (int i = 0; i < instance.cardsTimeline.Count; i++)
                 {
-                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) - 1) && !instance.animationPlay)
+                    if (i == (instance.cardsTimeline.IndexOf(cardGameObject) - 1))
                     {
-                        instance.animationPlay = true;
+                        cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
                         instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 2, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
                         {
                             instance.animationPlay = false;
                             cardGameObject.GetComponent<SortingGroup>().sortingOrder -= 1;
                         });
                     }
-                    else if (instance.cardsTimeline[i] != cardGameObject && !instance.animationPlay)
+                    else if (instance.cardsTimeline[i] != cardGameObject)
                     {
+                        cardGameObject.GetComponent<SortingGroup>().sortingOrder += 1;
                         instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
                         {
                             instance.animationPlay = false;
