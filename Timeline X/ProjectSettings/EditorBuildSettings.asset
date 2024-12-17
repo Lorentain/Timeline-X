@@ -6,20 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 8c9cfa26abfee488c85f1582747f6a02
+    path: Assets/Scenes/MainMenu.unity
+    guid: 93d31fae87a89e4418c0c590cef2705d
   - enabled: 1
     path: Assets/Scenes/VictoryScene.unity
     guid: 8f9a441354b3cb74c97e71254e3ba1e2
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 93d31fae87a89e4418c0c590cef2705d
-  - enabled: 1
     path: Assets/Scenes/Tanillo.unity
-    guid: ada24b063ebc3434ea001e7dbee5e3df
+    guid: c8e523c31c43eb940a12b515110aade7
   - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 89d79fb192c506e4c876ac2502c6742c
+    path: Assets/Scenes/Lorenzo.unity
+    guid: 34991283f9a482945ab351d2ea537faf
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

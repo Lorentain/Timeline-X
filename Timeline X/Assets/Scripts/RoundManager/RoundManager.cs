@@ -35,7 +35,7 @@ public class RoundManager : MonoBehaviour
         NotifyTurnChange();  // Comienza el turno despues de repartir las cartas
     }
 
-    public static void ConfirmPlay()
+    public static void ConfirmPlay(bool correctCard)
     {
         Debug.Log($"Jugador {instance.currentPlayer + 1} confirma su jugada en la ronda {instance.currentRound}");
 
@@ -54,22 +54,24 @@ public class RoundManager : MonoBehaviour
             instance.actionFeedManager.LogAction($"Comienza la ronda {instance.currentRound}");
         }
 
-        // Comprobar si alg�n jugador se ha quedado sin cartas
-        if (instance.cardInventoryPlayer1.ContarCartas() == 0) // Verifica si jugador 1 tiene 0 cartas
+        if (correctCard)
         {
-            GameController.Instance.Ganador(1); // Jugador 1 ha ganado
+            // Comprobar si alg�n jugador se ha quedado sin cartas
+            if (instance.cardInventoryPlayer1.ContarCartas() == 0) // Verifica si jugador 1 tiene 0 cartas
+            {
+                GameController.Instance.Ganador(1); // Jugador 1 ha ganado
 
-            // Registrar la acci�n en el feed y consola
-            instance.actionFeedManager.LogAction("Jugador 1 ha ganado la partida, se qued� sin cartas.");
+                // Registrar la acci�n en el feed y consola
+                instance.actionFeedManager.LogAction("Jugador 1 ha ganado la partida, se qued� sin cartas.");
+            }
+            else if (instance.cardInventoryPlayer2.ContarCartas() == 0) // Verifica si jugador 2 tiene 0 cartas
+            {
+                GameController.Instance.Ganador(2); // Jugador 2 ha ganado
+
+                // Registrar la acci�n en el feed y consola
+                instance.actionFeedManager.LogAction("Jugador 2 ha ganado la partida, se qued� sin cartas.");
+            }
         }
-        else if (instance.cardInventoryPlayer2.ContarCartas() == 0) // Verifica si jugador 2 tiene 0 cartas
-        {
-            GameController.Instance.Ganador(2); // Jugador 2 ha ganado
-
-            // Registrar la acci�n en el feed y consola
-            instance.actionFeedManager.LogAction("Jugador 2 ha ganado la partida, se qued� sin cartas.");
-        }
-
         instance.NotifyTurnChange();
     }
 

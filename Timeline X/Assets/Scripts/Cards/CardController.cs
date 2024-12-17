@@ -63,7 +63,7 @@ public class CardController : MonoBehaviour
 
     public void ConfirmarCartaTimeline()
     {
-        if (inTimeline && !UIManager.GetActiveDescription())
+        if (inTimeline && !UIManager.GetCanvasDescription() && !UIManager.GetAnimationDescriptionZoom())
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
             player.ConfirmarCardMovement();

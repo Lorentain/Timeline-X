@@ -187,7 +187,7 @@ public class TimelineController : MonoBehaviour
             Debug.Log("Derecha:" + instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
 
             MoverCartaALugarCorrecto(card);
-            RoundManager.ConfirmPlay();
+            RoundManager.ConfirmPlay(false);
             CardInventory cardInventory = card.GetComponent<CardController>().ObtenerInventario();
             cardInventory.RobarCarta();
         }
@@ -199,7 +199,7 @@ public class TimelineController : MonoBehaviour
             Debug.Log("Izquierda:" + instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
             
             MoverCartaALugarCorrecto(card);
-            RoundManager.ConfirmPlay();
+            RoundManager.ConfirmPlay(false);
             CardInventory cardInventory = card.GetComponent<CardController>().ObtenerInventario();
             cardInventory.RobarCarta();
         }
@@ -207,7 +207,7 @@ public class TimelineController : MonoBehaviour
         else
         {
             Debug.Log("BIEN");
-            RoundManager.ConfirmPlay();
+            RoundManager.ConfirmPlay(true);
         }
 
         return res;
@@ -259,12 +259,9 @@ public class TimelineController : MonoBehaviour
         for (int i = 0; i < instance.cardsTimeline.Count; i++)
         {
             GameObject carta = instance.cardsTimeline[i];
-            float nuevaX = i * 1.0f; // Ajustar el espaciado según corresponda
-            carta.transform.DOMoveX(nuevaX, instance.movementTime).SetEase(instance.movementEase);
+            carta.transform.DOMoveX(i, instance.movementTime).SetEase(instance.movementEase);
         }
     }
-
-
 
     public static Vector3 TimelinePosicion()
     {
