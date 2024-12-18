@@ -37,23 +37,4 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1f; 
         AudioListener.pause = false; 
     }
-
-    public void LoadMainMenu()
-    {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene("MainMenu"); 
-    }
-
-    public void QuitGame()
-    {
-        Debug.Log("Saliendo del juego...");
-        Application.Quit(); 
-    }
-
-    public void RestartGame()
-    {
-        Time.timeScale = 1f; 
-        pauseMenu.SetActive(false); 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
-    }
 }
