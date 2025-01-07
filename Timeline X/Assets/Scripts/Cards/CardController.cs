@@ -6,33 +6,30 @@ using UnityEngine.UIElements;
 public class CardController : MonoBehaviour
 {
     [SerializeField] private CardInfo cardInfo;
-
     [SerializeField] private CardInventory player;
-
     [SerializeField] private Transform handPlayer;
-
     [SerializeField] private SpriteRenderer spriteRendererImagen;
-
     [SerializeField] private GameObject buttonToDestroy;
-
     [SerializeField] private float movementTime;
-
     [SerializeField] private Ease movementEase;
-
     [SerializeField] private bool inTimeline = false;
-
     [SerializeField] private bool animationPlay = false;
 
     public void MoverCartaTimeline()
     {
+<<<<<<< HEAD
 
         if (!inTimeline && !player.ObtenerIsCardMovement() && !UIManager.GetActiveDescription())
+=======
+        if (!inTimeline && !player.ObtenerIsCardMovement() && UIManager.GetActionDescription())
+>>>>>>> Tanillo
         {
             if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
             {
                 GetComponent<SortingGroup>().sortingOrder += 1;
                 animationPlay = true;
-                gameObject.transform.DOMove(TimelineController.TimelinePosicion(), movementTime).SetEase(movementEase).OnComplete(() => {
+                gameObject.transform.DOMove(TimelineController.TimelinePosicion(), movementTime).SetEase(movementEase).OnComplete(() =>
+                {
                     animationPlay = false;
                     GetComponent<SortingGroup>().sortingOrder -= 1;
                 });
@@ -40,19 +37,24 @@ public class CardController : MonoBehaviour
                 inTimeline = true;
                 Debug.Log("Movimiento de carta al timeline");
             }
-
         }
     }
 
     public void DevolverCartaAMano()
     {
+<<<<<<< HEAD
         Debug.Log(inTimeline +  " " + animationPlay);
         if (inTimeline && !animationPlay && !UIManager.GetActiveDescription())
+=======
+        Debug.Log(inTimeline + " " + animationPlay);
+        if (inTimeline && !animationPlay && UIManager.GetActionDescription())
+>>>>>>> Tanillo
         {
             GetComponent<SortingGroup>().sortingOrder += 1;
             player.MoverHaciaInventario(transform.gameObject);
             animationPlay = true;
-            gameObject.transform.DOLocalMoveY(0, movementTime).SetEase(movementEase).OnComplete(() => {
+            gameObject.transform.DOLocalMoveY(0, movementTime).SetEase(movementEase).OnComplete(() =>
+            {
                 animationPlay = false;
                 GetComponent<SortingGroup>().sortingOrder -= 1;
             });
@@ -70,6 +72,9 @@ public class CardController : MonoBehaviour
             player.ConfirmarCardMovement();
             TimelineController.ComprobarCarta(gameObject);
             Destroy(buttonToDestroy);
+
+            // Aquí es donde agregamos la animación de parpadeo
+            ComprobarYParpadear();
         }
     }
 
@@ -104,7 +109,22 @@ public class CardController : MonoBehaviour
         return inTimeline;
     }
 
-    public int ObtenerAñoCarta() {
+    public int ObtenerAñoCarta()
+    {
         return cardInfo.CardDateYear;
+    }
+
+    // Método para comprobar y parpadear la carta
+    private void ComprobarYParpadear()
+    {
+        bool esCorrecta = TimelineController.ComprobarCarta(gameObject); 
+        Color colorFinal = esCorrecta ? Color.green : Color.red;
+
+        
+        spriteRendererImagen.DOColor(colorFinal, 0.2f) 
+            .OnComplete(() => {
+                
+                spriteRendererImagen.DOColor(Color.white, 0.2f);
+            });
     }
 }

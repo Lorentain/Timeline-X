@@ -30,7 +30,8 @@ public class TimelineController : MonoBehaviour
         cardsTimeline = new List<GameObject>();
     }
 
-    public static void PonerCartaInicial() {
+    public static void PonerCartaInicial()
+    {
         CardInfo aux = instance.deckController.RepartirCarta();
         CardController card = Instantiate(instance.prefabCard, instance.gameObject.transform).GetComponent<CardController>();
         card.AgregarCardInfo(aux);
@@ -179,26 +180,41 @@ public class TimelineController : MonoBehaviour
         int index = instance.cardsTimeline.IndexOf(card);
 
         // La carta de delante es menor
-        if (index != instance.cardsTimeline.Count-1 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() > instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
+        if (index != instance.cardsTimeline.Count - 1 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() > instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
         {
             Debug.Log("MAL DERECHA");
-            Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
-            Debug.Log("Derecha:" + instance.cardsTimeline[index+1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
         }
-        // La carta de detras es mayor
+        // La carta de detrás es mayor
         else if (index != 0 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() < instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
         {
             Debug.Log("MAL IZQUIERDA");
-            Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
-            Debug.Log("Izquierda:" + instance.cardsTimeline[index-1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
         }
-        // La carta de delante es mayor y la de atrás es menor
         else
         {
             Debug.Log("BIEN");
+            res = true; // La carta está correctamente colocada
         }
 
         return res;
+    }
+
+    
+    public static void ComprobarCartaYParpadear(GameObject card)
+    {
+        bool esCorrecta = ComprobarCarta(card); // Comprueba si la carta está en la posición correcta
+        Color colorFinal = esCorrecta ? Color.green : Color.red; // Verde si es correcta, rojo si es incorrecta
+
+        // Asegurarse de que la carta tiene un SpriteRenderer
+        SpriteRenderer spriteRenderer = card.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            // Realiza el parpadeo de color usando DOTween
+            spriteRenderer.DOColor(colorFinal, 0.2f) // Cambia el color durante 0.2 segundos
+                .OnComplete(() => {
+                    // Después del primer parpadeo, regresa a blanco (o color original)
+                    spriteRenderer.DOColor(Color.white, 0.2f);
+                });
+        }
     }
 
     public static Vector3 TimelinePosicion()
