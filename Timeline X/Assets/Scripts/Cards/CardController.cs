@@ -17,7 +17,12 @@ public class CardController : MonoBehaviour
 
     public void MoverCartaTimeline()
     {
+<<<<<<< HEAD
+
+        if (!inTimeline && !player.ObtenerIsCardMovement() && !UIManager.GetActiveDescription())
+=======
         if (!inTimeline && !player.ObtenerIsCardMovement() && UIManager.GetActionDescription())
+>>>>>>> Tanillo
         {
             if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
             {
@@ -37,8 +42,13 @@ public class CardController : MonoBehaviour
 
     public void DevolverCartaAMano()
     {
+<<<<<<< HEAD
+        Debug.Log(inTimeline +  " " + animationPlay);
+        if (inTimeline && !animationPlay && !UIManager.GetActiveDescription())
+=======
         Debug.Log(inTimeline + " " + animationPlay);
         if (inTimeline && !animationPlay && UIManager.GetActionDescription())
+>>>>>>> Tanillo
         {
             GetComponent<SortingGroup>().sortingOrder += 1;
             player.MoverHaciaInventario(transform.gameObject);
@@ -55,10 +65,9 @@ public class CardController : MonoBehaviour
 
     public void ConfirmarCartaTimeline()
     {
-        if (inTimeline && UIManager.GetActionDescription())
+        if (inTimeline && !UIManager.GetCanvasDescription() && !UIManager.GetAnimationDescriptionZoom())
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
-            RoundManager.ConfirmPlay();
             player.ConfirmarCardMovement();
             TimelineController.ComprobarCarta(gameObject);
             Destroy(buttonToDestroy);
@@ -82,6 +91,10 @@ public class CardController : MonoBehaviour
     public void AgregarCardInvetory(CardInventory cardInventory)
     {
         player = cardInventory;
+    }
+
+    public CardInventory ObtenerInventario() {
+        return player;
     }
 
     public CardInfo ObtenerCardInfo()
