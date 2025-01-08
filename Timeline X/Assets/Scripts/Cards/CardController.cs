@@ -65,10 +65,9 @@ public class CardController : MonoBehaviour
 
     public void ConfirmarCartaTimeline()
     {
-        if (inTimeline && !UIManager.GetActiveDescription())
+        if (inTimeline && !UIManager.GetCanvasDescription() && !UIManager.GetAnimationDescriptionZoom())
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
-            RoundManager.ConfirmPlay();
             player.ConfirmarCardMovement();
             TimelineController.ComprobarCarta(gameObject);
             Destroy(buttonToDestroy);
@@ -92,6 +91,10 @@ public class CardController : MonoBehaviour
     public void AgregarCardInvetory(CardInventory cardInventory)
     {
         player = cardInventory;
+    }
+
+    public CardInventory ObtenerInventario() {
+        return player;
     }
 
     public CardInfo ObtenerCardInfo()

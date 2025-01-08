@@ -183,21 +183,36 @@ public class TimelineController : MonoBehaviour
         if (index != instance.cardsTimeline.Count - 1 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() > instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
         {
             Debug.Log("MAL DERECHA");
+            Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+            Debug.Log("Derecha:" + instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+
+            MoverCartaALugarCorrecto(card);
+            RoundManager.ConfirmPlay(false);
+            CardInventory cardInventory = card.GetComponent<CardController>().ObtenerInventario();
+            cardInventory.RobarCarta();
+
         }
         // La carta de detrás es mayor
         else if (index != 0 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() < instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
         {
             Debug.Log("MAL IZQUIERDA");
+            Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+            Debug.Log("Izquierda:" + instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
+            
+            MoverCartaALugarCorrecto(card);
+            RoundManager.ConfirmPlay(false);
+            CardInventory cardInventory = card.GetComponent<CardController>().ObtenerInventario();
+            cardInventory.RobarCarta();
         }
         else
         {
             Debug.Log("BIEN");
             res = true; // La carta está correctamente colocada
+            RoundManager.ConfirmPlay(true);
         }
 
         return res;
     }
-
     
     public static void ComprobarCartaYParpadear(GameObject card)
     {
@@ -214,6 +229,56 @@ public class TimelineController : MonoBehaviour
                     // Después del primer parpadeo, regresa a blanco (o color original)
                     spriteRenderer.DOColor(Color.white, 0.2f);
                 });
+        }
+    }
+    
+    private static void MoverCartaALugarCorrecto(GameObject card)
+    {
+        int añoCarta = card.GetComponent<CardController>().ObtenerAñoCarta();
+        int posicionCorrecta = -1;
+
+        // Buscar la posición correcta en la timeline
+        for (int i = 0; i < instance.cardsTimeline.Count; i++)
+        {
+            int añoActual = instance.cardsTimeline[i].GetComponent<CardController>().ObtenerAñoCarta();
+
+            // Encontrar la primera carta con un año mayor al actual
+            if (añoCarta < añoActual)
+            {
+                posicionCorrecta = i;
+                break;
+            }
+        }
+
+        // Si no encontró una carta mayor, la posición correcta es al final
+        if (posicionCorrecta == -1)
+            posicionCorrecta = instance.cardsTimeline.Count;
+
+        // Mover la carta a la posición correcta
+        MoverCarta(card, posicionCorrecta);
+    }
+
+    private static void MoverCarta(GameObject card, int nuevaPosicion)
+    {
+        int posicionActual = instance.cardsTimeline.IndexOf(card);
+
+        if (nuevaPosicion == posicionActual)
+            return;
+
+        // Remover la carta de la posición actual
+        instance.cardsTimeline.RemoveAt(posicionActual);
+
+        // Insertar la carta en la nueva posición
+        if (nuevaPosicion > posicionActual)
+            nuevaPosicion--; // Ajustar el índice si la carta fue removida antes de la posición de inserción
+
+        instance.cardsTimeline.Insert(nuevaPosicion, card);
+
+        // Actualizar posiciones físicas de todas las cartas
+        for (int i = 0; i < instance.cardsTimeline.Count; i++)
+        {
+            GameObject carta = instance.cardsTimeline[i];
+            carta.transform.DOMoveX(i, instance.movementTime).SetEase(instance.movementEase);
         }
     }
 
