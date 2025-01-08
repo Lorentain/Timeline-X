@@ -30,8 +30,7 @@ public class TimelineController : MonoBehaviour
         cardsTimeline = new List<GameObject>();
     }
 
-    public static void PonerCartaInicial()
-    {
+    public static void PonerCartaInicial() {
         CardInfo aux = instance.deckController.RepartirCarta();
         CardController card = Instantiate(instance.prefabCard, instance.gameObject.transform).GetComponent<CardController>();
         card.AgregarCardInfo(aux);
@@ -180,7 +179,7 @@ public class TimelineController : MonoBehaviour
         int index = instance.cardsTimeline.IndexOf(card);
 
         // La carta de delante es menor
-        if (index != instance.cardsTimeline.Count - 1 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() > instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
+        if (index != instance.cardsTimeline.Count-1 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() > instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
         {
             Debug.Log("MAL DERECHA");
             Debug.Log("Mi:" + instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
@@ -190,9 +189,8 @@ public class TimelineController : MonoBehaviour
             RoundManager.ConfirmPlay(false);
             CardInventory cardInventory = card.GetComponent<CardController>().ObtenerInventario();
             cardInventory.RobarCarta();
-
         }
-        // La carta de detrás es mayor
+        // La carta de detras es mayor
         else if (index != 0 && instance.cardsTimeline[index].gameObject.GetComponent<CardController>().ObtenerAñoCarta() < instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta())
         {
             Debug.Log("MAL IZQUIERDA");
@@ -203,7 +201,9 @@ public class TimelineController : MonoBehaviour
             RoundManager.ConfirmPlay(false);
             CardInventory cardInventory = card.GetComponent<CardController>().ObtenerInventario();
             cardInventory.RobarCarta();
+            Debug.Log("Izquierda:" + instance.cardsTimeline[index-1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
         }
+        // La carta de delante es mayor y la de atrás es menor
         else
         {
             Debug.Log("BIEN");

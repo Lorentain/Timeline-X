@@ -25,10 +25,6 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject feedGroupToToggle;
 
-
-
-
-
     [SerializeField] private bool animationDescriptionZoom = false;
 
     public TMP_Text playerTurnText;
@@ -68,7 +64,7 @@ public class UIManager : MonoBehaviour
             {
                 instance.canvasDescription.SetActive(true);
             });
-            instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -10f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -7f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
                 if (instance.specificGroupToToggle != null)
@@ -81,6 +77,20 @@ public class UIManager : MonoBehaviour
                 }
             });
         }
+
+        instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+        {
+            instance.canvasDescription.SetActive(true);
+            if (instance.specificGroupToToggle != null)
+            {
+                instance.specificGroupToToggle.SetActive(false); // Ocultar grupo espec�fico
+            }
+            if (instance.feedGroupToToggle != null)
+            {
+                instance.feedGroupToToggle.SetActive(false); // Ocultar grupo espec�fico
+            }
+        });
+        instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -7f), instance.movementTime).SetEase(instance.movementEase);
     }
 
     public static void HideDescription()
@@ -91,7 +101,7 @@ public class UIManager : MonoBehaviour
 
         {
             instance.camera.DOOrthoSize(4.5f, instance.movementTime).SetEase(instance.movementEase);
-            instance.camera.transform.DOMove(new Vector3(0f, 0, -10f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            instance.camera.transform.DOMove(new Vector3(0f, 0, -7f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
                 if (instance.specificGroupToToggle != null)
