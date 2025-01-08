@@ -17,12 +17,7 @@ public class CardController : MonoBehaviour
 
     public void MoverCartaTimeline()
     {
-<<<<<<< HEAD
-
         if (!inTimeline && !player.ObtenerIsCardMovement() && !UIManager.GetActiveDescription())
-=======
-        if (!inTimeline && !player.ObtenerIsCardMovement() && UIManager.GetActionDescription())
->>>>>>> Tanillo
         {
             if (TimelineController.AñadirCartaTimeline(gameObject) && !animationPlay)
             {
@@ -42,13 +37,8 @@ public class CardController : MonoBehaviour
 
     public void DevolverCartaAMano()
     {
-<<<<<<< HEAD
-        Debug.Log(inTimeline +  " " + animationPlay);
+        Debug.Log("AQUI MIRA ANIMACION: " + UIManager.GetActiveDescription());
         if (inTimeline && !animationPlay && !UIManager.GetActiveDescription())
-=======
-        Debug.Log(inTimeline + " " + animationPlay);
-        if (inTimeline && !animationPlay && UIManager.GetActionDescription())
->>>>>>> Tanillo
         {
             GetComponent<SortingGroup>().sortingOrder += 1;
             player.MoverHaciaInventario(transform.gameObject);
