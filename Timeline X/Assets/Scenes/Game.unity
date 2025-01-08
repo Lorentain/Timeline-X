@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 227351518}
   - component: {fileID: 227351517}
   - component: {fileID: 227351516}
+  - component: {fileID: 227351519}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -409,8 +410,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1601194097}
-        m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
+      - m_Target: {fileID: 227351519}
+        m_TargetAssemblyTypeName: UIButtonsController, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
         m_Arguments:
@@ -459,6 +460,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227351514}
   m_CullTransparentMesh: 1
+--- !u!114 &227351519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 227351514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2644e8d2bed76ca40bbc8ac55e5f87cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneGame: Game
+  sceneMainMenu: MainMenu
 --- !u!1 &268156335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1758,15 +1773,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1851,7 +1866,7 @@ PrefabInstance:
       objectReference: {fileID: 1791390517}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementTime
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
@@ -2030,7 +2045,7 @@ PrefabInstance:
       objectReference: {fileID: 1791390517}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementTime
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
@@ -2804,7 +2819,7 @@ GameObject:
   - component: {fileID: 2093525357}
   - component: {fileID: 2093525356}
   m_Layer: 5
-  m_Name: RetsartText
+  m_Name: RestartText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2941,12 +2956,12 @@ SceneRoots:
   - {fileID: 1791390518}
   - {fileID: 734696735}
   - {fileID: 289439550}
-  - {fileID: 1408313947}
   - {fileID: 1566916330}
+  - {fileID: 1408313947}
+  - {fileID: 405980440}
+  - {fileID: 1304010874}
   - {fileID: 1390986343}
   - {fileID: 1381106727}
-  - {fileID: 405980440}
   - {fileID: 882336418}
-  - {fileID: 1304010874}
   - {fileID: 268156337}
   - {fileID: 739561474}

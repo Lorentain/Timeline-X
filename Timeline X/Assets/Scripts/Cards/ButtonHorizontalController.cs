@@ -7,12 +7,12 @@ public class ButtonHorizontalController : MonoBehaviour
     [SerializeField] private string movementDirection;
 
     private void OnMouseDown() {
-        if(movementDirection == "right" && cardController.IsTimeline() && !UIManager.GetAnimationDescriptionZoom()) {
+        if(movementDirection == "right" && cardController.IsTimeline() && !UIManager.GetAnimationDescriptionZoom() && !TimelineController.GetAnimationPlay()) {
             TimelineController.MoverDerechaCartaTimeline(cardController.gameObject);
             Debug.Log("Derecha");
         }
 
-        if(movementDirection == "left" && cardController.IsTimeline() && !UIManager.GetAnimationDescriptionZoom()) {
+        if(movementDirection == "left" && cardController.IsTimeline() && !UIManager.GetAnimationDescriptionZoom() && !TimelineController.GetAnimationPlay()) {
             TimelineController.MoverIzquierdaCartaTimeline(cardController.gameObject);
         }
     }

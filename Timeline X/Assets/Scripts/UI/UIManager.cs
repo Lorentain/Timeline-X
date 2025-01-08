@@ -136,8 +136,9 @@ public class UIManager : MonoBehaviour
 
     public static bool GetActiveDescription()
     {
+        Debug.Log("Animation Description: " + GetAnimationDescriptionZoom() + "Canvas: " + GetCanvasDescription());
         bool res = false;
-        if (GetAnimationDescriptionZoom() && GetCanvasDescription())
+        if (GetAnimationDescriptionZoom() || GetCanvasDescription())
         {
             res = true;
         }

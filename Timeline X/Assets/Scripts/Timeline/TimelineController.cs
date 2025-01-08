@@ -291,4 +291,8 @@ public class TimelineController : MonoBehaviour
     {
         return instance.transform;
     }
+
+    public static bool GetAnimationPlay() {
+        return instance.animationPlay;
+    }
 }

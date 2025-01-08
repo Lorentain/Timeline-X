@@ -9,17 +9,19 @@ public class ButtonDescriptionController : MonoBehaviour
     {
         Debug.Log("Estoy haciendo zoom");
 
-        
-        if (UIManager.GetCanvasDescription())
+        if (!TimelineController.GetAnimationPlay() && !UIManager.GetAnimationDescriptionZoom())
         {
-            UIManager.HideDescription();
-        }
-        else
-        {
-            UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName,cardController.ObtenerCardInfo().CardDescription,cardController.ObtenerCardInfo().CardDateYear);
-            UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
-            UIManager.HideSpecificGroup(); 
-            UIManager.HideFeedSpecificGroup();
+            if (UIManager.GetCanvasDescription())
+            {
+                UIManager.HideDescription();
+            }
+            else
+            {
+                UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName, cardController.ObtenerCardInfo().CardDescription, cardController.ObtenerCardInfo().CardDateYear);
+                UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
+                UIManager.HideSpecificGroup();
+                UIManager.HideFeedSpecificGroup();
+            }
         }
     }
 }
