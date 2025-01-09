@@ -22,7 +22,6 @@ public class ButtonConfirmController : MonoBehaviour
 
     private void UpdateButtonState(int currentPlayer, int currentRound)
     {
-        
         Debug.Log($"Bot�n actualizado para el jugador {currentPlayer + 1} en la ronda {currentRound}");
     }
 }

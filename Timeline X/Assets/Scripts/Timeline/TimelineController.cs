@@ -34,6 +34,7 @@ public class TimelineController : MonoBehaviour
         CardInfo aux = instance.deckController.RepartirCarta();
         CardController card = Instantiate(instance.prefabCard, instance.gameObject.transform).GetComponent<CardController>();
         card.AgregarCardInfo(aux);
+        card.gameObject.GetComponent<CardController>().AgregarAñoCardInfo(card.gameObject.GetComponent<CardController>().ObtenerCardInfo());
         card.transform.localPosition = new Vector3(0, 0, 0);
         AñadirCartaTimeline(card.transform.gameObject);
         Destroy(card.gameObject.transform.Find("Button Destroy").gameObject);

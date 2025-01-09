@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -10,6 +11,7 @@ public class CardController : MonoBehaviour
     [SerializeField] private Transform handPlayer;
     [SerializeField] private SpriteRenderer spriteRendererImagen;
     [SerializeField] private GameObject buttonToDestroy;
+    [SerializeField] private TextMeshProUGUI textYear;
     [SerializeField] private float movementTime;
     [SerializeField] private Ease movementEase;
     [SerializeField] private bool inTimeline = false;
@@ -59,11 +61,10 @@ public class CardController : MonoBehaviour
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
             player.ConfirmarCardMovement();
-            TimelineController.ComprobarCarta(gameObject);
-            Destroy(buttonToDestroy);
-
-            // Aquí es donde agregamos la animación de parpadeo
             ComprobarYParpadear();
+            textYear.text = cardInfo.CardDateYear.ToString();
+
+            Destroy(buttonToDestroy);   
         }
     }
 
@@ -81,6 +82,10 @@ public class CardController : MonoBehaviour
     public void AgregarCardInvetory(CardInventory cardInventory)
     {
         player = cardInventory;
+    }
+
+    public void AgregarAñoCardInfo(CardInfo cardInfo) {
+        textYear.text = cardInfo.CardDateYear.ToString();
     }
 
     public CardInventory ObtenerInventario() {
