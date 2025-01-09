@@ -18,6 +18,7 @@ public class ButtonConfirmController : MonoBehaviour
     {
         Debug.Log("Carta confirmada");
         cardController.ConfirmarCartaTimeline();
+        //gameObject.transform.gameObject.GetComponent<ButtonDescriptionController>(); Terminar cambiar la variable "isConfirmInTimeline"
     }
 
     private void UpdateButtonState(int currentPlayer, int currentRound)

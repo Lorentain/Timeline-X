@@ -61,8 +61,8 @@ public class CardController : MonoBehaviour
         {
             gameObject.transform.parent = TimelineController.TimelineTransform();
             player.ConfirmarCardMovement();
-            ComprobarYParpadear();
             textYear.text = cardInfo.CardDateYear.ToString();
+            ComprobarYParpadear();
 
             Destroy(buttonToDestroy);   
         }

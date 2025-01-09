@@ -121,12 +121,11 @@ public class UIManager : MonoBehaviour
         return instance.canvasDescription.activeInHierarchy;
     }
 
-    public static void PutTextDescription(string textName, string textDescription, int textYear)
+    public static void PutTextDescription(string textName, string textDescription, string textYear)
     {
-
         instance.textName.text = textName;
         instance.textDescription.text = textDescription;
-        instance.textYear.text = textYear.ToString();
+        instance.textYear.text = textYear;
     }
 
     public static bool GetAnimationDescriptionZoom()
@@ -161,6 +160,4 @@ public class UIManager : MonoBehaviour
             instance.feedGroupToToggle.SetActive(false); // Ocultar el grupo Feed espec�fico
         }
     }
-
-
 }

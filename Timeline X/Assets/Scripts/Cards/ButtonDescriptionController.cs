@@ -5,6 +5,8 @@ public class ButtonDescriptionController : MonoBehaviour
 {
     [SerializeField] private CardController cardController;
 
+    [SerializeField] private bool isConfirmInTimeline;
+
     private void OnMouseDown()
     {
         Debug.Log("Estoy haciendo zoom");
@@ -17,11 +19,15 @@ public class ButtonDescriptionController : MonoBehaviour
             }
             else
             {
-                UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName, cardController.ObtenerCardInfo().CardDescription, cardController.ObtenerCardInfo().CardDateYear);
+                UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName, cardController.ObtenerCardInfo().CardDescription, isConfirmInTimeline ? cardController.ObtenerAñoCarta().ToString() : "????");
                 UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
                 UIManager.HideSpecificGroup();
                 UIManager.HideFeedSpecificGroup();
             }
         }
+    }
+
+    private void ConfirmInTimeline() {
+        isConfirmInTimeline = true;
     }
 }

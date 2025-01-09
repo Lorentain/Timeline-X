@@ -1184,6 +1184,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 388692061696006478, guid: 1061245604ce07442b62aedc24f66178, type: 3}
+      propertyPath: m_text
+      value: ????
+      objectReference: {fileID: 0}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: hud
       value: 
@@ -1323,6 +1327,10 @@ PrefabInstance:
     - target: {fileID: 4132607578341629235, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4729872073317449823, guid: 1061245604ce07442b62aedc24f66178, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4805369139545596622, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: m_AnchorMax.x
