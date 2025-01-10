@@ -27,7 +27,7 @@ public class ButtonDescriptionController : MonoBehaviour
         }
     }
 
-    private void ConfirmInTimeline() {
+    public void ConfirmInTimeline() {
         isConfirmInTimeline = true;
     }
 }

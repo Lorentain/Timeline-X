@@ -35,7 +35,6 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        textDescription = canvasDescription.GetComponentInChildren<TextMeshProUGUI>(); // Obtener referencia al TextMeshProUGUI
     }
 
     private void OnEnable()

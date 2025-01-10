@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class ButtonConfirmController : MonoBehaviour
 {
-    [SerializeField] private CardController cardController; 
+    [SerializeField] private CardController cardController;
+
+    //[S] 
 
     private void OnEnable()
     {
@@ -18,7 +20,7 @@ public class ButtonConfirmController : MonoBehaviour
     {
         Debug.Log("Carta confirmada");
         cardController.ConfirmarCartaTimeline();
-        //gameObject.transform.gameObject.GetComponent<ButtonDescriptionController>(); Terminar cambiar la variable "isConfirmInTimeline"
+        gameObject.transform.parent.parent.GetComponentInChildren<ButtonDescriptionController>().ConfirmInTimeline(); //Terminar cambiar la variable "isConfirmInTimeline"
     }
 
     private void UpdateButtonState(int currentPlayer, int currentRound)

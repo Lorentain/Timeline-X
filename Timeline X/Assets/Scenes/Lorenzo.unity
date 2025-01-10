@@ -251,8 +251,8 @@ MonoBehaviour:
   cardsTimeline: []
   deckController: {fileID: 734696734}
   prefabCard: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
-  movementTime: 2
-  movementEase: 1
+  movementTime: 0.5
+  movementEase: 28
   animationPlay: 0
 --- !u!212 &116612358
 SpriteRenderer:
@@ -799,17 +799,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1b65aaa3413d84faeef7dbd96dfde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &546224598 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4729872073317449823, guid: 1061245604ce07442b62aedc24f66178, type: 3}
-  m_PrefabInstance: {fileID: 882336418}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &552130942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,11 +1203,11 @@ PrefabInstance:
       objectReference: {fileID: 1177331488}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: movementEase
-      value: 1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: movementTime
-      value: 3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: uiGeneralGroup
@@ -1228,10 +1217,6 @@ PrefabInstance:
       propertyPath: actionFeedGroup
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
-      propertyPath: textDescription
-      value: 
-      objectReference: {fileID: 546224598}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: FeedGroupToToggle
       value: 
@@ -1388,6 +1373,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 5374899692230544269, guid: 1061245604ce07442b62aedc24f66178, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5537701519290864124, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: m_ReferenceResolution.x
       value: 1920
@@ -1395,6 +1384,14 @@ PrefabInstance:
     - target: {fileID: 5537701519290864124, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789735379749757180, guid: 1061245604ce07442b62aedc24f66178, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 161.4713
+      objectReference: {fileID: 0}
+    - target: {fileID: 5789735379749757180, guid: 1061245604ce07442b62aedc24f66178, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 90.483246
       objectReference: {fileID: 0}
     - target: {fileID: 8750347953279361850, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: m_IsActive
@@ -1878,11 +1875,11 @@ PrefabInstance:
       objectReference: {fileID: 1791390517}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
-      value: 1
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: deckController
@@ -2057,11 +2054,11 @@ PrefabInstance:
       objectReference: {fileID: 1791390517}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
-      value: 1
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: deckController
