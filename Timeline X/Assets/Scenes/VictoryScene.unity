@@ -379,9 +379,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 565495836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1b65aaa3413d84faeef7dbd96dfde1, type: 3}
+  m_Script: {fileID: 11500000, guid: 2644e8d2bed76ca40bbc8ac55e5f87cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneGame: 
+  sceneMainMenu: MainMenu
 --- !u!1 &598496213
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,8 +469,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 565495838}
-        m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
-        m_MethodName: BackToMainMenu
+        m_TargetAssemblyTypeName: UIButtonsController, Assembly-CSharp
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

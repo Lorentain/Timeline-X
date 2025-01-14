@@ -91,8 +91,10 @@ public class CardController : MonoBehaviour
         }
     }
 
-    public void ConfirmarCartaTimeline()
+    public bool ConfirmarCartaTimeline()
     {
+        bool res = false;
+
         // Verifica si la carta está en la línea de tiempo, si no hay una descripción activa en el canvas,
         // y si no hay una animación activa de zoom en la descripción
         if (inTimeline && !UIManager.GetCanvasDescription() && !UIManager.GetAnimationDescriptionZoom())
@@ -111,7 +113,11 @@ public class CardController : MonoBehaviour
 
             // Destruye el botón asociado a la carta, ya que se ha confirmado su posición en el timeline
             Destroy(buttonToDestroy);
+
+            res = true;
         }
+
+        return res;
     }
 
     // Método para comprobar y parpadear la carta

@@ -251,8 +251,8 @@ MonoBehaviour:
   cardsTimeline: []
   deckController: {fileID: 734696734}
   prefabCard: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
-  movementTime: 2
-  movementEase: 1
+  movementTime: 0.5
+  movementEase: 28
   animationPlay: 0
 --- !u!212 &116612358
 SpriteRenderer:
@@ -337,7 +337,6 @@ GameObject:
   - component: {fileID: 227351518}
   - component: {fileID: 227351517}
   - component: {fileID: 227351516}
-  - component: {fileID: 227351519}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -410,7 +409,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 227351519}
+      - m_Target: {fileID: 268156338}
         m_TargetAssemblyTypeName: UIButtonsController, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1
@@ -460,20 +459,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227351514}
   m_CullTransparentMesh: 1
---- !u!114 &227351519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227351514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2644e8d2bed76ca40bbc8ac55e5f87cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneGame: Game
-  sceneMainMenu: MainMenu
 --- !u!1 &268156335
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 268156337}
   - component: {fileID: 268156336}
+  - component: {fileID: 268156338}
   m_Layer: 0
   m_Name: UIButtons
   m_TagString: Untagged
@@ -520,6 +506,21 @@ Transform:
   - {fileID: 1382145588}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &268156338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268156335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2644e8d2bed76ca40bbc8ac55e5f87cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneGame: Game
+  sceneMainMenu: MainMenu
+  pauseController: {fileID: 268156336}
 --- !u!1 &269619987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1267782954868657602, guid: 1061245604ce07442b62aedc24f66178, type: 3}
@@ -1210,11 +1211,11 @@ PrefabInstance:
       objectReference: {fileID: 1177331488}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: movementEase
-      value: 1
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: movementTime
-      value: 3
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 974297592126957753, guid: 1061245604ce07442b62aedc24f66178, type: 3}
       propertyPath: uiGeneralGroup
@@ -1488,7 +1489,7 @@ GameObject:
   - component: {fileID: 1048888050}
   - component: {fileID: 1048888049}
   m_Layer: 5
-  m_Name: PauseButton
+  m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1557,7 +1558,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1048888050}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 268156338}
+        m_TargetAssemblyTypeName: UIButtonsController, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1048888050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1685,9 +1698,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 431861925}
-        m_TargetAssemblyTypeName: RestartButton, Assembly-CSharp
-        m_MethodName: BackToMainMenu
+      - m_Target: {fileID: 268156338}
+        m_TargetAssemblyTypeName: UIButtonsController, Assembly-CSharp
+        m_MethodName: LoadMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1870,11 +1883,11 @@ PrefabInstance:
       objectReference: {fileID: 1791390517}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementTime
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
-      value: 1
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: deckController
@@ -2053,7 +2066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
-      value: 1
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: deckController
@@ -2671,7 +2684,7 @@ GameObject:
   - component: {fileID: 1824529440}
   - component: {fileID: 1824529439}
   m_Layer: 5
-  m_Name: PauseText
+  m_Name: ContinueButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2716,7 +2729,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause
+  m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a328672fdfab48a4aa66c983e50aa876, type: 2}
   m_sharedMaterial: {fileID: 7883346106369682722, guid: a328672fdfab48a4aa66c983e50aa876, type: 2}

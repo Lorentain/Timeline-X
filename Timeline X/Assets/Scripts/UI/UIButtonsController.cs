@@ -9,17 +9,7 @@ public class UIButtonsController : MonoBehaviour
 
     [SerializeField] private string sceneMainMenu;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] private PauseController pauseController;
 
     public void RestartGame()
     {
@@ -37,4 +27,9 @@ public class UIButtonsController : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit(); 
     }
+
+    public void ResumeGame() {
+        pauseController.ResumeGame();
+    }
+
 }

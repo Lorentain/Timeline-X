@@ -4,8 +4,6 @@ public class ButtonConfirmController : MonoBehaviour
 {
     [SerializeField] private CardController cardController;
 
-    //[S] 
-
     private void OnEnable()
     {
         RoundManager.OnTurnChanged += UpdateButtonState; 
@@ -19,8 +17,9 @@ public class ButtonConfirmController : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("Carta confirmada");
-        cardController.ConfirmarCartaTimeline();
-        gameObject.transform.parent.parent.GetComponentInChildren<ButtonDescriptionController>().ConfirmInTimeline(); //Terminar cambiar la variable "isConfirmInTimeline"
+        if(cardController.ConfirmarCartaTimeline()) {
+            gameObject.transform.parent.parent.GetComponentInChildren<ButtonDescriptionController>().ConfirmInTimeline();
+        }
     }
 
     private void UpdateButtonState(int currentPlayer, int currentRound)
