@@ -37,10 +37,10 @@ public class RoundManager : MonoBehaviour
 
     public static void ConfirmPlay(bool correctCard)
     {
-        Debug.Log($"Jugador {instance.currentPlayer + 1} confirma su jugada en la ronda {instance.currentRound}");
 
         // Registrar la acci�n en el feed y consola
         instance.actionFeedManager.LogAction($"Jugador {instance.currentPlayer + 1} confirma su jugada en la ronda {instance.currentRound}");
+        instance.actionFeedManager.LogAction("Turno finalizado.");
 
         // Cambiar al siguiente jugador
         instance.currentPlayer++;
@@ -48,7 +48,6 @@ public class RoundManager : MonoBehaviour
         {
             instance.currentPlayer = 0;
             instance.currentRound++;
-            Debug.Log($"Comienza la ronda {instance.currentRound}");
 
             // Registrar la acci�n en el feed y consola
             instance.actionFeedManager.LogAction($"Comienza la ronda {instance.currentRound}");
@@ -72,26 +71,27 @@ public class RoundManager : MonoBehaviour
                 instance.actionFeedManager.LogAction("Jugador 2 ha ganado la partida, se qued� sin cartas.");
             }
         }
-        instance.NotifyTurnChange();
+        NotifyTurnChange();
     }
 
-    private void NotifyTurnChange()
+    public static void NotifyTurnChange()
     {
-        Debug.Log($" {currentPlayer + 1}. Round {currentRound}");
-
         // Registrar el cambio de turno
-        actionFeedManager.LogAction($"Es el turno del Jugador {currentPlayer + 1} - Ronda {currentRound}");
+        instance.actionFeedManager.LogAction($"Es el turno del Jugador {instance.currentPlayer + 1} - Ronda {instance.currentRound}");
 
-        OnTurnChanged?.Invoke(currentPlayer, currentRound);
-        switch (currentPlayer)
+        OnTurnChanged?.Invoke(instance.currentPlayer, instance.currentRound);
+    }
+
+    public static void ChangePlayer() {
+                switch (instance.currentPlayer)
         {
             case 0:
-                jugador1.SetActive(true);
-                jugador2.SetActive(false);
+                instance.jugador1.SetActive(true);
+                instance.jugador2.SetActive(false);
                 break;
             case 1:
-                jugador1.SetActive(false);
-                jugador2.SetActive(true);
+                instance.jugador1.SetActive(false);
+                instance.jugador2.SetActive(true);
                 break;
         }
     }

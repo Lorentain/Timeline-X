@@ -38,13 +38,10 @@ public class TurnTransitionManager : MonoBehaviour
     {
         if (hasFirstTurnCompleted || currentPlayer > 0 || currentRound > 1)
         {
-            // Registrar en el feed que el turno ha terminado y que el siguiente jugador va a jugar
-            actionFeedManager.LogAction($"Turno finalizado. Ahora es el turno del Jugador {currentPlayer + 1}.");
-
-            // Mostrar la transición en pantalla
+            // Mostrar la transiciï¿½n en pantalla
             StartCoroutine(FadeInPanel());
 
-            transitionText.text = $"¡Turno terminado! Ahora le toca al Jugador {currentPlayer + 1}";
+            transitionText.text = $"Â¡Turno terminado! Ahora le toca al Jugador {currentPlayer + 1}";
 
             continueButton.interactable = false;
             Invoke(nameof(EnableContinueButton), 1f);
@@ -62,11 +59,10 @@ public class TurnTransitionManager : MonoBehaviour
 
     public void OnContinueButtonPressed()
     {
-        
-
-        // Comenzar la transición para el siguiente turno
+        // Comenzar la transiciï¿½n para el siguiente turno
         StartCoroutine(FadeOutPanel());
         hasFirstTurnCompleted = true;
+        RoundManager.ChangePlayer();
     }
 
     private IEnumerator FadeInPanel()

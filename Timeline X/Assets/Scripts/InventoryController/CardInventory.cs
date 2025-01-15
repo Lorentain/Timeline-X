@@ -87,7 +87,7 @@ public class CardInventory : MonoBehaviour
         float formula = (inventoryCard.Count / 2f) - 0.5f;
         for (int i = 0; i < inventoryCard.Count; i++)
         {
-            inventoryCard[i].transform.DOLocalMoveX(i - formula, movementTime).SetEase(movementeEase);
+            inventoryCard[i].transform.DOLocalMoveX((i*1.5f) - formula, movementTime).SetEase(movementeEase);
         }
     }
 

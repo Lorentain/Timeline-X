@@ -75,7 +75,7 @@ public class TimelineController : MonoBehaviour
                 if (instance.cardsTimeline[i].transform.position.x >= 0)
                 {
                     // Mueve la carta un espacio hacia la derecha en el eje X con una animación
-                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime // Duración de la animación
+                    instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1.5f, instance.movementTime // Duración de la animación
                     ).SetEase(instance.movementEase).OnComplete(() =>
                     {
                         // La animación finaliza, pero no se realiza ninguna acción adicional
@@ -121,7 +121,7 @@ public class TimelineController : MonoBehaviour
             if (i >= index) // Comprueba si el indice de la carta es mayor o igual 
             {
                 //instance.animationPlay = true;
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x - 1.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
                 {
                     //instance.animationPlay = false;
                 });
@@ -129,7 +129,7 @@ public class TimelineController : MonoBehaviour
             else if (index == instance.cardsTimeline.Count && !instance.animationPlay) // 
             {
                 //instance.animationPlay = true;
-                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+                instance.cardsTimeline[i].transform.DOMoveX(instance.cardsTimeline[i].transform.position.x + 1.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
                 {
                     //instance.animationPlay = false;
                 });
@@ -161,7 +161,7 @@ public class TimelineController : MonoBehaviour
 
                         // Mueve esta carta dos unidades hacia la izquierda
                         instance.cardsTimeline[i].transform.DOMoveX(
-                            instance.cardsTimeline[i].transform.position.x - 2, // Nueva posición X
+                            instance.cardsTimeline[i].transform.position.x - 3, // Nueva posición X
                             instance.movementTime // Tiempo de la animación
                         ).SetEase(instance.movementEase).OnComplete(() =>
                         {
@@ -181,7 +181,7 @@ public class TimelineController : MonoBehaviour
 
                         // Mueve estas cartas una unidad hacia la izquierda
                         instance.cardsTimeline[i].transform.DOMoveX(
-                            instance.cardsTimeline[i].transform.position.x - 1, // Nueva posición X
+                            instance.cardsTimeline[i].transform.position.x - 1.5f, // Nueva posición X
                             instance.movementTime // Tiempo de la animación
                         ).SetEase(instance.movementEase).OnComplete(() =>
                         {
@@ -228,7 +228,7 @@ public class TimelineController : MonoBehaviour
 
                         // Mueve esta carta dos unidades hacia la derecha
                         instance.cardsTimeline[i].transform.DOMoveX(
-                            instance.cardsTimeline[i].transform.position.x + 2, // Nueva posición X
+                            instance.cardsTimeline[i].transform.position.x + 3, // Nueva posición X
                             instance.movementTime // Tiempo de la animación
                         ).SetEase(instance.movementEase).OnComplete(() =>
                         {
@@ -248,7 +248,7 @@ public class TimelineController : MonoBehaviour
 
                         // Mueve estas cartas una unidad hacia la derecha
                         instance.cardsTimeline[i].transform.DOMoveX(
-                            instance.cardsTimeline[i].transform.position.x + 1, // Nueva posición X
+                            instance.cardsTimeline[i].transform.position.x + 1.5f, // Nueva posición X
                             instance.movementTime // Tiempo de la animación
                         ).SetEase(instance.movementEase).OnComplete(() =>
                         {
@@ -421,7 +421,7 @@ public class TimelineController : MonoBehaviour
             GameObject carta = instance.cardsTimeline[i];
 
             // Mueve cada carta a su nueva posición en el eje X, utilizando DOTween para animar el movimiento.
-            carta.transform.DOMoveX(i, instance.movementTime).SetEase(instance.movementEase);
+            carta.transform.DOMoveX(i*1.5f, instance.movementTime).SetEase(instance.movementEase);
         }
     }
 
