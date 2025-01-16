@@ -338,31 +338,31 @@ public class TimelineController : MonoBehaviour
         return res;
     }
 
-    public static void ComprobarCartaYParpadear(GameObject card)
-    {
-        // Llama a la función ComprobarCarta() para verificar si la carta está en la posición correcta.
-        bool esCorrecta = ComprobarCarta(card);
+    //public static void ComprobarCartaYParpadear(GameObject card)
+    //{
+    //    // Llama a la función ComprobarCarta() para verificar si la carta está en la posición correcta.
+    //    bool esCorrecta = ComprobarCarta(card);
 
-        // Establece el color de la carta dependiendo de si está correcta o no:
-        // Verde si está correcta, rojo si está incorrecta.
-        Color colorFinal = esCorrecta ? Color.green : Color.red;
+    //    // Establece el color de la carta dependiendo de si está correcta o no:
+    //    // Verde si está correcta, rojo si está incorrecta.
+    //    Color colorFinal = esCorrecta ? Color.green : Color.red;
 
-        // Asegúrate de que la carta tiene un componente SpriteRenderer (para modificar su color).
-        SpriteRenderer spriteRenderer = card.GetComponent<SpriteRenderer>();
+    //    // Asegúrate de que la carta tiene un componente SpriteRenderer (para modificar su color).
+    //    SpriteRenderer spriteRenderer = card.GetComponent<SpriteRenderer>();
 
-        if (spriteRenderer != null)
-        {
-            // Si la carta tiene un SpriteRenderer, realiza un parpadeo de color utilizando DOTween:
+    //    if (spriteRenderer != null)
+    //    {
+    //        // Si la carta tiene un SpriteRenderer, realiza un parpadeo de color utilizando DOTween:
 
-            // Cambia el color de la carta a 'colorFinal' (verde o rojo) durante 0.2 segundos.
-            spriteRenderer.DOColor(colorFinal, 0.2f)
-                .OnComplete(() =>
-                {
-                    // Después del primer parpadeo, regresa el color a blanco (o al color original de la carta).
-                    spriteRenderer.DOColor(Color.white, 0.2f);
-                });
-        }
-    }
+    //        // Cambia el color de la carta a 'colorFinal' (verde o rojo) durante 0.2 segundos.
+    //        spriteRenderer.DOColor(colorFinal, 0.2f)
+    //            .OnComplete(() =>
+    //            {
+    //                // Después del primer parpadeo, regresa el color a blanco (o al color original de la carta).
+    //                spriteRenderer.DOColor(Color.white, 0.2f);
+    //            });
+    //    }
+    //}
 
     private static void MoverCartaALugarCorrecto(GameObject card)
     {
