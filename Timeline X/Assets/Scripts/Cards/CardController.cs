@@ -126,13 +126,46 @@ public class CardController : MonoBehaviour
         bool esCorrecta = TimelineController.ComprobarCarta(gameObject);
         Color colorFinal = esCorrecta ? Color.green : Color.red;
 
+        if (esCorrecta)
+        {
+            // Si la carta es correcta, hacemos una animación vistosa con parpadeo verde
+            Sequence animacionCorrecta = DOTween.Sequence();
 
-        spriteRendererImagen.DOColor(colorFinal, 0.2f)
-            .OnComplete(() =>
+            // Repetir el parpadeo verde varias veces
+            int vecesParpadeo = 3; // Número de veces que la carta parpadeará
+            float duracionParpadeo = 0.1f; // Duración de cada parpadeo (verde a blanco)
+
+            for (int i = 0; i < vecesParpadeo; i++)
             {
+                // Parpadeo de verde a blanco
+                animacionCorrecta.Append(spriteRendererImagen.DOColor(Color.green, duracionParpadeo));
+                animacionCorrecta.Append(spriteRendererImagen.DOColor(Color.white, duracionParpadeo));
+            }
 
-                spriteRendererImagen.DOColor(Color.white, 0.2f);
-            });
+            // Desplazamiento sutil (mueve un poquito la carta sin escalar)
+            animacionCorrecta.Join(transform.DOMoveY(transform.position.y + 0.5f, 0.1f).From(true)); // Desplazamiento hacia arriba sutil
+
+            // Restauración rápida de la posición (vuelve a su lugar original)
+            animacionCorrecta.Append(transform.DOLocalMove(Vector3.zero, 0.2f));
+
+            animacionCorrecta.Play();
+        }
+        else
+        {
+            // Si es incorrecta, hacemos una vibración fuerte pero en pequeña distancia
+            Sequence animacionIncorrecta = DOTween.Sequence();
+
+            // Cambio de color a rojo
+            animacionIncorrecta.Append(spriteRendererImagen.DOColor(colorFinal, 0.3f));
+
+            // Vibración fuerte pero en una distancia pequeña (aumentando el desplazamiento)
+            animacionIncorrecta.Join(transform.DOShakePosition(0.1f, 0.5f, 100, 5, false, true)); // Vibración intensa pero pequeña
+
+            // Restaurar color y posición original
+            animacionIncorrecta.Append(spriteRendererImagen.DOColor(Color.white, 0.1f));
+            
+            animacionIncorrecta.Play();
+        }
     }
 
     public void AgregarHandPlayer(Transform gameObject)
