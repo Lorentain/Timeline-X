@@ -1,18 +1,17 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
     private static RoundManager instance;
 
-    [SerializeField] private GameObject jugador1;
-    [SerializeField] private GameObject jugador2;
+    [SerializeField] private List<GameObject> listPlayers;
 
-    [SerializeField] private CardInventory cardInventoryPlayer1;
-    [SerializeField] private CardInventory cardInventoryPlayer2;
+    [SerializeField] private List<CardInventory> listCardInventoryPlayers;
 
     [SerializeField] private ActionFeedManager actionFeedManager;  // Referencia al ActionFeedManager
 
-    public int totalPlayers = 2;
+    public int totalPlayers = 4;
     public int currentPlayer = 0;
     public int currentRound = 1;
 
@@ -27,8 +26,9 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         // Añadir cartas al inicio para cada jugador
-        cardInventoryPlayer1.AñadirCartasComienzo();
-        cardInventoryPlayer2.AñadirCartasComienzo();
+        for(int i = 0; i < totalPlayers;i++) {
+            listCardInventoryPlayers[i].AñadirCartasComienzo();
+        }
         TimelineController.PonerCartaInicial();
 
         // Notificar el cambio de turno inicial
@@ -55,20 +55,12 @@ public class RoundManager : MonoBehaviour
 
         if (correctCard)
         {
-            // Comprobar si alg�n jugador se ha quedado sin cartas
-            if (instance.cardInventoryPlayer1.ContarCartas() == 0) // Verifica si jugador 1 tiene 0 cartas
-            {
-                GameController.Instance.Ganador(1); // Jugador 1 ha ganado
-
-                // Registrar la acci�n en el feed y consola
-                instance.actionFeedManager.LogAction("Jugador 1 ha ganado la partida, se qued� sin cartas.");
-            }
-            else if (instance.cardInventoryPlayer2.ContarCartas() == 0) // Verifica si jugador 2 tiene 0 cartas
-            {
-                GameController.Instance.Ganador(2); // Jugador 2 ha ganado
-
-                // Registrar la acci�n en el feed y consola
-                instance.actionFeedManager.LogAction("Jugador 2 ha ganado la partida, se qued� sin cartas.");
+            // Comprobar si algún jugador se ha quedado sin cartas
+            for(int i = 0; i < instance.totalPlayers;i++) {
+                if(instance.listCardInventoryPlayers[i].ContarCartas() == 0) { // Verifica si jugador X tiene 0 cartas
+                    GameController.Instance.Ganador(i+1); // Jugador X ha ganado
+                    instance.actionFeedManager.LogAction($"Jugador {i+1} ha ganado la partida, se quedó sin cartas."); // Registrar la acción en el feed y consola
+                }
             }
         }
         NotifyTurnChange();
@@ -82,17 +74,14 @@ public class RoundManager : MonoBehaviour
         OnTurnChanged?.Invoke(instance.currentPlayer, instance.currentRound);
     }
 
-    public static void ChangePlayer() {
-                switch (instance.currentPlayer)
-        {
-            case 0:
-                instance.jugador1.SetActive(true);
-                instance.jugador2.SetActive(false);
-                break;
-            case 1:
-                instance.jugador1.SetActive(false);
-                instance.jugador2.SetActive(true);
-                break;
+    public static void ChangePlayer()
+    {
+        for(int i = 0; i < instance.totalPlayers;i++) {
+            if(instance.currentPlayer == i) {
+                instance.listPlayers[i].SetActive(true);
+            }else {
+                instance.listPlayers[i].SetActive(false);
+            }
         }
     }
 }
