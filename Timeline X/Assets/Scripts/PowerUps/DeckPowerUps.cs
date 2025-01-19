@@ -3,29 +3,27 @@ using UnityEngine;
 
 public class DeckPowerUps : MonoBehaviour
 {
-    [SerializeField] private List<PowerUp> powerUps;
-    [SerializeField] private List<IPowerUp> ipowerup;
-    
+    [SerializeField] private List<IPowerUp> iPowerUp;
+
+    //[SerializeField] private List<PowerUp> powerUps;
+
     //[SerializeField] private List<PowerUpAbstract> powerupabstract;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            powerUps[0].Execute();
+            //powerUps[0].Execute();
             //powerupabstract[0].Execute();
-            ipowerup[0].Execute();
-            powerUps.RemoveAt(0);
+            iPowerUp[0].Execute();
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            powerUps[1].Execute();
-            powerUps.RemoveAt(1);
+            iPowerUp[1].Execute();
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            powerUps[2].Execute();
-            powerUps.RemoveAt(2);
+            iPowerUp[2].Execute();
         }
     }
 }

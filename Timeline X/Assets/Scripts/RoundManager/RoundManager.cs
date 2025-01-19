@@ -9,6 +9,8 @@ public class RoundManager : MonoBehaviour
 
     [SerializeField] private List<CardInventory> listCardInventoryPlayers;
 
+    [SerializeField] private List<PowerUpsInventory> listPowerUpsInventoryPlayers;
+
     [SerializeField] private ActionFeedManager actionFeedManager;  // Referencia al ActionFeedManager
 
     public int totalPlayers = 4;
@@ -28,6 +30,8 @@ public class RoundManager : MonoBehaviour
         // Añadir cartas al inicio para cada jugador
         for(int i = 0; i < totalPlayers;i++) {
             listCardInventoryPlayers[i].AñadirCartasComienzo();
+            listPowerUpsInventoryPlayers[i].AñadirPowerUpsComienzo();
+
         }
         TimelineController.PonerCartaInicial();
 

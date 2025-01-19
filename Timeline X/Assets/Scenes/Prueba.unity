@@ -129,7 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 35160355}
   - component: {fileID: 35160354}
-  - component: {fileID: 35160353}
+  - component: {fileID: 35160356}
   m_Layer: 0
   m_Name: Power Up 2
   m_TagString: Untagged
@@ -137,19 +137,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &35160353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35160352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1709ccc5f641ee40a1044b9a0c6c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 2
 --- !u!212 &35160354
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -220,6 +207,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &35160356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35160352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3fafb488c835543b99618fe4832c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1007149870
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007149873}
   - component: {fileID: 1007149872}
-  - component: {fileID: 1007149871}
+  - component: {fileID: 1007149874}
   m_Layer: 0
   m_Name: Power Up 1
   m_TagString: Untagged
@@ -238,19 +237,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1007149871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1007149870}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1709ccc5f641ee40a1044b9a0c6c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 1
 --- !u!212 &1007149872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -321,6 +307,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1007149874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007149870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4aaf0f223fc8d458d0028c1372e7cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1110968543
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1110968546}
   - component: {fileID: 1110968545}
-  - component: {fileID: 1110968544}
+  - component: {fileID: 1110968547}
   m_Layer: 0
   m_Name: Power Up 3
   m_TagString: Untagged
@@ -339,19 +337,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1110968544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1110968543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1709ccc5f641ee40a1044b9a0c6c502, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ID: 3
 --- !u!212 &1110968545
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -422,6 +407,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1110968547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110968543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a28920e4af45ee44b9896b593138426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1336810970
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,10 +463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742b47b2f7542ae4083eb9affa1cfbad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUps:
-  - {fileID: 1007149871}
-  - {fileID: 35160353}
-  - {fileID: 1110968544}
 --- !u!1 &1695965912
 GameObject:
   m_ObjectHideFlags: 0
