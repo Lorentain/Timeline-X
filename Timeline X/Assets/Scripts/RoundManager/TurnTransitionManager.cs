@@ -38,18 +38,25 @@ public class TurnTransitionManager : MonoBehaviour
     {
         if (hasFirstTurnCompleted || currentPlayer > 0 || currentRound > 1)
         {
-            // Mostrar la transici�n en pantalla
-            StartCoroutine(FadeInPanel());
+            // Mostrar la transición en pantalla con un retraso antes del fade in
+            StartCoroutine(DelayedFadeInPanel(2f)); // Retraso de 1 segundo antes de que aparezca el panel
 
             transitionText.text = $"¡Turno terminado! Ahora le toca al Jugador {currentPlayer + 1}";
 
             continueButton.interactable = false;
-            Invoke(nameof(EnableContinueButton), 1f);
+            Invoke(nameof(EnableContinueButton), 2f); // Ajusta el tiempo si necesitas más sincronización
         }
         else
         {
             return;
         }
+    }
+
+    // Nueva corrutina para añadir un retraso antes del fade in
+    private IEnumerator DelayedFadeInPanel(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Esperar el retraso
+        yield return FadeInPanel(); // Iniciar el fade in del panel
     }
 
     private void EnableContinueButton()

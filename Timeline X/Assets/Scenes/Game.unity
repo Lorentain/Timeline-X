@@ -877,6 +877,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea5798359807044eaf5586f9e0347ee, type: 3}
+--- !u!1 &289741607 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076533803810697979, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 405980440}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &289741608 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1084233134677063603, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 405980440}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289741607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &402723191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,6 +1029,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678817478886725022, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: yearSprite
+      value: 
+      objectReference: {fileID: 289741607}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1061,6 +1081,14 @@ PrefabInstance:
       propertyPath: handPlayer
       value: 
       objectReference: {fileID: 1791390518}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoText
+      value: 
+      objectReference: {fileID: 289741608}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoPrefab
+      value: 
+      objectReference: {fileID: 4989302924674759252, guid: 4e478c712d2fe5a44becb63e67c2bd12, type: 3}
     - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: timelineController
       value: 
@@ -2111,6 +2139,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048888047}
   m_CullTransparentMesh: 1
+--- !u!1 &1091643469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076533803810697979, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 1304010874}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1091643470 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1084233134677063603, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 1304010874}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091643469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1177331488 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 724916468820935500, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
@@ -2363,6 +2407,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678817478886725022, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: yearSprite
+      value: 
+      objectReference: {fileID: 1091643469}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2412,6 +2460,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1791390518}
     - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoText
+      value: 
+      objectReference: {fileID: 1091643470}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoPrefab
+      value: 
+      objectReference: {fileID: 4989302924674759252, guid: 4e478c712d2fe5a44becb63e67c2bd12, type: 3}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: timelineController
       value: 
       objectReference: {fileID: 116612357}
@@ -2420,6 +2476,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+--- !u!114 &1341089020 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1084233134677063603, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 1408313947}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1381106727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2704,6 +2771,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678817478886725022, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: yearSprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2752,6 +2823,14 @@ PrefabInstance:
       propertyPath: handPlayer
       value: 
       objectReference: {fileID: 1791390518}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoText
+      value: 
+      objectReference: {fileID: 1341089020}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoPrefab
+      value: 
+      objectReference: {fileID: 4989302924674759252, guid: 4e478c712d2fe5a44becb63e67c2bd12, type: 3}
     - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: timelineController
       value: 
@@ -2808,6 +2887,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678817478886725022, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: yearSprite
+      value: 
+      objectReference: {fileID: 1654780817}
     - target: {fileID: 5752156913783925588, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2852,6 +2935,18 @@ PrefabInstance:
       propertyPath: handPlayer
       value: 
       objectReference: {fileID: 1791390518}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoText
+      value: 
+      objectReference: {fileID: 1654780818}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: cartuchoPrefab
+      value: 
+      objectReference: {fileID: 4989302924674759252, guid: 4e478c712d2fe5a44becb63e67c2bd12, type: 3}
+    - target: {fileID: 5771985840333412502, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+      propertyPath: spriteCartucho
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3135,6 +3230,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622787694}
   m_CullTransparentMesh: 1
+--- !u!1 &1654780817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9076533803810697979, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 1566916330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1654780818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1084233134677063603, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
+  m_PrefabInstance: {fileID: 1566916330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654780817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1708302493
 GameObject:
   m_ObjectHideFlags: 0

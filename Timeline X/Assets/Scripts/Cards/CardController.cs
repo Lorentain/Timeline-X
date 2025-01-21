@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 
+
 public class CardController : MonoBehaviour
 {
     [SerializeField] private CardInfo cardInfo; // Información de la carta (imagen, año, etc.)
@@ -17,6 +18,8 @@ public class CardController : MonoBehaviour
     [SerializeField] private Ease movementEase; // Tipo de animación (facilitada por DOTween)
     [SerializeField] private bool inTimeline = false; // Indica si la carta está en la línea de tiempo
     [SerializeField] private bool animationPlay = false; // Controla si hay una animación en curso
+    [SerializeField] private GameObject cartucho; // Referencia al GameObject del cartucho
+    
 
     public void MoverCartaTimeline()
     {
@@ -95,25 +98,39 @@ public class CardController : MonoBehaviour
     {
         bool res = false;
 
-        // Verifica si la carta está en la línea de tiempo, si no hay una descripción activa en el canvas,
-        // y si no hay una animación activa de zoom en la descripción
         if (inTimeline && !UIManager.GetCanvasDescription() && !UIManager.GetAnimationDescriptionZoom())
         {
-            // Cambia el padre de la carta para que esté bajo el transform de la línea de tiempo
             gameObject.transform.parent = TimelineController.TimelineTransform();
-
-            // Notifica al inventario del jugador que el movimiento de la carta ha sido confirmado
             player.ConfirmarCardMovement();
-
-            // Actualiza el texto del año de la carta utilizando la información almacenada en CardInfo
             textYear.text = cardInfo.CardDateYear.ToString();
 
-            // Llama al método para verificar si la carta es correcta en el timeline y hacerla parpadear
+            if (cartucho != null)
+            {
+                // Activa el cartucho para que sea visible
+                cartucho.SetActive(true);
+
+                // Guarda la posición final del cartucho
+                Vector3 finalPosition = cartucho.transform.localPosition;
+
+                // Coloca el cartucho unos 100 unidades más abajo en el eje Y
+                cartucho.transform.localPosition = finalPosition + new Vector3(0, -1f, 0);
+
+                // Anima el cartucho hacia su posición final
+                cartucho.transform.DOLocalMove(finalPosition, 1f).SetEase(Ease.OutCubic).OnComplete(() => {
+
+                    textYear.gameObject.SetActive(true);
+                
+                
+                
+                });
+            }
+            else
+            {
+                Debug.LogError("El cartucho no está asignado en el Inspector");
+            }
+
             ComprobarYParpadear();
-
-            // Destruye el botón asociado a la carta, ya que se ha confirmado su posición en el timeline
             Destroy(buttonToDestroy);
-
             res = true;
         }
 
