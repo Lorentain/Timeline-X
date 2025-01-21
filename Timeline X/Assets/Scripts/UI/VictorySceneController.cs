@@ -7,14 +7,11 @@ public class VictorySceneController : MonoBehaviour
 
     void Start()
     {
-        // Verifica el jugador ganador y muestra el mensaje correspondiente
-        if (GameController.jugadorGanador == 1)
-        {
-            victoryText.text = "¡El Jugador 1 ha ganado!";
+        if(GameController.jugadorGanador != -1) {
+            victoryText.text = $"Â¡El Jugador {GameController.jugadorGanador} ha ganado!";
+        }else {
+            victoryText.text = "Â¡La partida ha quedado en empate";
         }
-        else if (GameController.jugadorGanador == 2)
-        {
-            victoryText.text = "¡El Jugador 2 ha ganado!";
-        }
+        
     }
 }
