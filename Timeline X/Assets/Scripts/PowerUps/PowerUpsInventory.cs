@@ -16,6 +16,11 @@ public class PowerUpsInventory : MonoBehaviour
 
     [SerializeField] private Ease movementeEase;
 
+    private void Update()
+    {
+
+    }
+
     public void AñadirPowerUpsComienzo()
     {
         inventoryPowerUps = new List<IPowerUp>();
@@ -24,10 +29,10 @@ public class PowerUpsInventory : MonoBehaviour
             Debug.Log("Se ha repartido un power up");
             GameObject aux = deckPowerUps.RepartirPowerUp();
             inventoryPowerUps.Add(aux.GetComponent<IPowerUp>());
-            aux.transform.DOMove(new Vector3(7,-3.5f,0),movementTime).SetEase(movementeEase);
+            aux.transform.DOMove(new Vector3(7, -3.5f, 0), movementTime).SetEase(movementeEase);
             aux.transform.SetParent(player.transform);
             aux.SetActive(true);
-            UIManager.UpdatePowerUpCount(player.name,inventoryPowerUps.Count);
+            UIManager.UpdatePowerUpCount(player.name, inventoryPowerUps.Count);
         }
     }
 }
