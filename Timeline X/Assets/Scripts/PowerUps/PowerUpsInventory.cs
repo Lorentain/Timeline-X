@@ -29,6 +29,7 @@ public class PowerUpsInventory : MonoBehaviour
             Debug.Log("Se ha repartido un power up");
             GameObject aux = deckPowerUps.RepartirPowerUp();
             inventoryPowerUps.Add(aux.GetComponent<IPowerUp>());
+            aux.GetComponent<IPowerUp>().SetCardInventory(player.GetComponent<CardInventory>());
             aux.transform.DOMove(new Vector3(7, -3.5f, 0), movementTime).SetEase(movementeEase);
             aux.transform.SetParent(player.transform);
             aux.SetActive(true);

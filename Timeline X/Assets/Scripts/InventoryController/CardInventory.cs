@@ -8,6 +8,8 @@ public class CardInventory : MonoBehaviour
 
     [SerializeField] private GameObject handPlayer;
 
+    [SerializeField] private GameObject player;
+
     [SerializeField] private List<GameObject> inventoryCard;
 
     [SerializeField] private GameObject prefabCard;
@@ -46,6 +48,7 @@ public class CardInventory : MonoBehaviour
             inventoryCard.Add(card.gameObject);
             card.transform.localPosition = new Vector3(i - 1, 0, 0);
             ReordenarInventario();
+            UIManager.UpdateCardsCount(player.name,inventoryCard.Count);
         }
     }
 
@@ -61,6 +64,7 @@ public class CardInventory : MonoBehaviour
         card.transform.localPosition = new Vector3(inventoryCard.Count - 1 , 0, 0);
         ReordenarInventario();
         Debug.Log("Carta robada:" + aux.CardName);
+        UIManager.UpdateCardsCount(player.name,inventoryCard.Count);
     }
 
     public void MoverHaciaTimeline(GameObject card)
@@ -101,4 +105,8 @@ public class CardInventory : MonoBehaviour
         isCardMovement = false;
     }
 
+    public GameObject ObtenerCartaAleatoria() {
+        int index = Random.Range(0, ContarCartas());
+        return inventoryCard[index];
+    }
 }

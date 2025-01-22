@@ -114,6 +114,7 @@ public class CardController : MonoBehaviour
             }
 
             ComprobarYParpadear();
+            UIManager.UpdateCardsCount(player.name,player.ContarCartas());
             Destroy(buttonToDestroy);
             res = true;
         }
@@ -229,11 +230,9 @@ public class CardController : MonoBehaviour
 
         // Anima el cartucho hacia su posición final
         cartucho.transform.DOLocalMove(finalPosition, 1f).SetEase(Ease.OutCubic).OnComplete(() => {
-
+            textYear.text = cardInfo.CardDateYear.ToString();
             textYear.gameObject.SetActive(true);
-
-
-
         });
+
     }
 }

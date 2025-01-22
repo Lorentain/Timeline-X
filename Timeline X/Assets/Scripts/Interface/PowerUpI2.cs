@@ -11,4 +11,9 @@ public class PowerUpI2 : MonoBehaviour, IPowerUp
     {
         Debug.Log("Power Up 2 funcionando");
     }
+
+    public void SetCardInventory(CardInventory aux)
+    {
+        
+    }
 }

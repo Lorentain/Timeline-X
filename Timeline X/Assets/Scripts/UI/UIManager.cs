@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textYear;
 
+    // Variables para el texto de la cantidad de power ups
     [SerializeField] private TextMeshProUGUI countPowerUpsP1;
 
     [SerializeField] private TextMeshProUGUI countPowerUpsP2;
@@ -22,6 +23,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI countPowerUpsP3;
 
     [SerializeField] private TextMeshProUGUI countPowerUpsP4;
+
+    // Variables para el texto de la cantidad de cartas
+    [SerializeField] private TextMeshProUGUI countCardsP1;
+
+    [SerializeField] private TextMeshProUGUI countCardsP2;
+
+    [SerializeField] private TextMeshProUGUI countCardsP3;
+
+    [SerializeField] private TextMeshProUGUI countCardsP4;
 
     [SerializeField] private Camera camera;
 
@@ -34,6 +44,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject feedGroupToToggle;
 
     [SerializeField] private bool animationDescriptionZoom = false;
+
+    [SerializeField] private float showZoomOrthoSize;
+
+    [SerializeField] private float normalZoomOrthoSize;
 
     public TMP_Text playerTurnText;
     public TMP_Text roundText;
@@ -65,11 +79,11 @@ public class UIManager : MonoBehaviour
         if (!instance.animationDescriptionZoom)
         {
             instance.animationDescriptionZoom = true;
-            instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            instance.camera.DOOrthoSize(instance.showZoomOrthoSize, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.canvasDescription.SetActive(true);
             });
-            instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -7f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+            instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y + 0.2f, -7f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
                 if (instance.specificGroupToToggle != null)
@@ -83,7 +97,7 @@ public class UIManager : MonoBehaviour
             });
         }
 
-        instance.camera.DOOrthoSize(0.5f, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
+        instance.camera.DOOrthoSize(instance.showZoomOrthoSize, instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
         {
             instance.canvasDescription.SetActive(true);
             if (instance.specificGroupToToggle != null)
@@ -95,7 +109,7 @@ public class UIManager : MonoBehaviour
                 instance.feedGroupToToggle.SetActive(false); // Ocultar grupo espec�fico
             }
         });
-        instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y, -7f), instance.movementTime).SetEase(instance.movementEase);
+        instance.camera.transform.DOMove(new Vector3(posicionCarta.x, posicionCarta.y + 0.2f, -7f), instance.movementTime).SetEase(instance.movementEase);
     }
 
     public static void HideDescription()
@@ -105,7 +119,7 @@ public class UIManager : MonoBehaviour
         instance.canvasDescription.SetActive(false);
 
         {
-            instance.camera.DOOrthoSize(3.5f, instance.movementTime).SetEase(instance.movementEase);
+            instance.camera.DOOrthoSize(instance.normalZoomOrthoSize, instance.movementTime).SetEase(instance.movementEase);
             instance.camera.transform.DOMove(new Vector3(0f, 0, -7f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
@@ -166,28 +180,55 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public static void UpdatePowerUpCount(string namePlayer, int cantidadPowerUp)
+    public static void UpdatePowerUpCount(string namePlayer, int amountPowerUp)
     {
         switch (namePlayer)
         {
             case "Jugador 1":
                 {
-                    instance.countPowerUpsP1.text = cantidadPowerUp.ToString();
+                    instance.countPowerUpsP1.text = amountPowerUp.ToString();
                     break;
                 }
             case "Jugador 2":
                 {
-                    instance.countPowerUpsP2.text = cantidadPowerUp.ToString();
+                    instance.countPowerUpsP2.text = amountPowerUp.ToString();
                     break;
                 }
             case "Jugador 3":
                 {
-                    instance.countPowerUpsP3.text = cantidadPowerUp.ToString();
+                    instance.countPowerUpsP3.text = amountPowerUp.ToString();
                     break;
                 }
             case "Jugador 4":
                 {
-                    instance.countPowerUpsP4.text = cantidadPowerUp.ToString();
+                    instance.countPowerUpsP4.text = amountPowerUp.ToString();
+                    break;
+                }
+        }
+    }
+
+    public static void UpdateCardsCount(string namePlayer, int amountCard)
+    {
+        switch (namePlayer)
+        {
+            case "Jugador 1":
+                {
+                    instance.countCardsP1.text = amountCard.ToString();
+                    break;
+                }
+            case "Jugador 2":
+                {
+                    instance.countCardsP2.text = amountCard.ToString();
+                    break;
+                }
+            case "Jugador 3":
+                {
+                    instance.countCardsP3.text = amountCard.ToString();
+                    break;
+                }
+            case "Jugador 4":
+                {
+                    instance.countCardsP4.text = amountCard.ToString();
                     break;
                 }
         }
