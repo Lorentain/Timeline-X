@@ -27,6 +27,7 @@ public class RoundManager : MonoBehaviour
 
     void Start()
     {
+        totalPlayers = PlayerPrefs.GetInt("TotalPlayers");
         // Añadir cartas al inicio para cada jugador
         for(int i = 0; i < totalPlayers;i++) {
             listCardInventoryPlayers[i].AñadirCartasComienzo();
