@@ -106,23 +106,7 @@ public class CardController : MonoBehaviour
 
             if (cartucho != null)
             {
-                // Activa el cartucho para que sea visible
-                cartucho.SetActive(true);
-
-                // Guarda la posición final del cartucho
-                Vector3 finalPosition = cartucho.transform.localPosition;
-
-                // Coloca el cartucho unos 100 unidades más abajo en el eje Y
-                cartucho.transform.localPosition = finalPosition + new Vector3(0, -1f, 0);
-
-                // Anima el cartucho hacia su posición final
-                cartucho.transform.DOLocalMove(finalPosition, 1f).SetEase(Ease.OutCubic).OnComplete(() => {
-
-                    textYear.gameObject.SetActive(true);
-                
-                
-                
-                });
+                ActivarCartucho();
             }
             else
             {
@@ -230,5 +214,26 @@ public class CardController : MonoBehaviour
     public int ObtenerAñoCarta()
     {
         return cardInfo.CardDateYear;
+    }
+
+    public void ActivarCartucho()
+    {
+        // Activa el cartucho para que sea visible
+        cartucho.SetActive(true);
+
+        // Guarda la posición final del cartucho
+        Vector3 finalPosition = cartucho.transform.localPosition;
+
+        // Coloca el cartucho unos 100 unidades más abajo en el eje Y
+        cartucho.transform.localPosition = finalPosition + new Vector3(0, -1f, 0);
+
+        // Anima el cartucho hacia su posición final
+        cartucho.transform.DOLocalMove(finalPosition, 1f).SetEase(Ease.OutCubic).OnComplete(() => {
+
+            textYear.gameObject.SetActive(true);
+
+
+
+        });
     }
 }

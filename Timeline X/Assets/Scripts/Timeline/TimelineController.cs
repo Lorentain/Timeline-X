@@ -46,6 +46,9 @@ public class TimelineController : MonoBehaviour
             card.gameObject.GetComponent<CardController>().ObtenerCardInfo()
         );
 
+        // Activa el cartucho y su texto (año) para la carta inicial
+        card.ActivarCartucho();
+
         // Coloca la carta recién creada en el centro (posición local en el timeline)
         card.transform.localPosition = new Vector3(0, 0, 0);
 
@@ -56,6 +59,7 @@ public class TimelineController : MonoBehaviour
         // ya que no será necesario en este estado inicial
         Destroy(card.gameObject.transform.Find("Button Destroy").gameObject);
     }
+
 
     public static bool AñadirCartaTimeline(GameObject gameObject)
     {
