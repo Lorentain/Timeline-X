@@ -15,6 +15,14 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textYear;
 
+    [SerializeField] private TextMeshProUGUI countPowerUpsP1;
+
+    [SerializeField] private TextMeshProUGUI countPowerUpsP2;
+
+    [SerializeField] private TextMeshProUGUI countPowerUpsP3;
+
+    [SerializeField] private TextMeshProUGUI countPowerUpsP4;
+
     [SerializeField] private Camera camera;
 
     [SerializeField] private float movementTime;
@@ -29,8 +37,6 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text playerTurnText;
     public TMP_Text roundText;
-
-
 
     private void Awake()
     {
@@ -99,7 +105,7 @@ public class UIManager : MonoBehaviour
         instance.canvasDescription.SetActive(false);
 
         {
-            instance.camera.DOOrthoSize(4.5f, instance.movementTime).SetEase(instance.movementEase);
+            instance.camera.DOOrthoSize(3.5f, instance.movementTime).SetEase(instance.movementEase);
             instance.camera.transform.DOMove(new Vector3(0f, 0, -7f), instance.movementTime).SetEase(instance.movementEase).OnComplete(() =>
             {
                 instance.animationDescriptionZoom = false;
@@ -157,6 +163,33 @@ public class UIManager : MonoBehaviour
         if (instance.feedGroupToToggle != null)
         {
             instance.feedGroupToToggle.SetActive(false); // Ocultar el grupo Feed espec�fico
+        }
+    }
+
+    public static void UpdatePowerUpCount(string namePlayer, int cantidadPowerUp)
+    {
+        switch (namePlayer)
+        {
+            case "Jugador 1":
+                {
+                    instance.countPowerUpsP1.text = cantidadPowerUp.ToString();
+                    break;
+                }
+            case "Jugador 2":
+                {
+                    instance.countPowerUpsP2.text = cantidadPowerUp.ToString();
+                    break;
+                }
+            case "Jugador 3":
+                {
+                    instance.countPowerUpsP3.text = cantidadPowerUp.ToString();
+                    break;
+                }
+            case "Jugador 4":
+                {
+                    instance.countPowerUpsP4.text = cantidadPowerUp.ToString();
+                    break;
+                }
         }
     }
 }

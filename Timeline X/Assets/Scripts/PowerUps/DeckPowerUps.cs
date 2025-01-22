@@ -1,29 +1,28 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeckPowerUps : MonoBehaviour
 {
-    [SerializeField] private List<IPowerUp> iPowerUp;
+    [SerializeField] private List<GameObject> powerUpsInterface;
+
+    //[SerializeField] private List<Object> powerUpsObject;
 
     //[SerializeField] private List<PowerUp> powerUps;
 
     //[SerializeField] private List<PowerUpAbstract> powerupabstract;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            //powerUps[0].Execute();
-            //powerupabstract[0].Execute();
-            iPowerUp[0].Execute();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            iPowerUp[1].Execute();
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            iPowerUp[2].Execute();
-        }
+    // private void Start() {
+    //     powerUpsInterface = new List<IPowerUp>();
+    //     foreach(var powerUp in powerUpsObject) {
+    //         powerUpsInterface.Add(((GameObject)powerUp).GetComponent<IPowerUp>());
+    //     }
+    // }
+
+    public GameObject RepartirPowerUp() {
+        int index = Random.Range(0, powerUpsInterface.Count);
+        GameObject powerUp = Instantiate(powerUpsInterface[index]);
+        return powerUp;
     }
+    
 }
