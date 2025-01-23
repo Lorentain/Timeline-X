@@ -6,7 +6,6 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
 
-
     [SerializeField] private GameObject canvasDescription;
 
     [SerializeField] private TextMeshProUGUI textName;
@@ -69,7 +68,7 @@ public class UIManager : MonoBehaviour
 
     private void UpdateUI(int player, int round)
     {
-        playerTurnText.text = $"Player: {player + 1}";
+        playerTurnText.text = $"Player: {GameController.CambiarNombreJugadores("Jugador " + (player + 1))}";
         roundText.text = $"Round: {round}";
     }
 

@@ -44,7 +44,7 @@ public class RoundManager : MonoBehaviour
     {
 
         // Registrar la acci�n en el feed y consola
-        instance.actionFeedManager.LogAction($"Jugador {instance.currentPlayer + 1} confirma su jugada en la ronda {instance.currentRound}");
+        instance.actionFeedManager.LogAction($"Jugador {GameController.CambiarNombreJugadores("Jugador " + (instance.currentPlayer + 1))} confirma su jugada en la ronda {instance.currentRound}");
         instance.actionFeedManager.LogAction("Turno finalizado.");
 
         // Cambiar al siguiente jugador
@@ -64,7 +64,7 @@ public class RoundManager : MonoBehaviour
             for(int i = 0; i < instance.totalPlayers;i++) {
                 if(instance.listCardInventoryPlayers[i].ContarCartas() == 0) { // Verifica si jugador X tiene 0 cartas
                     GameController.Instance.Ganador(i+1); // Jugador X ha ganado
-                    instance.actionFeedManager.LogAction($"Jugador {i+1} ha ganado la partida, se quedó sin cartas."); // Registrar la acción en el feed y consola
+                    instance.actionFeedManager.LogAction(GameController.CambiarNombreJugadores("Jugador " + (i + 1)) + "ha ganado la partida, se quedó sin cartas."); // Registrar la acción en el feed y consola
                 }
             }
         }
@@ -74,7 +74,7 @@ public class RoundManager : MonoBehaviour
     public static void NotifyTurnChange()
     {
         // Registrar el cambio de turno
-        instance.actionFeedManager.LogAction($"Es el turno del Jugador {instance.currentPlayer + 1} - Ronda {instance.currentRound}");
+        instance.actionFeedManager.LogAction($"Es el turno de {GameController.CambiarNombreJugadores("Jugador " + (instance.currentPlayer + 1))} - Ronda {instance.currentRound}");
 
         OnTurnChanged?.Invoke(instance.currentPlayer, instance.currentRound);
     }

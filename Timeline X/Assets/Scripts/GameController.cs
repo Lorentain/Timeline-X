@@ -1,17 +1,29 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
 
-    [SerializeField] private GameObject player1;
+    // Referencia a cada input field del nombre de cada jugador
+    [SerializeField] private TMP_InputField inputNamePlayer1;
 
-    [SerializeField] private GameObject player2;
+    [SerializeField] private TMP_InputField inputNamePlayer2;
 
-    [SerializeField] private GameObject player3;
+    [SerializeField] private TMP_InputField inputNamePlayer3;
 
-    [SerializeField] private GameObject player4;
+    [SerializeField] private TMP_InputField inputNamePlayer4;
+
+    // Variable de cada nombre nuevo asignado
+    [SerializeField] private string newNamePlayer1;
+
+    [SerializeField] private string newNamePlayer2;
+
+    [SerializeField] private string newNamePlayer3;
+
+    [SerializeField] private string newNamePlayer4;
 
     public static int jugadorGanador;  // Variable estática para almacenar el ganador
 
@@ -20,6 +32,9 @@ public class GameController : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }else {
+            Destroy(gameObject);
         }
     }
 
@@ -32,16 +47,47 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene("VictoryScene");  // Asegúrate de que el nombre coincida con la escena que creaste
     }
 
-    public static void Empate() {
+    public static void Empate()
+    {
         Debug.Log("Partida empatada");
         jugadorGanador = -1;
         SceneManager.LoadScene("VictoryScene");
     }
 
-    public static void CambiarNombreJugadores(string Player1, string Player2, string Player3, string Player4) {
-        Instance.player1.name = Player1;
-        Instance.player2.name = Player2;
-        Instance.player3.name = Player3;
-        Instance.player4.name = Player4;
+    public static string CambiarNombreJugadores(string Player)
+    {
+        string res = null;
+        switch (Player)
+        {
+            case "Jugador 1":
+                {
+                    res = Instance.newNamePlayer1;
+                    break;
+                }
+            case "Jugador 2":
+                {
+                    res = Instance.newNamePlayer2;
+                    break;
+                }
+            case "Jugador 3":
+                {
+                    res = Instance.newNamePlayer3;
+                    break;
+                }
+            case "Jugador 4":
+                {
+                    res = Instance.newNamePlayer4;
+                    break;
+                }
+        }
+        return res;
+    }
+
+    public static void GuardarNombreJugadores()
+    {
+        Instance.newNamePlayer1 = Instance.inputNamePlayer1.text.ToString();
+        Instance.newNamePlayer2 = Instance.inputNamePlayer2.text.ToString();
+        Instance.newNamePlayer3 = Instance.inputNamePlayer3.text.ToString();
+        Instance.newNamePlayer4 = Instance.inputNamePlayer4.text.ToString();
     }
 }

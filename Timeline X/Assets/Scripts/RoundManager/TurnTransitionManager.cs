@@ -24,6 +24,10 @@ public class TurnTransitionManager : MonoBehaviour
         }
     }
 
+    private void Start() {
+        transitionText.text = $"¡Turno terminado! Ahora le toca a {GameController.CambiarNombreJugadores("Jugador 1")}";
+    }
+
     private void OnEnable()
     {
         RoundManager.OnTurnChanged += HandleTurnChanged;
@@ -41,7 +45,7 @@ public class TurnTransitionManager : MonoBehaviour
             // Mostrar la transición en pantalla con un retraso antes del fade in
             StartCoroutine(DelayedFadeInPanel(2f)); // Retraso de 1 segundo antes de que aparezca el panel
 
-            transitionText.text = $"¡Turno terminado! Ahora le toca al Jugador {currentPlayer + 1}";
+            transitionText.text = $"¡Turno terminado! Ahora le toca a {GameController.CambiarNombreJugadores("Jugador " + (currentPlayer + 1))}";
 
             continueButton.interactable = false;
             Invoke(nameof(EnableContinueButton), 2f); // Ajusta el tiempo si necesitas más sincronización
