@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Steam
   m_EditorClassIdentifier: 
   cardName: Steam
-  cardDescription: Steam es Steam
-  cardDateDay: 9
-  cardDateMonth: 2
-  cardDateYear: 2004
+  cardDescription: Se funda Steam
+  cardDateDay: 12
+  cardDateMonth: 9
+  cardDateYear: 2003
   cardImage: {fileID: 7414261224600783322, guid: 657bdfaa81a7a554194cf4f6c517132e, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Mario Bros
   m_EditorClassIdentifier: 
   cardName: Mario Bros
-  cardDescription: Mario bros el fontanero rojo
-  cardDateDay: 10
-  cardDateMonth: 12
-  cardDateYear: 1990
+  cardDescription: Lanzamiento del Primer Super Mario Bros
+  cardDateDay: 13
+  cardDateMonth: 9
+  cardDateYear: 1985
   cardImage: {fileID: 4120955195336003847, guid: 743e976cdfe467e4c93200e594cf9052, type: 3}

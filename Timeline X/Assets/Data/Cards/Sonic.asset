@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d719aafb8c4d0e045b92f2b0b1390745, type: 3}
   m_Name: Sonic
   m_EditorClassIdentifier: 
-  cardName: Sonic
-  cardDescription: El erizo azu'
-  cardDateDay: 4
-  cardDateMonth: 8
-  cardDateYear: 1912
+  cardName: Sonic The Hedgehog
+  cardDescription: Primer juego de Sonic
+  cardDateDay: 23
+  cardDateMonth: 6
+  cardDateYear: 1991
   cardImage: {fileID: 7804126658106156513, guid: 6f375efb53747dd4bbf39cdbc9e41ea1, type: 3}

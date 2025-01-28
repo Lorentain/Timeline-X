@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d719aafb8c4d0e045b92f2b0b1390745, type: 3}
   m_Name: PS2
   m_EditorClassIdentifier: 
-  cardName: Ps2
-  cardDescription: La play estation do
-  cardDateDay: 2
-  cardDateMonth: 2
-  cardDateYear: 2002
+  cardName: Playstation 2
+  cardDescription: Lanzamiento de la consola Playstation 2
+  cardDateDay: 4
+  cardDateMonth: 3
+  cardDateYear: 2000
   cardImage: {fileID: -4908336574042393075, guid: 27e6126c9b8a6c94fb05465e23c300b9, type: 3}

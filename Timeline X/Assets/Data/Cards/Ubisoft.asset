@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ubisoft
   m_EditorClassIdentifier: 
   cardName: Ubisoft
-  cardDescription: "Bubisoft la compa\xF1ia de los fallos"
-  cardDateDay: 5
-  cardDateMonth: 10
-  cardDateYear: 1999
+  cardDescription: Se funda Ubisoft
+  cardDateDay: 28
+  cardDateMonth: 3
+  cardDateYear: 1986
   cardImage: {fileID: 284585969139516027, guid: 42b279f1ed680d2469b467c5b1e25d7d, type: 3}

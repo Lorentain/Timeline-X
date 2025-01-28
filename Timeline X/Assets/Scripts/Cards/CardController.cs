@@ -217,7 +217,7 @@ public class CardController : MonoBehaviour
         return cardInfo.CardDateYear;
     }
 
-    public void ActivarCartucho()
+    public void ActivarCartucho(bool isPowerUp2Active = false, bool isPowerUp3Active = false)
     {
         // Activa el cartucho para que sea visible
         cartucho.SetActive(true);
@@ -230,9 +230,93 @@ public class CardController : MonoBehaviour
 
         // Anima el cartucho hacia su posición final
         cartucho.transform.DOLocalMove(finalPosition, 1f).SetEase(Ease.OutCubic).OnComplete(() => {
-            textYear.text = cardInfo.CardDateYear.ToString();
+            string yearString = cardInfo.CardDateYear.ToString();
+
+            // Si PowerUp 2 está activo, mostramos la fecha incompleta (XXX_X)
+            if (isPowerUp2Active)
+            {
+                string incompleteYear = yearString.Substring(0, 3) + "X"; // Año incompleto
+                textYear.text = incompleteYear;
+            }
+            // Si PowerUp 3 está activo, mostramos el abanico de años con el año real incluido
+            else if (isPowerUp3Active)
+            {
+                // Obtener el año real de la carta
+                int year = cardInfo.CardDateYear;
+
+                // Definir un rango de ±5 años (rango total de 10 años)
+                int range = 5;
+
+                // Generar un desplazamiento aleatorio dentro de los ±5 años
+                int offset = Random.Range(-range, range + 1);
+
+                // Calcular el rango real de años
+                int startRange = Mathf.Max(year + offset - range, 0); // Asegura que no sea menor que 0
+                int endRange = year + offset + range;
+
+                // Generar dos opciones aleatorias dentro del rango que incluya el año real
+                int firstOption = Random.Range(startRange, endRange + 1);
+                int secondOption = Random.Range(startRange, endRange + 1);
+
+                // Asegurarse de que las dos opciones sean distintas
+                while (firstOption == secondOption)
+                {
+                    secondOption = Random.Range(startRange, endRange + 1);
+                }
+
+                // Asegurarnos de que el año real esté incluido en el abanico
+                while (firstOption != year && secondOption != year)
+                {
+                    firstOption = Random.Range(startRange, endRange + 1);
+                    secondOption = Random.Range(startRange, endRange + 1);
+                }
+
+                // Ordenar las dos opciones para que siempre sea primero el menor
+                int smallerYear = Mathf.Min(firstOption, secondOption);
+                int largerYear = Mathf.Max(firstOption, secondOption);
+
+                // Mostrar el abanico de fechas en el cartucho
+                textYear.text = $"{smallerYear % 100:00}-{largerYear % 100:00}"; // Mostramos las últimas dos cifras
+            }
+            else
+            {
+                // Si no se activan los PowerUp 2 ni 3, mostramos el año completo
+                textYear.text = yearString; // Año completo
+            }
+
+            // Mostrar el texto de la fecha
             textYear.gameObject.SetActive(true);
         });
-
     }
+
+
+    public void ActualizarFechaConAbanico()
+    {
+        int year = cardInfo.CardDateYear;
+
+        // Obtén las dos últimas cifras del año
+        int lastTwoDigits = year % 100;
+
+        // Generamos un rango dentro de esa década
+        int startRange = lastTwoDigits / 10 * 10; // Comienzo del rango (por ejemplo, si es 2003, comenzaría en 00)
+        int endRange = startRange + 9; // Fin del rango
+
+        // Calculamos dos números aleatorios dentro de esta década
+        int firstOption = Random.Range(startRange, endRange + 1);
+        int secondOption = Random.Range(startRange, endRange + 1);
+
+        // Aseguramos que las dos opciones sean distintas
+        while (firstOption == secondOption)
+        {
+            secondOption = Random.Range(startRange, endRange + 1);
+        }
+
+        // Mostrar el abanico de fechas en el cartucho
+        string dateRange = $"{firstOption:00}-{secondOption:00}";
+        textYear.text = dateRange;
+
+        // Mostrar el cartucho con la fecha
+        textYear.gameObject.SetActive(true);
+    }
+
 }
