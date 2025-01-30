@@ -2,11 +2,14 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CardInfo", menuName = "Timeline X/Carta")]
+[Serializable]
 public class CardInfo : ScriptableObject
 {
     [SerializeField] private string cardName;
 
     [SerializeField] private string cardDescription;
+
+    [SerializeField] private string cardCategory;
 
     [SerializeField] private int cardDateDay;
 
@@ -22,6 +25,10 @@ public class CardInfo : ScriptableObject
         {
             return cardName;
         }
+        set
+        {
+            cardName = value;
+        }
     }
 
     public string CardDescription
@@ -29,6 +36,22 @@ public class CardInfo : ScriptableObject
         get
         {
             return cardDescription;
+        }
+        set
+        {
+            cardDescription = value;
+        }
+    }
+
+    public string CardCategory
+    {
+        get
+        {
+            return cardCategory;
+        }
+        set
+        {
+            cardCategory = value;
         }
     }
 
@@ -38,6 +61,10 @@ public class CardInfo : ScriptableObject
         {
             return cardDateDay;
         }
+        set
+        {
+            cardDateDay = value;
+        }
     }
 
     public int CardDateMonth
@@ -45,6 +72,10 @@ public class CardInfo : ScriptableObject
         get
         {
             return cardDateMonth;
+        }
+        set
+        {
+            cardDateMonth = value;
         }
     }
 
@@ -54,6 +85,10 @@ public class CardInfo : ScriptableObject
         {
             return cardDateYear;
         }
+        set
+        {
+            cardDateYear = value;
+        }
     }
 
     public Sprite CardImage
@@ -61,6 +96,10 @@ public class CardInfo : ScriptableObject
         get
         {
             return cardImage;
+        }
+        set
+        {
+            cardImage = value;
         }
     }
 }

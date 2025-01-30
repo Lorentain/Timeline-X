@@ -35,23 +35,44 @@ public class DBManager : MonoBehaviour
 
     private IEnumerator SetUpConnector()
     {
-
         DBConnector connector = null;
         int index = 0;
         while ((connector == null) && index < dbConnectors.Count)
         {
+            bool ready = false;
             dbConnectors[index].SetUp(
             (bool res) =>
             {
                 if (res)
                 {
                     connector = dbConnectors[index];
-                    cards = dbConnectors[index].GetCards();
+                    dbConnectors[index].GetCards((List<CardInfo> cardsList) =>
+                    {
+                        cards = cardsList;
+                        foreach(CardInfo card in cards) {
+                            Debug.Log(card.CardName);
+                            Debug.Log(card.CardDateMonth);
+                            Debug.Log(card.CardDateYear);
+                        }
+                    });
                 }
+                ready = true;
             });
 
-            yield return null;
+            float waitingTime = 0;
+            do
+            {
+                yield return null;
+                waitingTime += Time.deltaTime;
+            } while (!ready && waitingTime < 10);
+
+
             index++;
+        }
+
+        if (connector != null)
+        {
+            Debug.Log(connector.name);
         }
     }
 }

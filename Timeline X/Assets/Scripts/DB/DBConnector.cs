@@ -6,5 +6,5 @@ public abstract class DBConnector : MonoBehaviour
 {
     public abstract void SetUp(Action<bool> callback);
 
-    public abstract List<CardInfo> GetCards();
+    public abstract void GetCards(Action<List<CardInfo>> callback);
 }

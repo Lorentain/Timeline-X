@@ -7,14 +7,19 @@ public class LocalConnector : DBConnector
 
     [SerializeField] private List<CardInfo> cards;
 
-    public override List<CardInfo> GetCards()
+    public override void GetCards(Action<List<CardInfo>> callback)
     {
-        return cards;
+        if (callback != null)
+        {
+            Debug.Log("Cartas obtenidas en local");
+            callback(cards);
+        }
     }
 
     public override void SetUp(Action<bool> callback)
     {
-        if(callback != null) {
+        if (callback != null)
+        {
             callback(true);
         }
     }

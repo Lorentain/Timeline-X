@@ -270,7 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0eeb9c95cbc90b94c83f5013475d0288, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dbConnectors: []
+  dbConnectors:
+  - {fileID: 27569832}
+  - {fileID: 27569829}
 --- !u!4 &27569831
 Transform:
   m_ObjectHideFlags: 0
