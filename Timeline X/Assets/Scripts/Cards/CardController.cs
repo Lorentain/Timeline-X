@@ -178,6 +178,7 @@ public class CardController : MonoBehaviour
     public void AgregarCardInfo(CardInfo aux)
     {
         cardInfo = aux;
+        Debug.Log(cardInfo);
         spriteRendererImagen.sprite = cardInfo.CardImage;
     }
 

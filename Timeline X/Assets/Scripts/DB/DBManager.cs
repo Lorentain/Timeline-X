@@ -16,6 +16,7 @@ public class DBManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -46,15 +47,6 @@ public class DBManager : MonoBehaviour
                 if (res)
                 {
                     connector = dbConnectors[index];
-                    dbConnectors[index].GetCards((List<CardInfo> cardsList) =>
-                    {
-                        cards = cardsList;
-                        foreach(CardInfo card in cards) {
-                            Debug.Log(card.CardName);
-                            Debug.Log(card.CardDateMonth);
-                            Debug.Log(card.CardDateYear);
-                        }
-                    });
                 }
                 ready = true;
             });
@@ -73,6 +65,16 @@ public class DBManager : MonoBehaviour
         if (connector != null)
         {
             Debug.Log(connector.name);
+            connector.GetCards((List<CardInfo> cardsList) =>
+            {
+                cards = cardsList;
+                foreach (CardInfo card in cards) // Comprobar que funcionen las cartas
+                {
+                    Debug.Log(card.CardName);
+                    Debug.Log(card.CardDateMonth);
+                    Debug.Log(card.CardDateYear);
+                }
+            });
         }
     }
 }

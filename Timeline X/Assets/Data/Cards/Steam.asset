@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d719aafb8c4d0e045b92f2b0b1390745, type: 3}
+  m_Script: {fileID: 11500000, guid: 96c64d8cb0431f8469686a89147ce5eb, type: 3}
   m_Name: Steam
   m_EditorClassIdentifier: 
-  cardName: Steam
-  cardDescription: Se funda Steam
-  cardDateDay: 12
-  cardDateMonth: 9
-  cardDateYear: 2003
-  cardImage: {fileID: 7414261224600783322, guid: 657bdfaa81a7a554194cf4f6c517132e, type: 3}
+  cardInfo:
+    cardName: Steam
+    cardDescription: Steam es Steam
+    cardCategory: Empresa
+    cardDateDay: 1
+    cardDateMonth: 1
+    cardDateYear: 2000
+    cardImage: {fileID: 7414261224600783322, guid: 657bdfaa81a7a554194cf4f6c517132e, type: 3}

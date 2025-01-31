@@ -6,17 +6,15 @@ public class DeckController : MonoBehaviour
 
     [SerializeField] private List<CardInfo> listCards;
 
-    [SerializeField] private List<CardInfo> cards;
+    private void Awake() {
+        listCards = DBManager.GetCards();
+    }
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        foreach (CardInfo card in listCards)
         {
-            cards = DBManager.GetCards();
-            foreach (CardInfo card in cards)
-            {
-                Debug.Log(card.CardName);
-            }
+            Debug.Log(card.CardName);
         }
     }
 

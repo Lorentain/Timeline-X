@@ -1,9 +1,8 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CardInfo", menuName = "Timeline X/Carta")]
 [Serializable]
-public class CardInfo : ScriptableObject
+public class CardInfo
 {
     [SerializeField] private string cardName;
 
