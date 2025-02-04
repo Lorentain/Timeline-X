@@ -31,7 +31,7 @@ public class DBManager : MonoBehaviour
 
     public static List<CardInfo> GetCards()
     {
-        return instance.cards;
+        return new List<CardInfo>(instance.cards);
     }
 
     private IEnumerator SetUpConnector()
