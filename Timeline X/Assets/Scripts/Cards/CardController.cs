@@ -182,7 +182,7 @@ public class CardController : MonoBehaviour
         spriteRendererImagen.sprite = cardInfo.CardImage;
     }
 
-    public void AgregarCardInvetory(CardInventory cardInventory)
+    public void AgregarCardInventory(CardInventory cardInventory)
     {
         player = cardInventory;
     }

@@ -12,7 +12,15 @@ public class CardInventory : MonoBehaviour
 
     [SerializeField] private List<GameObject> inventoryCard;
 
-    [SerializeField] private GameObject prefabCard;
+    [SerializeField] private GameObject prefabCardEmpresa;
+
+    [SerializeField] private GameObject prefabCardVideojuego;
+
+    [SerializeField] private GameObject prefabCardEvento;
+
+    [SerializeField] private GameObject prefabCardConsola;
+
+    [SerializeField] private GameObject prefabCardSoftware;
 
     [SerializeField] private int giveCardStart;
 
@@ -41,14 +49,42 @@ public class CardInventory : MonoBehaviour
         {
             CardInfo aux = deckController.RepartirCarta();
             Debug.Log(aux);
-            CardController card = Instantiate(prefabCard, gameObject.transform).GetComponent<CardController>();
-            card.AgregarCardInvetory(this);
+            CardController card = null;
+            switch (aux.CardCategory)
+            {
+                case "Empresa":
+                    {
+                        card = Instantiate(prefabCardEmpresa, gameObject.transform).GetComponent<CardController>();
+                        break;
+                    }
+                case "Videojuego":
+                    {
+                        card = Instantiate(prefabCardVideojuego, gameObject.transform).GetComponent<CardController>();
+                        break;
+                    }
+                case "Evento":
+                    {
+                        card = Instantiate(prefabCardEvento, gameObject.transform).GetComponent<CardController>();
+                        break;
+                    }
+                case "Consola":
+                    {
+                        card = Instantiate(prefabCardConsola, gameObject.transform).GetComponent<CardController>();
+                        break;
+                    }
+                case "Software":
+                    {
+                        card = Instantiate(prefabCardSoftware, gameObject.transform).GetComponent<CardController>();
+                        break;
+                    }
+            }
+            card.AgregarCardInventory(this);
             card.AgregarHandPlayer(handPlayer.transform);
             card.AgregarCardInfo(aux);
             inventoryCard.Add(card.gameObject);
             card.transform.localPosition = new Vector3(i - 1, 0, 0);
             ReordenarInventario();
-            UIManager.UpdateCardsCount(player.name,inventoryCard.Count);
+            UIManager.UpdateCardsCount(player.name, inventoryCard.Count);
         }
     }
 
@@ -56,15 +92,43 @@ public class CardInventory : MonoBehaviour
     {
         CardInfo aux = deckController.RepartirCarta();
         Debug.Log(aux);
-        CardController card = Instantiate(prefabCard, gameObject.transform).GetComponent<CardController>();
-        card.AgregarCardInvetory(this);
+        CardController card = null;
+        switch (aux.CardCategory)
+        {
+            case "Empresa":
+                {
+                    card = Instantiate(prefabCardEmpresa, gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Videojuego":
+                {
+                    card = Instantiate(prefabCardVideojuego, gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Evento":
+                {
+                    card = Instantiate(prefabCardEvento, gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Consola":
+                {
+                    card = Instantiate(prefabCardConsola, gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Software":
+                {
+                    card = Instantiate(prefabCardSoftware, gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+        }
+        card.AgregarCardInventory(this);
         card.AgregarHandPlayer(handPlayer.transform);
         card.AgregarCardInfo(aux);
         inventoryCard.Add(card.gameObject);
-        card.transform.localPosition = new Vector3(inventoryCard.Count - 1 , 0, 0);
+        card.transform.localPosition = new Vector3(inventoryCard.Count - 1, 0, 0);
         ReordenarInventario();
         Debug.Log("Carta robada:" + aux.CardName);
-        UIManager.UpdateCardsCount(player.name,inventoryCard.Count);
+        UIManager.UpdateCardsCount(player.name, inventoryCard.Count);
     }
 
     public void MoverHaciaTimeline(GameObject card)
@@ -91,7 +155,7 @@ public class CardInventory : MonoBehaviour
         float formula = (inventoryCard.Count / 2f) - 0.5f;
         for (int i = 0; i < inventoryCard.Count; i++)
         {
-            inventoryCard[i].transform.DOLocalMoveX((i*1.5f) - formula, movementTime).SetEase(movementeEase);
+            inventoryCard[i].transform.DOLocalMoveX((i * 1.5f) - formula, movementTime).SetEase(movementeEase);
         }
     }
 
@@ -105,7 +169,8 @@ public class CardInventory : MonoBehaviour
         isCardMovement = false;
     }
 
-    public GameObject ObtenerCartaAleatoria() {
+    public GameObject ObtenerCartaAleatoria()
+    {
         int index = Random.Range(0, ContarCartas());
         return inventoryCard[index];
     }

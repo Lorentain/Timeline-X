@@ -12,7 +12,15 @@ public class TimelineController : MonoBehaviour
 
     [SerializeField] private DeckController deckController;
 
-    [SerializeField] private GameObject prefabCard;
+    [SerializeField] private GameObject prefabCardEmpresa;
+
+    [SerializeField] private GameObject prefabCardVideojuego;
+
+    [SerializeField] private GameObject prefabCardEvento;
+
+    [SerializeField] private GameObject prefabCardConsola;
+
+    [SerializeField] private GameObject prefabCardSoftware;
 
     [SerializeField] private float movementTime;
 
@@ -36,7 +44,35 @@ public class TimelineController : MonoBehaviour
         CardInfo aux = instance.deckController.RepartirCarta();
 
         // Crea una nueva instancia de la carta usando el prefab configurado y la asocia al GameObject del timeline
-        CardController card = Instantiate(instance.prefabCard, instance.gameObject.transform).GetComponent<CardController>();
+        CardController card = null;
+        switch (aux.CardCategory)
+        {
+            case "Empresa":
+                {
+                    card = Instantiate(instance.prefabCardEmpresa, instance.gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Videojuego":
+                {
+                    card = Instantiate(instance.prefabCardVideojuego, instance.gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Evento":
+                {
+                    card = Instantiate(instance.prefabCardEvento, instance.gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Consola":
+                {
+                    card = Instantiate(instance.prefabCardConsola, instance.gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+            case "Software":
+                {
+                    card = Instantiate(instance.prefabCardSoftware, instance.gameObject.transform).GetComponent<CardController>();
+                    break;
+                }
+        }
 
         // Asigna la información de la carta obtenida (aux) al controlador de la carta recién creada
         card.AgregarCardInfo(aux);
@@ -425,7 +461,7 @@ public class TimelineController : MonoBehaviour
             GameObject carta = instance.cardsTimeline[i];
 
             // Mueve cada carta a su nueva posición en el eje X, utilizando DOTween para animar el movimiento.
-            carta.transform.DOMoveX(i*1.5f, instance.movementTime).SetEase(instance.movementEase);
+            carta.transform.DOMoveX(i * 1.5f, instance.movementTime).SetEase(instance.movementEase);
         }
     }
 
