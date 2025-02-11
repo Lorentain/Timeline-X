@@ -800,8 +800,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a3fef0603dc32914cb3cc8b7c862f65b, type: 3}
-  m_Color: {r: 0.9716981, g: 0.4175056, b: 0.38959593, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0ca58d11f2a34e945bf2bb8ea65c3343, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1000,7 +1000,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &9088453364835048462
 MonoBehaviour:

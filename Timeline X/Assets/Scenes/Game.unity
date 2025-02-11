@@ -337,11 +337,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardsTimeline: []
   deckController: {fileID: 734696734}
-  prefabCardEmpresa: {fileID: 5171098922327773328, guid: 09d00ffc4f236644bbf25580504cae7c, type: 3}
-  prefabCardVideojuego: {fileID: 5171098922327773328, guid: 078fffd480054df48a94aeb511490f1b, type: 3}
-  prefabCardEvento: {fileID: 5171098922327773328, guid: ead02d8521851524dae51c409c9f0280, type: 3}
+  prefabCardEmpresa: {fileID: 2347616647511227199, guid: 2e61d457255e61244908405eb664f667, type: 3}
+  prefabCardVideojuego: {fileID: 3110285829789561219, guid: 1bffc8cc92da0384f89ab33782ca2789, type: 3}
+  prefabCardEvento: {fileID: 7973707678118249304, guid: eb1952bcbd59c6b4cbd8729516cfb931, type: 3}
   prefabCardConsola: {fileID: 5171098922327773328, guid: 117eb783c1a864d479edd959334f1bdb, type: 3}
-  prefabCardSoftware: {fileID: 5171098922327773328, guid: 7d370f6c23b707c49b1d64ca990afb6c, type: 3}
+  prefabCardSoftware: {fileID: 501046044649633216, guid: e62ee45d7f462f946967d3a245fbd5d1, type: 3}
   movementTime: 0.5
   movementEase: 28
   animationPlay: 0
