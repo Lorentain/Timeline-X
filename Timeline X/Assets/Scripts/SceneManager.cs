@@ -1,10 +1,9 @@
 using UnityEngine;
 using unitySM = UnityEngine.SceneManagement.SceneManager;
 using unityLSM = UnityEngine.SceneManagement.LoadSceneMode;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SceneManager : MonoBehaviour
 {
@@ -17,6 +16,8 @@ public class SceneManager : MonoBehaviour
     [SerializeField] private CanvasGroup fadeCanvas;
 
     [SerializeField] private float fadeTime;
+
+    [SerializeField] private Image fillLoadingBar;
 
     private void Awake()
     {
@@ -51,15 +52,29 @@ public class SceneManager : MonoBehaviour
             yield return unitySM.UnloadSceneAsync(instance.loadScene);
         }
         AsyncOperation asynOP = unitySM.LoadSceneAsync(sceneName, unityLSM.Additive);
-        do {
+        float progress = 0;
+        do
+        {
+            if (progress >= 0.5f)
+            {
+                yield return null;
+                progress += Time.deltaTime;
+            }
+            else
+            {
+                yield return new WaitForSeconds(Random.Range(0.5f,1f));
+                progress += Random.Range(0.05f, 0.2f);
+            }
             Debug.Log(asynOP.progress);
-            yield return null;
-        }while(!asynOP.isDone);
-        
+            fillLoadingBar.fillAmount = progress;
+        } while (progress < 1 || !asynOP.isDone);
+        progress = 0;
         instance.loadScene = sceneName;
-        yield return instance.fadeCanvas.DOFade(0, instance.fadeTime).OnComplete(() => {
+        yield return instance.fadeCanvas.DOFade(0, instance.fadeTime).OnComplete(() =>
+        {
             fadeCanvas.interactable = false;
             fadeCanvas.blocksRaycasts = false;
+            fillLoadingBar.fillAmount = 0;
         }).WaitForCompletion();
     }
 }
