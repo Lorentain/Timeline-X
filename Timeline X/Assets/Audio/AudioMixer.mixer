@@ -29,7 +29,7 @@ AudioMixerGroupController:
   m_Send: 00000000000000000000000000000000
   m_Effects:
   - {fileID: -8379487312791361718}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 4
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
@@ -70,7 +70,11 @@ AudioMixerController:
   m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 2d91970b976f73d48bded99cbaec2245
+    name: BGVolume
+  - guid: 3fa970f6f003e7d4689386e2493bc29c
+    name: EffectsVolume
   m_AudioMixerGroupViews:
   - guids:
     - 1c6dd4fe57a0f6841a1778b1a102d9c4
@@ -155,7 +159,7 @@ AudioMixerGroupController:
   m_Effects:
   - {fileID: -1081869606579447964}
   - {fileID: 4236851744792724961}
-  m_UserColorIndex: 0
+  m_UserColorIndex: 1
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0

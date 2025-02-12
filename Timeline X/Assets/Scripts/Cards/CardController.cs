@@ -19,6 +19,7 @@ public class CardController : MonoBehaviour
     [SerializeField] private bool inTimeline = false; // Indica si la carta está en la línea de tiempo
     [SerializeField] private bool animationPlay = false; // Controla si hay una animación en curso
     [SerializeField] private GameObject cartucho; // Referencia al GameObject del cartucho
+    [SerializeField] private Tweener animationCard; // Animación de la carta
     
 
     public void MoverCartaTimeline()
@@ -51,6 +52,14 @@ public class CardController : MonoBehaviour
 
                 // Marca que la carta ahora está en la línea de tiempo
                 inTimeline = true;
+
+                // Pequeña animación de balanceo
+                transform.rotation = Quaternion.Euler(0, 0, 5);
+                animationCard = gameObject.transform
+                    .DORotate(new Vector3(0, 0, -5), 0.5f) // Rota a 10 grados en Z
+                    .SetLoops(-1, LoopType.Yoyo) // Hace el movimiento de ida y vuelta
+                    .SetEase(Ease.InOutSine); // Suaviza el movimiento
+
 
                 // Imprime un mensaje en la consola para depuración
                 Debug.Log("Movimiento de carta al timeline");
@@ -91,6 +100,8 @@ public class CardController : MonoBehaviour
 
             // Marca que la carta ya no está en la línea de tiempo
             inTimeline = false;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animationCard.Kill();
         }
     }
 
@@ -117,6 +128,8 @@ public class CardController : MonoBehaviour
             UIManager.UpdateCardsCount(player.name,player.ContarCartas());
             Destroy(buttonToDestroy);
             res = true;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            animationCard.Kill();
         }
 
         return res;
