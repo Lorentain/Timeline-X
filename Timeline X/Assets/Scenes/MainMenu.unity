@@ -3328,6 +3328,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Audio Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 8335974109176127817, guid: 68322f0f20072fd4a8566d524f164e22, type: 3}
+      propertyPath: effectsSource
+      value: 
+      objectReference: {fileID: 596791020}
+    - target: {fileID: 8335974109176127817, guid: 68322f0f20072fd4a8566d524f164e22, type: 3}
+      propertyPath: backgroundMusicSource
+      value: 
+      objectReference: {fileID: 1148577964}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

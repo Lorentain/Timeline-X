@@ -43,6 +43,9 @@ public class GameController : MonoBehaviour
         // Guardar el jugador ganador en la variable estática
         jugadorGanador = jugador;
 
+        // Efecto de sonido al ganar la partida
+        AudioManager.PlayFinishGameEffect();
+
         // Cargar la escena de victoria
         SceneManager.LoadScene("VictoryScene");  // Asegúrate de que el nombre coincida con la escena que creaste
     }
@@ -51,6 +54,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("Partida empatada");
         jugadorGanador = -1;
+        AudioManager.PlayFinishGameEffect();
         SceneManager.LoadScene("VictoryScene");
     }
 
