@@ -25,7 +25,7 @@ public class TurnTransitionManager : MonoBehaviour
     }
 
     private void Start() {
-        transitionText.text = $"¡Turno terminado! Ahora le toca a {GameController.CambiarNombreJugadores("Jugador 1")}";
+        transitionText.text = $"Ahora le toca a {GameController.CambiarNombreJugadores("Jugador 1")}";
     }
 
     private void OnEnable()

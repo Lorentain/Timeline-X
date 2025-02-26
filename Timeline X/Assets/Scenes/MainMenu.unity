@@ -443,19 +443,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 477831785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1738810425}
-        m_TargetAssemblyTypeName: UIButtonsController, Assembly-CSharp
-        m_MethodName: StartTutorial
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &477831785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -862,6 +850,14 @@ PrefabInstance:
     - target: {fileID: 955627840806975979, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
       propertyPath: m_Name
       value: Player 4 Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585146405706989512, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988105912456613925, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4947952649215666923, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
       propertyPath: m_text
@@ -2353,6 +2349,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 3 Name
       objectReference: {fileID: 0}
+    - target: {fileID: 3585146405706989512, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988105912456613925, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 4947952649215666923, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
       propertyPath: m_text
       value: Player 3
@@ -2609,6 +2613,14 @@ PrefabInstance:
     - target: {fileID: 955627840806975979, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
       propertyPath: m_Name
       value: Player 2 Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585146405706989512, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988105912456613925, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4947952649215666923, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
       propertyPath: m_text
@@ -3270,6 +3282,14 @@ PrefabInstance:
     - target: {fileID: 955627840806975979, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
       propertyPath: m_Name
       value: Player 1 Name
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585146405706989512, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988105912456613925, guid: 102d4165eedfbaf41b0ee09c28f318f3, type: 3}
+      propertyPath: m_CharacterLimit
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
