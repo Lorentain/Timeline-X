@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        PlayBackgroundMusic();
+        //PlayBackgroundMusic();
     }
 
     void Update()

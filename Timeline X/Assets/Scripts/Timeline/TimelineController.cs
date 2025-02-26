@@ -329,7 +329,7 @@ public class TimelineController : MonoBehaviour
             Debug.Log("Derecha:" + instance.cardsTimeline[index + 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
 
             // Efecto de sonido al colocarla incorrectamente
-            AudioManager.PlayIncorrectCardEffect();
+            //AudioManager.PlayIncorrectCardEffect();
 
             // Si la carta está mal, la mueve a su posición correcta
             MoverCartaALugarCorrecto(card);
@@ -352,7 +352,7 @@ public class TimelineController : MonoBehaviour
             Debug.Log("Izquierda:" + instance.cardsTimeline[index - 1].gameObject.GetComponent<CardController>().ObtenerAñoCarta());
 
             // Efecto de sonido al colocarla incorrectamente
-            AudioManager.PlayIncorrectCardEffect();
+            //AudioManager.PlayIncorrectCardEffect();
 
             // Si la carta está mal, la mueve a su posición correcta
             MoverCartaALugarCorrecto(card);
@@ -380,7 +380,7 @@ public class TimelineController : MonoBehaviour
             RoundManager.ConfirmPlay(true);
 
             // Efecto de sonido al colocarla correctamente
-            AudioManager.PlayCorrectCardEffect();
+            //AudioManager.PlayCorrectCardEffect();
         }
 
         // Devuelve si la carta está correctamente ubicada o no
