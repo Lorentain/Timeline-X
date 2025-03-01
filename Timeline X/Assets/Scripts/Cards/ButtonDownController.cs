@@ -7,10 +7,20 @@ public class ButtonDownController : MonoBehaviour
 
     [SerializeField] private TimelineController timelineController;
 
-    private void OnMouseDown() {
-        if(!TimelineController.GetAnimationPlay())
-        cardController.DevolverCartaAMano();
-        Debug.Log("Hola");
+    // private void Update()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.S))
+    //     {
+    //         if (!TimelineController.GetAnimationPlay())
+    //             cardController.DevolverCartaAMano();
+    //     }
+    // }
+
+    private void OnMouseDown()
+    {
+        if (!TimelineController.GetAnimationPlay())
+            cardController.DevolverCartaAMano();
+            Debug.Log("Hola");
     }
 
 }

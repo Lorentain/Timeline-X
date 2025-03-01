@@ -65,7 +65,6 @@ public class SceneManager : MonoBehaviour
                 yield return new WaitForSeconds(Random.Range(0.5f,1f));
                 progress += Random.Range(0.05f, 0.2f);
             }
-            Debug.Log(asynOP.progress);
             fillLoadingBar.fillAmount = progress;
         } while (progress < 1 || !asynOP.isDone);
         progress = 0;
@@ -76,5 +75,10 @@ public class SceneManager : MonoBehaviour
             fadeCanvas.blocksRaycasts = false;
             fillLoadingBar.fillAmount = 0;
         }).WaitForCompletion();
+    }
+
+    internal static object GetActiveScene()
+    {
+        throw new System.NotImplementedException();
     }
 }

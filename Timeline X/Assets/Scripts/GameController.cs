@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    public static GameController Instance;
+    public static GameController instance;
+
+    // Referencia al canvas donde estan los inputs fields
+    [SerializeField] private GameObject canvasChooseName;
 
     // Referencia a cada input field del nombre de cada jugador
     [SerializeField] private TMP_InputField inputNamePlayer1;
@@ -29,14 +32,17 @@ public class GameController : MonoBehaviour
 
     void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
-        }else {
+        }
+        else
+        {
             Destroy(gameObject);
         }
     }
+
 
     public void Ganador(int jugador)
     {
@@ -65,22 +71,22 @@ public class GameController : MonoBehaviour
         {
             case "Jugador 1":
                 {
-                    res = Instance.newNamePlayer1;
+                    res = instance.newNamePlayer1;
                     break;
                 }
             case "Jugador 2":
                 {
-                    res = Instance.newNamePlayer2;
+                    res = instance.newNamePlayer2;
                     break;
                 }
             case "Jugador 3":
                 {
-                    res = Instance.newNamePlayer3;
+                    res = instance.newNamePlayer3;
                     break;
                 }
             case "Jugador 4":
                 {
-                    res = Instance.newNamePlayer4;
+                    res = instance.newNamePlayer4;
                     break;
                 }
         }
@@ -89,9 +95,19 @@ public class GameController : MonoBehaviour
 
     public static void GuardarNombreJugadores()
     {
-        Instance.newNamePlayer1 = Instance.inputNamePlayer1.text.ToString();
-        Instance.newNamePlayer2 = Instance.inputNamePlayer2.text.ToString();
-        Instance.newNamePlayer3 = Instance.inputNamePlayer3.text.ToString();
-        Instance.newNamePlayer4 = Instance.inputNamePlayer4.text.ToString();
+        instance.newNamePlayer1 = instance.inputNamePlayer1.text.ToString();
+        instance.newNamePlayer2 = instance.inputNamePlayer2.text.ToString();
+        instance.newNamePlayer3 = instance.inputNamePlayer3.text.ToString();
+        instance.newNamePlayer4 = instance.inputNamePlayer4.text.ToString();
+    }
+
+    public static void OcultarCanvasElegirNombres()
+    {
+        instance.canvasChooseName.SetActive(false);
+    }
+
+    public static void MostrarCanvasElegirNombres()
+    {
+        instance.canvasChooseName.SetActive(true);
     }
 }

@@ -63,7 +63,7 @@ public class RoundManager : MonoBehaviour
             // Comprobar si algún jugador se ha quedado sin cartas
             for(int i = 0; i < instance.totalPlayers;i++) {
                 if(instance.listCardInventoryPlayers[i].ContarCartas() == 0) { // Verifica si jugador X tiene 0 cartas
-                    GameController.Instance.Ganador(i+1); // Jugador X ha ganado
+                    GameController.instance.Ganador(i+1); // Jugador X ha ganado
                     instance.actionFeedManager.LogAction(GameController.CambiarNombreJugadores("Jugador " + (i + 1)) + "ha ganado la partida, se quedó sin cartas."); // Registrar la acción en el feed y consola
                 }
             }

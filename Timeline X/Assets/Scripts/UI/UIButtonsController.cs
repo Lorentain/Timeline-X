@@ -1,6 +1,6 @@
 using System;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UIButtonsController : MonoBehaviour
 {
@@ -16,6 +16,7 @@ public class UIButtonsController : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene(sceneStartName);  // Reemplaza "JuegoSceneName" con el nombre de tu escena del juego
+        GameController.OcultarCanvasElegirNombres();
     }
 
     public void StartTutorial()
@@ -32,6 +33,7 @@ public class UIButtonsController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneMainMenu);
+        GameController.MostrarCanvasElegirNombres();
     }
 
     public void QuitGame()

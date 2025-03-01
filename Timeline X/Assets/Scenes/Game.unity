@@ -1961,6 +1961,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1708302494}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: MostrarCanvasElegirNombres
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1244903330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2057,7 +2069,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: giveCardStart
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase
@@ -2681,6 +2693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c027d6bb096e92f43bab0a98923ace6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvasChooseName: {fileID: 0}
   inputNamePlayer1: {fileID: 0}
   inputNamePlayer2: {fileID: 0}
   inputNamePlayer3: {fileID: 0}
@@ -3153,7 +3166,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: giveCardStart
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3027308614704447361, guid: fa4be7b730cca9f4b9a90b402426dfa4, type: 3}
       propertyPath: movementeEase

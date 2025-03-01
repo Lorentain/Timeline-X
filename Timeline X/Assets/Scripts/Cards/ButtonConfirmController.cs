@@ -6,18 +6,30 @@ public class ButtonConfirmController : MonoBehaviour
 
     private void OnEnable()
     {
-        RoundManager.OnTurnChanged += UpdateButtonState; 
+        RoundManager.OnTurnChanged += UpdateButtonState;
     }
 
     private void OnDisable()
     {
-        RoundManager.OnTurnChanged -= UpdateButtonState; 
+        RoundManager.OnTurnChanged -= UpdateButtonState;
+    }
+
+    private void Update()
+    {
+        if ((Input.GetKeyDown(KeyCode.C) || Input.GetKeyDown(KeyCode.Return)) && cardController.IsTimeline())
+        {
+            if (cardController.ConfirmarCartaTimeline())
+            {
+                gameObject.transform.parent.parent.GetComponentInChildren<ButtonDescriptionController>().ConfirmInTimeline();
+            }
+        }
     }
 
     private void OnMouseDown()
     {
         Debug.Log("Carta confirmada");
-        if(cardController.ConfirmarCartaTimeline()) {
+        if (cardController.ConfirmarCartaTimeline())
+        {
             gameObject.transform.parent.parent.GetComponentInChildren<ButtonDescriptionController>().ConfirmInTimeline();
         }
     }
