@@ -10,15 +10,6 @@ public class GameController : MonoBehaviour
     // Referencia al canvas donde estan los inputs fields
     [SerializeField] private GameObject canvasChooseName;
 
-    // Referencia a cada input field del nombre de cada jugador
-    [SerializeField] private TMP_InputField inputNamePlayer1;
-
-    [SerializeField] private TMP_InputField inputNamePlayer2;
-
-    [SerializeField] private TMP_InputField inputNamePlayer3;
-
-    [SerializeField] private TMP_InputField inputNamePlayer4;
-
     // Variable de cada nombre nuevo asignado
     [SerializeField] private string newNamePlayer1;
 
@@ -95,19 +86,9 @@ public class GameController : MonoBehaviour
 
     public static void GuardarNombreJugadores()
     {
-        instance.newNamePlayer1 = instance.inputNamePlayer1.text.ToString();
-        instance.newNamePlayer2 = instance.inputNamePlayer2.text.ToString();
-        instance.newNamePlayer3 = instance.inputNamePlayer3.text.ToString();
-        instance.newNamePlayer4 = instance.inputNamePlayer4.text.ToString();
-    }
-
-    public static void OcultarCanvasElegirNombres()
-    {
-        instance.canvasChooseName.SetActive(false);
-    }
-
-    public static void MostrarCanvasElegirNombres()
-    {
-        instance.canvasChooseName.SetActive(true);
+        instance.newNamePlayer1 = GameObject.Find("Input Field Name P1").GetComponent<TMP_InputField>().text.ToString();
+        instance.newNamePlayer2 = GameObject.Find("Input Field Name P2").GetComponent<TMP_InputField>().text.ToString();
+        instance.newNamePlayer3 = GameObject.Find("Input Field Name P3").GetComponent<TMP_InputField>().text.ToString();
+        instance.newNamePlayer4 = GameObject.Find("Input Field Name P4").GetComponent<TMP_InputField>().text.ToString();
     }
 }

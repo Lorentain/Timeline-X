@@ -32,6 +32,18 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI countCardsP4;
 
+    // Variables para el texto del nombre de cada jugador
+
+    [SerializeField] private TextMeshProUGUI namePlayer1;
+
+    [SerializeField] private TextMeshProUGUI namePlayer2;
+
+    [SerializeField] private TextMeshProUGUI namePlayer3;
+
+    [SerializeField] private TextMeshProUGUI namePlayer4;
+
+    // Otras variables locales
+
     [SerializeField] private Camera camera;
 
     [SerializeField] private float movementTime;
@@ -54,6 +66,13 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Start() {
+        namePlayer1.text = GameController.CambiarNombreJugadores("Jugador 1");
+        namePlayer2.text = GameController.CambiarNombreJugadores("Jugador 2");
+        namePlayer3.text = GameController.CambiarNombreJugadores("Jugador 3");
+        namePlayer4.text = GameController.CambiarNombreJugadores("Jugador 4");
     }
 
     private void OnEnable()
