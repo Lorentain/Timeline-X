@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c64d8cb0431f8469686a89147ce5eb, type: 3}
-  m_Name: Steam
+  m_Name: Nintendo XL
   m_EditorClassIdentifier: 
   cardInfo:
-    cardName: Steam
-    cardDescription: Carta de Steam
-    cardCategory: Software
-    cardDateDay: 12
-    cardDateMonth: 9
-    cardDateYear: 2003
-    cardImage: {fileID: 8207380672740664011, guid: 8ced76119c6f39b40a76707987c1fc6d, type: 3}
+    cardName: Nintendo XL
+    cardDescription: Carta de Nintendo XL
+    cardCategory: Empresa
+    cardDateDay: 21
+    cardDateMonth: 11
+    cardDateYear: 2009
+    cardImage: {fileID: 870508117951881361, guid: e4e6490ae75d7a840b3afb8c25dc4b2d, type: 3}

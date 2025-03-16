@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c64d8cb0431f8469686a89147ce5eb, type: 3}
-  m_Name: Steam
+  m_Name: Pong
   m_EditorClassIdentifier: 
   cardInfo:
-    cardName: Steam
-    cardDescription: Carta de Steam
-    cardCategory: Software
-    cardDateDay: 12
-    cardDateMonth: 9
-    cardDateYear: 2003
-    cardImage: {fileID: 8207380672740664011, guid: 8ced76119c6f39b40a76707987c1fc6d, type: 3}
+    cardName: Pong
+    cardDescription: Carta de Pong
+    cardCategory: Videojuego
+    cardDateDay: 29
+    cardDateMonth: 11
+    cardDateYear: 1972
+    cardImage: {fileID: 3387125260050224725, guid: dd5dc667dc4450a4798338214cd53ebb, type: 3}

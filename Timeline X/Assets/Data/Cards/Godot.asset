@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c64d8cb0431f8469686a89147ce5eb, type: 3}
-  m_Name: Steam
+  m_Name: Godot
   m_EditorClassIdentifier: 
   cardInfo:
-    cardName: Steam
-    cardDescription: Carta de Steam
+    cardName: Godot
+    cardDescription: Carta de Godot
     cardCategory: Software
-    cardDateDay: 12
-    cardDateMonth: 9
-    cardDateYear: 2003
-    cardImage: {fileID: 8207380672740664011, guid: 8ced76119c6f39b40a76707987c1fc6d, type: 3}
+    cardDateDay: 14
+    cardDateMonth: 1
+    cardDateYear: 2014
+    cardImage: {fileID: 1603736369264530170, guid: 8ed163721c99c7e47b26f01ac6b05d77, type: 3}
