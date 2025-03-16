@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96c64d8cb0431f8469686a89147ce5eb, type: 3}
-  m_Name: Steam
+  m_Name: Ubisoft
   m_EditorClassIdentifier: 
   cardInfo:
-    cardName: Steam
-    cardDescription: Carta de Steam
-    cardCategory: Software
-    cardDateDay: 12
-    cardDateMonth: 9
-    cardDateYear: 2003
-    cardImage: {fileID: 8207380672740664011, guid: 8ced76119c6f39b40a76707987c1fc6d, type: 3}
+    cardName: Ubisoft
+    cardDescription: Carta de Ubisoft
+    cardCategory: Empresa
+    cardDateDay: 28
+    cardDateMonth: 3
+    cardDateYear: 1986
+    cardImage: {fileID: 5029770272333410777, guid: b80655ad903618243a534adbb4f59bae, type: 3}
