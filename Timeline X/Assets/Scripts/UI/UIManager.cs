@@ -14,6 +14,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI textYear;
 
+    // Variables para los paneles de información de cada jugador
+    [SerializeField] private GameObject panelInfoPlayer1;
+
+    [SerializeField] private GameObject panelInfoPlayer2;
+
+    [SerializeField] private GameObject panelInfoPlayer3;
+
+    [SerializeField] private GameObject panelInfoPlayer4;
+
     // Variables para el texto de la cantidad de power ups
     [SerializeField] private TextMeshProUGUI countPowerUpsP1;
 
@@ -68,11 +77,40 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start() {
+    private void Start()
+    {
         namePlayer1.text = GameController.CambiarNombreJugadores("Jugador 1");
         namePlayer2.text = GameController.CambiarNombreJugadores("Jugador 2");
         namePlayer3.text = GameController.CambiarNombreJugadores("Jugador 3");
         namePlayer4.text = GameController.CambiarNombreJugadores("Jugador 4");
+
+        switch (PlayerPrefs.GetInt("TotalPlayers"))
+        {
+            case 2:
+                {
+                    panelInfoPlayer1.SetActive(true);
+                    panelInfoPlayer2.SetActive(true);
+                    panelInfoPlayer3.SetActive(false);
+                    panelInfoPlayer4.SetActive(false);
+                    break;
+                }
+            case 3:
+                {
+                    panelInfoPlayer1.SetActive(true);
+                    panelInfoPlayer2.SetActive(true);
+                    panelInfoPlayer3.SetActive(true);
+                    panelInfoPlayer4.SetActive(false);
+                    break;
+                }
+            case 4:
+                {
+                    panelInfoPlayer1.SetActive(true);
+                    panelInfoPlayer2.SetActive(true);
+                    panelInfoPlayer3.SetActive(true);
+                    panelInfoPlayer4.SetActive(true);
+                    break;
+                }
+        }
     }
 
     private void OnEnable()
@@ -160,6 +198,7 @@ public class UIManager : MonoBehaviour
 
     public static void PutTextDescription(string textName, string textDescription, string textYear)
     {
+        Debug.Log("Descripcion: " + textDescription);
         instance.textName.text = textName;
         instance.textDescription.text = textDescription;
         instance.textYear.text = textYear;

@@ -48,7 +48,7 @@ public class CardInventory : MonoBehaviour
         for (int i = 0; i < giveCardStart; i++)
         {
             CardInfo aux = deckController.RepartirCarta();
-            Debug.Log(aux);
+            Debug.Log("Comprobacion cardinfo:" + aux.CardDescription);
             CardController card = null;
             switch (aux.CardCategory)
             {

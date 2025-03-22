@@ -19,6 +19,7 @@ public class ButtonDescriptionController : MonoBehaviour
             }
             else
             {
+                Debug.Log("Descripcion card info: " + cardController.ObtenerCardInfo().CardDescription);
                 UIManager.PutTextDescription(cardController.ObtenerCardInfo().CardName, cardController.ObtenerCardInfo().CardDescription, isConfirmInTimeline ? cardController.ObtenerAñoCarta().ToString() : "????");
                 UIManager.ShowDescription(cardController.ObtenerPosicionCarta());
                 UIManager.HideSpecificGroup();

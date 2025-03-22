@@ -47,6 +47,7 @@ public class PlayFabConnector : DBConnector
                 {
                     CardInfo card = JsonUtility.FromJson<CardInfo>(items[i].DisplayProperties.ToString());
                     card.CardName = items[i].Title["NEUTRAL"];
+                    card.CardDescription = items[i].Description["NEUTRAL"];
                     yield return GetImage(items[i].Images[0].Url,
                     (Sprite image) =>
                     {

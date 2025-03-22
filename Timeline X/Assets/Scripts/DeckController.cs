@@ -15,6 +15,7 @@ public class DeckController : MonoBehaviour
         foreach (CardInfo card in listCards)
         {
             Debug.Log(card.CardName);
+            Debug.Log(card.CardDescription);
         }
     }
 
@@ -26,6 +27,8 @@ public class DeckController : MonoBehaviour
         {
             int index = Random.Range(0, listCards.Count);
             cardAux = listCards[index];
+            Debug.Log("Nombre aqui" + listCards[index].CardName);
+            Debug.Log("Descripcion aqui" + listCards[index].CardDescription);
             listCards.RemoveAt(index);
         }
         else
