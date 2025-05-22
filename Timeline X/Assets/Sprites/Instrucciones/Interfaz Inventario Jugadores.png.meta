@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Interfaz Inventario Jugadores_0: 8690359502056622938
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

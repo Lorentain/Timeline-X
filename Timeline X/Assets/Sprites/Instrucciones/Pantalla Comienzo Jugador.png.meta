@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Pantalla Comienzo Jugador_0: -7260772391576242888
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
