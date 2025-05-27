@@ -15,12 +15,12 @@ public class UIButtonsController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene(sceneStartName);  // Reemplaza "JuegoSceneName" con el nombre de tu escena del juego
+        SceneManager.LoadScene(sceneStartName);
     }
 
-    public void StartTutorial()
+    public void StartInstructions()
     {
-        SceneManager.LoadScene("Tutorial");  // Reemplaza "TutorialSceneName" con el nombre de tu escena del tutorial
+        SceneManager.LoadScene("Intrucciones");  
     }
 
     public void RestartGame()

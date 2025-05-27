@@ -724,7 +724,7 @@ PrefabInstance:
       objectReference: {fileID: 121106362}
     - target: {fileID: 5651068607272836282, guid: 2ea5798359807044eaf5586f9e0347ee, type: 3}
       propertyPath: totalPlayers
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5651068607272836282, guid: 2ea5798359807044eaf5586f9e0347ee, type: 3}
       propertyPath: actionFeedManager
