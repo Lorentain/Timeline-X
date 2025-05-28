@@ -171,7 +171,16 @@ public class CardInventory : MonoBehaviour
 
     public GameObject ObtenerCartaAleatoria()
     {
-        int index = Random.Range(0, ContarCartas());
-        return inventoryCard[index];
+        GameObject res;
+        if (inventoryCard.Count == 0)
+        {
+            res = null;
+        }
+        else
+        {
+            int index = Random.Range(0, ContarCartas());
+            res = inventoryCard[index];
+        }
+        return res;
     }
 }

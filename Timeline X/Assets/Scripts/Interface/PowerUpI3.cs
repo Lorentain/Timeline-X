@@ -7,7 +7,7 @@ public class PowerUp3 : MonoBehaviour, IPowerUp
 
     private void OnMouseDown()
     {
-        if (!isUsed)
+        if (!isUsed && cardInventory.ObtenerCartaAleatoria() != null)
         {
             Execute();
             Destroy(gameObject, 2f);
@@ -18,13 +18,10 @@ public class PowerUp3 : MonoBehaviour, IPowerUp
     public void Execute()
     {
         Debug.Log("Power Up 3 funcionando");
-
-        // Obtener una carta aleatoria
-        GameObject card = cardInventory.ObtenerCartaAleatoria();
-        if (card != null)
+        if (cardInventory.ObtenerCartaAleatoria() != null)
         {
-            // Llamar al método ActivarCartucho con el PowerUp 3 activado
-            card.GetComponent<CardController>().ActivarCartucho(isPowerUp3Active: true);
+            GameObject card = cardInventory.ObtenerCartaAleatoria();
+            card.GetComponent<CardController>().ActivarCartucho();
         }
     }
 

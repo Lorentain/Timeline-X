@@ -2008,10 +2008,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2644e8d2bed76ca40bbc8ac55e5f87cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneGame: 
-  sceneMainMenu: 
+  sceneGame: Game
+  sceneMainMenu: MainMenu
   pauseController: {fileID: 0}
-  sceneStartName: 
+  sceneStartName: Game
 --- !u!4 &337492967
 Transform:
   m_ObjectHideFlags: 0

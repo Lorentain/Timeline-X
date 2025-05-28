@@ -8,7 +8,7 @@ public class PowerUpI2 : MonoBehaviour, IPowerUp
 
     private void OnMouseDown()
     {
-        if (!isUsed)
+        if (!isUsed && cardInventory.ObtenerCartaAleatoria() != null)
         {
             Execute();
             Destroy(gameObject, 2f);
@@ -19,13 +19,10 @@ public class PowerUpI2 : MonoBehaviour, IPowerUp
     public void Execute()
     {
         Debug.Log("Power Up 2 funcionando");
-
-        // Obtener una carta aleatoria
-        GameObject card = cardInventory.ObtenerCartaAleatoria();
-        if (card != null)
+        if (cardInventory.ObtenerCartaAleatoria() != null)
         {
-            // Llamar al método para activar el cartucho de la carta con la fecha incompleta
-            card.GetComponent<CardController>().ActivarCartucho(true); // 'true' para mostrar la fecha incompleta
+            GameObject card = cardInventory.ObtenerCartaAleatoria();
+            card.GetComponent<CardController>().ActivarCartucho();
         }
     }
 

@@ -8,10 +8,10 @@ public class PowerUpI1 : MonoBehaviour, IPowerUp
 
     private void OnMouseDown()
     {
-        if (!isUsed)
+        if (!isUsed && cardInventory.ObtenerCartaAleatoria() != null)
         {
             Execute();
-            Destroy(gameObject,2f);
+            Destroy(gameObject, 2f);
             isUsed = true;
         }
     }
@@ -19,8 +19,11 @@ public class PowerUpI1 : MonoBehaviour, IPowerUp
     public void Execute()
     {
         Debug.Log("Power Up pista del año funcionando");
-        GameObject card = cardInventory.ObtenerCartaAleatoria();
-        card.GetComponent<CardController>().ActivarCartucho();
+        if (cardInventory.ObtenerCartaAleatoria() != null)
+        {
+            GameObject card = cardInventory.ObtenerCartaAleatoria();
+            card.GetComponent<CardController>().ActivarCartucho();
+        }
     }
 
     public void SetCardInventory(CardInventory aux)
