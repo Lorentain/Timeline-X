@@ -34,6 +34,11 @@ public class UIButtonsController : MonoBehaviour
         SceneManager.LoadScene(sceneMainMenu);
     }
 
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
     public void QuitGame()
     {
         Debug.Log("Saliendo del juego...");

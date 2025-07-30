@@ -63,7 +63,7 @@ public class SceneManager : MonoBehaviour
             else
             {
                 yield return new WaitForSeconds(Random.Range(0.5f,1f));
-                progress += Random.Range(0.05f, 0.2f);
+                progress += Random.Range(0.1f, 0.2f);
             }
             fillLoadingBar.fillAmount = progress;
         } while (progress < 1 || !asynOP.isDone);

@@ -18,11 +18,11 @@ public class PowerUpI2 : MonoBehaviour, IPowerUp
 
     public void Execute()
     {
-        Debug.Log("Power Up 2 funcionando");
+        Debug.Log("Power Up pista del año X funcionando");
         if (cardInventory.ObtenerCartaAleatoria() != null)
         {
             GameObject card = cardInventory.ObtenerCartaAleatoria();
-            card.GetComponent<CardController>().ActivarCartucho();
+            card.GetComponent<CardController>().ActivarCartucho(isPowerUp2Active: true);
         }
     }
 

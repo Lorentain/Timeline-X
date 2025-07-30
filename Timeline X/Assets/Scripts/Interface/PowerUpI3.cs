@@ -17,11 +17,11 @@ public class PowerUp3 : MonoBehaviour, IPowerUp
 
     public void Execute()
     {
-        Debug.Log("Power Up 3 funcionando");
+        Debug.Log("Power Up abanico funcionando");
         if (cardInventory.ObtenerCartaAleatoria() != null)
         {
             GameObject card = cardInventory.ObtenerCartaAleatoria();
-            card.GetComponent<CardController>().ActivarCartucho();
+            card.GetComponent<CardController>().ActivarCartucho(isPowerUp3Active: true);
         }
     }
 

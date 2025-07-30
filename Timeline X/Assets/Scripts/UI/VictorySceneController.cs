@@ -8,9 +8,10 @@ public class VictorySceneController : MonoBehaviour
     void Start()
     {
         if(GameController.jugadorGanador != -1) {
-            victoryText.text = $"¡El Jugador {GameController.jugadorGanador} ha ganado!";
+
+            victoryText.text = $"The  player  {GameController.GetNameOfPlayer(GameController.jugadorGanador)}  wins";
         }else {
-            victoryText.text = "¡La partida ha quedado en empate";
+            victoryText.text = "The game ended in a draw";
         }
         
     }

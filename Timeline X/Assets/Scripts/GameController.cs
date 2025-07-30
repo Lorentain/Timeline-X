@@ -91,4 +91,21 @@ public class GameController : MonoBehaviour
         instance.newNamePlayer3 = GameObject.Find("Input Field Name P3").GetComponent<TMP_InputField>().text.ToString();
         instance.newNamePlayer4 = GameObject.Find("Input Field Name P4").GetComponent<TMP_InputField>().text.ToString();
     }
+
+    public static string GetNameOfPlayer(int playerNumber)
+    {
+        switch (playerNumber)
+        {
+            case 1:
+                return instance.newNamePlayer1;
+            case 2:
+                return instance.newNamePlayer2;
+            case 3:
+                return instance.newNamePlayer3;
+            case 4:
+                return instance.newNamePlayer4;
+            default:
+                return "Unknown Player";
+        }
+    }
 }
